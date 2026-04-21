@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sporting Marketplace — Propuesta para Sellers</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,700&family=Barlow+Condensed:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --g:   #5ea832;
+  --g2:  #4a8a26;
+  --g3:  #3a6e1c;
+  --glo: rgba(94,168,50,.10);
+  --glb: rgba(94,168,50,.20);
+  --w:   #ffffff;
+  --k:   #0d0f0d;
+  --k2:  #161a15;
+  --k3:  #1e2420;
+  --s1:  #f4f7f1;
+  --s2:  #e6ede0;
+  --t1:  #1a221a;
+  --t2:  #3d4e3a;
+  --t3:  #6b7d66;
+  --t4:  #adbba7;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Barlow',sans-serif;background:var(--k);color:var(--w);overflow-x:hidden}
+
+/* ── NAV ─────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  height:58px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;
+  background:rgba(13,15,13,.96);
+  border-bottom:1px solid rgba(94,168,50,.14);
+  backdrop-filter:blur(20px);
+}
+.nav-logo img{height:28px;display:block}
+.nav-links{display:flex;gap:0}
+.nav-links a{
+  color:var(--t4);text-decoration:none;
+  font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  padding:6px 13px;border-radius:3px;transition:color .18s,background .18s;
+}
+.nav-links a:hover{color:var(--w);background:rgba(255,255,255,.05)}
+.nav-links a.act{color:var(--g)}
+.nav-pill{
+  background:var(--g);color:var(--w);border:none;cursor:pointer;
+  font-family:'Barlow',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:9px 22px;border-radius:3px;text-decoration:none;
+  transition:background .18s;white-space:nowrap;
+}
+.nav-pill:hover{background:var(--g2)}
+
+/* ── SECTION BASE ─────────────── */
+section{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:90px 40px 70px;position:relative;
+  border-bottom:1px solid rgba(255,255,255,.04);
+}
+.inner{width:100%;max-width:1080px}
+
+.chip{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--g);margin-bottom:18px;
+}
+.chip::before{content:'';display:block;width:24px;height:2px;background:var(--g);flex-shrink:0}
+
+h2{font-family:'Barlow Condensed',sans-serif;line-height:1.05;font-size:clamp(36px,5vw,62px);font-weight:800;text-transform:uppercase;letter-spacing:-.01em}
+h3{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:.03em}
+
+.body-text{font-size:15px;line-height:1.80;color:var(--t4);font-weight:400;max-width:560px}
+.body-text strong{color:var(--w);font-weight:600}
+
+/* ── SCROLL REVEAL ─────────────── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ═══════════════════════════════════
+   1 · PORTADA
+═══════════════════════════════════ */
+#s1{background:var(--k);overflow:hidden;min-height:100vh}
+#s1::before{
+  content:'';position:absolute;top:-15%;right:-10%;
+  width:75vw;height:75vw;max-width:900px;max-height:900px;
+  background:radial-gradient(ellipse,rgba(94,168,50,.11) 0%,transparent 60%);
+  pointer-events:none;
+}
+#s1::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--g),transparent);
+}
+.hero-eyebrow{
+  font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--g);margin-bottom:30px;display:flex;align-items:center;gap:10px;
+}
+.hero-eyebrow::before{content:'';width:20px;height:2px;background:var(--g)}
+.hero-h1{
+  font-family:'Barlow Condensed',sans-serif;font-weight:900;
+  font-size:clamp(64px,10vw,124px);
+  text-transform:uppercase;letter-spacing:-.02em;line-height:.93;
+  color:var(--w);margin-bottom:36px;
+}
+.hero-h1 span{
+  display:block;color:transparent;
+  -webkit-text-stroke:2px var(--g);
+}
+.hero-claim{
+  font-size:18px;color:var(--t3);font-weight:400;line-height:1.75;
+  max-width:520px;margin-bottom:48px;
+  border-left:3px solid var(--g);padding-left:22px;
+}
+.hero-claim strong{color:var(--w);font-weight:600}
+.hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--g);color:var(--w);text-decoration:none;
+  font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:14px 28px;border-radius:3px;transition:background .18s,transform .15s;
+}
+.btn-primary:hover{background:var(--g2);transform:translateY(-1px)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:6px;
+  color:var(--t3);text-decoration:none;
+  font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  padding:14px 20px;border:1px solid rgba(255,255,255,.1);border-radius:3px;
+  transition:color .18s,border-color .18s,background .18s;
+}
+.btn-ghost:hover{color:var(--w);border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.04)}
+.hero-stamp{
+  position:absolute;bottom:44px;right:48px;
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);
+}
+
+/* ═══════════════════════════════════
+   2 · QUÉ ES
+═══════════════════════════════════ */
+#s2{background:var(--s1)}
+#s2 .chip{color:var(--g2)}
+#s2 .chip::before{background:var(--g2)}
+#s2 h2{color:var(--t1)}
+.def-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.def-text .body-text{color:var(--t2);max-width:100%}
+#s2 .body-text strong{color:var(--t1)}
+.def-pillars{display:flex;flex-direction:column;gap:0}
+.pillar{
+  display:flex;align-items:flex-start;gap:18px;
+  padding:20px 0;border-bottom:1px solid var(--s2);
+}
+.pillar:last-child{border-bottom:none}
+.pillar-icon{
+  width:48px;height:48px;flex-shrink:0;border-radius:10px;
+  background:var(--g);display:flex;align-items:center;justify-content:center;
+  font-size:22px;
+}
+.pillar-label{font-size:15px;font-weight:700;color:var(--t1);margin-bottom:4px;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.04em}
+.pillar-desc{font-size:13px;color:var(--t3);line-height:1.6}
+
+/* ═══════════════════════════════════
+   3 · POR QUÉ SPORTING
+═══════════════════════════════════ */
+#s3{background:var(--k2)}
+.value-intro{max-width:580px;margin-bottom:44px}
+.value-intro h2{margin-bottom:16px}
+.value-intro p{font-size:15px;color:var(--t4);line-height:1.75;font-weight:400}
+.value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.value-card{
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);
+  border-radius:10px;padding:28px 24px;transition:border-color .2s,transform .2s;
+  display:flex;flex-direction:column;gap:12px;
+}
+.value-card:hover{border-color:rgba(94,168,50,.35);transform:translateY(-3px)}
+.value-icon{font-size:28px;line-height:1}
+.value-title{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--w)}
+.value-desc{font-size:13px;color:var(--t4);line-height:1.7;flex:1}
+
+/* op-flow compact inside s2 */
+.op-flow-compact{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  margin-top:36px;position:relative;
+  border:1px solid var(--s2);border-radius:10px;overflow:hidden;
+}
+.op-step-c{
+  padding:20px 18px;border-right:1px solid var(--s2);
+  display:flex;flex-direction:column;gap:8px;
+  position:relative;
+}
+.op-step-c:last-child{border-right:none}
+.op-step-c-num{
+  font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:800;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--g2);
+}
+.op-step-c-title{
+  font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.03em;color:var(--t1);
+}
+.op-step-c-desc{font-size:12px;color:var(--t3);line-height:1.55}
+@media(max-width:880px){.op-flow-compact{grid-template-columns:1fr 1fr}
+.op-step-c:nth-child(2){border-right:none}
+.op-step-c:nth-child(3){border-top:1px solid var(--s2)}
+.op-step-c:nth-child(4){border-top:1px solid var(--s2);border-right:none}}
+
+/* ═══════════════════════════════════
+   5 · ROLES
+═══════════════════════════════════ */
+#s5{background:var(--s1)}
+#s5 .chip{color:var(--g2)}
+#s5 .chip::before{background:var(--g2)}
+#s5 h2{color:var(--t1);margin-bottom:8px}
+.roles-sub{font-size:15px;color:var(--t3);margin-bottom:32px;font-weight:400}
+.roles-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.role-box{border-radius:12px;padding:32px 28px}
+.role-box.sporting{background:var(--t1);border:1px solid var(--s2)}
+.role-box.seller{background:var(--g);border:1px solid var(--g)}
+.role-head{
+  font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;
+  letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px;
+}
+.role-head-sub{font-size:12px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;margin-bottom:22px;opacity:.6}
+.role-box.sporting .role-head{color:var(--g)}
+.role-box.sporting .role-head-sub{color:var(--t4)}
+.role-box.seller .role-head{color:rgba(255,255,255,.95)}
+.role-box.seller .role-head-sub{color:rgba(255,255,255,.65)}
+.role-item{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08);
+  font-size:14px;line-height:1.5;
+}
+.role-box.sporting .role-item{color:#c8d8c3}
+.role-box.seller .role-item{color:rgba(255,255,255,.9);border-bottom-color:rgba(255,255,255,.15)}
+.role-item:last-child{border-bottom:none}
+.role-item::before{content:'→';flex-shrink:0;font-size:12px;margin-top:2px}
+.role-box.sporting .role-item::before{color:var(--g)}
+.role-box.seller .role-item::before{color:rgba(255,255,255,.5)}
+
+/* ═══════════════════════════════════
+   6 · SERVICIOS
+═══════════════════════════════════ */
+#s6{background:var(--k)}
+.svc-layout{display:grid;grid-template-columns:1fr 2fr;gap:60px;align-items:start;margin-top:40px}
+.svc-intro .body-text{color:var(--t4)}
+.svc-intro .body-text strong{color:var(--w)}
+.svc-groups{display:flex;flex-direction:column;gap:28px}
+.svc-group-label{
+  font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--t4);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.06);
+}
+.svc-group-label.base-lbl{color:var(--g)}
+.svc-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.svc-row.two-col{grid-template-columns:repeat(2,1fr)}
+.svc-tag{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  border-radius:8px;padding:16px;transition:border-color .2s,background .2s;
+}
+.svc-tag:hover{border-color:rgba(94,168,50,.3);background:rgba(94,168,50,.04)}
+.svc-tag-icon{font-size:22px;margin-bottom:10px;line-height:1}
+.svc-tag-name{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--w);margin-bottom:4px}
+.svc-tag-desc{font-size:11px;color:var(--t4);line-height:1.55}
+.svc-tag.base-svc{background:rgba(94,168,50,.08);border-color:rgba(94,168,50,.22)}
+/* ═══════════════════════════════════
+   8 · ESQUEMA COMERCIAL
+═══════════════════════════════════ */
+#s8{background:var(--k3)}
+.com-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:start;margin-top:40px}
+.com-left{display:flex;flex-direction:column;gap:16px}
+.com-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:24px}
+.com-card-head{
+  font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--g);margin-bottom:16px;
+}
+.com-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:13px}
+.com-row:last-child{border-bottom:none}
+.com-row-lbl{color:var(--t4)}
+.com-row-val{font-weight:600;color:var(--w);font-size:13px}
+.conc-card{background:var(--glo);border:1px solid var(--glb);border-radius:10px;padding:24px}
+.conc-card .com-card-head{color:var(--g)}
+.conc-steps-mini{display:flex;flex-direction:column;gap:12px;margin-top:6px}
+.conc-mini-item{display:flex;gap:14px;align-items:flex-start;font-size:13px;color:var(--t3)}
+.conc-mini-n{
+  width:24px;height:24px;border-radius:50%;background:var(--g);color:var(--w);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:800;flex-shrink:0;
+}
+.prop-box{
+  background:var(--g);border-radius:12px;padding:32px;margin-bottom:20px;
+}
+.prop-box-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--w);margin-bottom:10px}
+.prop-box-body{font-size:14px;color:rgba(255,255,255,.82);line-height:1.75;margin-bottom:22px}
+.prop-features{display:flex;flex-direction:column;gap:8px}
+.prop-feat{font-size:13px;color:rgba(255,255,255,.78);display:flex;gap:10px;align-items:flex-start}
+.prop-feat::before{content:'✓';color:rgba(255,255,255,.55);flex-shrink:0;margin-top:1px}
+/* Simulador CTA dentro de comercial */
+.sim-banner{
+  margin-top:20px;background:rgba(94,168,50,.08);border:1px solid var(--glb);
+  border-radius:10px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  flex-wrap:wrap;
+}
+.sim-banner-text{font-size:14px;color:var(--t3);line-height:1.6}
+.sim-banner-text strong{color:var(--w)}
+.btn-sim{
+  display:inline-flex;align-items:center;gap:8px;flex-shrink:0;
+  background:transparent;border:1.5px solid var(--g);color:var(--g);
+  text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:11px 22px;border-radius:3px;transition:background .18s,color .18s;
+}
+.btn-sim:hover{background:var(--g);color:var(--w)}
+
+/* ═══════════════════════════════════
+   9 · LOGÍSTICA
+═══════════════════════════════════ */
+#s9{background:var(--s1)}
+#s9 .chip{color:var(--g2)}
+#s9 .chip::before{background:var(--g2)}
+#s9 h2{color:var(--t1)}
+.log-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px}
+.log-card{background:var(--w);border:1px solid var(--s2);border-radius:10px;padding:28px}
+.log-card-head{
+  font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--g2);margin-bottom:16px;
+  display:flex;align-items:center;gap:8px;
+}
+.log-card-head .log-icon{font-size:18px}
+.log-items{list-style:none}
+.log-item{
+  display:flex;gap:10px;font-size:13px;color:var(--t2);
+  padding:8px 0;border-bottom:1px solid var(--s2);line-height:1.55;
+}
+.log-item:last-child{border-bottom:none}
+.log-item::before{content:'—';color:var(--g);flex-shrink:0;font-weight:700}
+
+/* ═══════════════════════════════════
+   10 · PRÓXIMOS PASOS
+═══════════════════════════════════ */
+#s10{background:var(--k2)}
+.next-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.next-steps{display:flex;flex-direction:column;gap:0;margin-top:28px}
+.next-step{display:flex;gap:20px;align-items:flex-start;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.next-step:last-child{border-bottom:none}
+.next-n{
+  font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;
+  color:var(--g);line-height:1;flex-shrink:0;width:36px;
+}
+.next-text{font-size:14px;color:var(--t3);line-height:1.7;padding-top:6px}
+.next-text strong{color:var(--w)}
+.cta-box{
+  background:rgba(94,168,50,.08);border:1px solid rgba(94,168,50,.22);border-radius:12px;padding:40px 36px;
+}
+.cta-tag{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--g);margin-bottom:14px}
+.cta-headline{
+  font-family:'Barlow Condensed',sans-serif;font-size:clamp(36px,4vw,52px);font-weight:900;
+  text-transform:uppercase;line-height:1.0;color:var(--w);margin-bottom:20px;letter-spacing:-.01em;
+}
+.cta-body{font-size:14px;color:var(--t3);line-height:1.75;margin-bottom:28px}
+.cta-actions{display:flex;flex-direction:column;gap:12px}
+.btn-cta{
+  display:inline-flex;align-items:center;gap:8px;justify-content:center;
+  background:var(--g);color:var(--w);text-decoration:none;
+  font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:15px 28px;border-radius:3px;transition:background .18s;
+}
+.btn-cta:hover{background:var(--g2)}
+.btn-cta-outline{
+  display:inline-flex;align-items:center;gap:8px;justify-content:center;
+  background:transparent;border:1.5px solid rgba(94,168,50,.4);color:var(--g);
+  text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:14px 28px;border-radius:3px;transition:border-color .18s,background .18s,color .18s;
+}
+.btn-cta-outline:hover{border-color:var(--g);background:rgba(94,168,50,.08);color:var(--w)}
+
+/* ═══════════════════════════════════
+   11 · CIERRE
+═══════════════════════════════════ */
+#s11{background:var(--k);overflow:hidden}
+#s11::before{
+  content:'';position:absolute;bottom:-20%;left:-10%;
+  width:60vw;height:60vw;max-width:700px;max-height:700px;
+  background:radial-gradient(ellipse,rgba(94,168,50,.09) 0%,transparent 65%);
+  pointer-events:none;
+}
+.close-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center}
+.close-tagline{
+  font-family:'Barlow Condensed',sans-serif;font-size:clamp(32px,4.5vw,58px);
+  font-weight:900;text-transform:uppercase;line-height:1.05;color:var(--w);
+  margin-top:20px;margin-bottom:28px;
+}
+.close-tagline em{color:var(--g);font-style:normal}
+.close-body{font-size:15px;color:var(--t4);font-weight:400;line-height:1.85;max-width:440px}
+.contact-card{
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:36px;
+}
+.contact-label{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--g);margin-bottom:20px}
+.contact-email{
+  font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;
+  color:var(--w);display:block;margin-bottom:24px;text-decoration:none;
+  transition:color .18s;
+}
+.contact-email:hover{color:var(--g)}
+.contact-divider{height:1px;background:rgba(255,255,255,.06);margin:0 0 24px}
+.contact-meta{font-size:12px;color:var(--t4);line-height:1.9}
+.close-stamp{margin-top:20px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t4)}
+
+/* ── NAVEGACIÓN ENTRE SECCIONES ─── */
+.sec-nav{
+  position:fixed;right:24px;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:10px;z-index:998;
+}
+.sec-nav-btn{
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(13,15,13,.8);border:1px solid rgba(94,168,50,.25);
+  color:var(--g);cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:16px;transition:background .2s,border-color .2s,transform .15s;
+  backdrop-filter:blur(8px);
+  text-decoration:none;
+}
+.sec-nav-btn:hover{background:var(--g);color:var(--w);border-color:var(--g);transform:scale(1.1)}
+.sec-nav-btn.disabled{opacity:.2;pointer-events:none}
+@media(max-width:880px){.sec-nav{display:none}}
+
+/* ── ADIDAS BADGE (hero) ─────────── */
+.adidas-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
+  border-radius:4px;padding:8px 16px;margin-bottom:28px;
+}
+.adidas-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--g);flex-shrink:0}
+.adidas-badge-text{font-size:12px;font-weight:500;color:var(--t4);letter-spacing:.04em}
+.adidas-badge-text strong{color:var(--w);font-weight:700}
+
+/* ── STATS STRIP ─────────────────── */
+.stats-strip{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border:1px solid rgba(255,255,255,.07);border-radius:10px;overflow:hidden;
+  margin-top:48px;
+}
+.stat-item{
+  padding:28px 24px;border-right:1px solid rgba(255,255,255,.07);
+  display:flex;flex-direction:column;gap:4px;
+}
+.stat-item:last-child{border-right:none}
+.stat-num{
+  font-family:'Barlow Condensed',sans-serif;font-size:clamp(32px,3.5vw,46px);
+  font-weight:900;color:var(--w);line-height:1;letter-spacing:-.02em;
+}
+.stat-num em{color:var(--g);font-style:normal}
+.stat-label{font-size:12px;color:var(--t4);font-weight:400;line-height:1.5}
+
+/* ── DIFERENCIACIÓN ─────────────── */
+#s3b{background:var(--k3)}
+.diff-layout{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:16px}
+.diff-left h2{margin-bottom:16px}
+.diff-left p{font-size:15px;color:var(--t4);line-height:1.8;font-weight:400}
+.diff-left p strong{color:var(--w)}
+.diff-vs{display:flex;flex-direction:column;gap:12px}
+.diff-row{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:center}
+.diff-them{
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);
+  border-radius:6px 0 0 6px;padding:12px 16px;
+  font-size:13px;color:var(--t4);text-align:right;line-height:1.4;
+}
+.diff-us{
+  background:rgba(94,168,50,.1);border:1px solid rgba(94,168,50,.25);
+  border-radius:0 6px 6px 0;padding:12px 16px;
+  font-size:13px;color:var(--w);font-weight:500;line-height:1.4;
+}
+.diff-mid{
+  background:var(--k2);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);
+  padding:12px 10px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--t4);text-align:center;white-space:nowrap;
+}
+.diff-hd{display:grid;grid-template-columns:1fr auto 1fr;gap:0;margin-bottom:4px}
+.diff-hd-them{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--t4);text-align:right;padding-right:10px}
+.diff-hd-us{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g);padding-left:10px}
+.diff-hd-mid{padding:0 10px}
+
+/* ── FAQ ─────────────────────────── */
+#s_faq{background:var(--k2)}
+.faq-layout{display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;margin-top:16px}
+.faq-intro p{font-size:15px;color:var(--t4);line-height:1.8;font-weight:400;margin-top:14px}
+.faq-list{display:flex;flex-direction:column;gap:0}
+.faq-item{
+  border-bottom:1px solid rgba(255,255,255,.06);
+  padding:22px 0;cursor:pointer;
+}
+.faq-item:first-child{border-top:1px solid rgba(255,255,255,.06)}
+.faq-q{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:20px;
+  font-size:15px;font-weight:600;color:var(--w);line-height:1.5;
+  list-style:none;
+}
+.faq-q-icon{
+  font-size:18px;color:var(--g);flex-shrink:0;line-height:1;
+  transition:transform .25s;font-style:normal;font-weight:400;
+  margin-top:2px;
+}
+.faq-item.open .faq-q-icon{transform:rotate(45deg)}
+.faq-a{
+  font-size:14px;color:var(--t4);line-height:1.75;
+  max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;
+  font-weight:400;
+}
+.faq-item.open .faq-a{max-height:200px;padding-top:12px}
+
+@media(max-width:880px){
+  .stats-strip{grid-template-columns:1fr 1fr}
+  .stat-item:nth-child(2){border-right:none}
+  .stat-item:nth-child(3){border-top:1px solid rgba(255,255,255,.07)}
+  .diff-layout,.faq-layout{grid-template-columns:1fr}
+  .diff-row{grid-template-columns:1fr}
+  .diff-them{border-radius:6px 6px 0 0;text-align:left}
+  .diff-mid{display:none}
+  .diff-us{border-radius:0 0 6px 6px}
+}
+@media(max-width:880px){
+  nav{padding:0 20px}
+  .nav-links{display:none}
+  section{padding:80px 22px 52px}
+  .def-grid,.roles-grid,.log-grid,.next-grid,.close-grid,
+  .com-layout,.svc-layout,.value-grid{grid-template-columns:1fr}
+  .op-flow,.inc-steps{grid-template-columns:repeat(2,1fr)}
+  .op-flow::before,.inc-steps::before{display:none}
+  .svc-row,.svc-row.two-col{grid-template-columns:1fr 1fr}
+  .hero-h1{font-size:clamp(54px,14vw,90px)}
+  .sim-banner{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV SECCIONES -->
+<div class="sec-nav" id="secNav">
+  <a class="sec-nav-btn" id="btnUp" title="Sección anterior">↑</a>
+  <a class="sec-nav-btn" id="btnDown" title="Siguiente sección">↓</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="data:image/png;base64,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" alt="Sporting Marketplace">
+  </div>
+  <div class="nav-links">
+    <a href="#s1">Inicio</a>
+    <a href="#s2">Modelo</a>
+    <a href="#s3b">Diferencial</a>
+    <a href="#s5">Roles</a>
+    <a href="#s8">Comercial</a>
+    <a href="#s10">Sumarte</a>
+  </div>
+  <a href="Sporting_Marketplace_Simulador.html" target="_blank" class="nav-pill">Simular mis números →</a>
+</nav>
+
+<!-- 1 · PORTADA -->
+<section id="s1">
+<div class="inner">
+  <div class="hero-eyebrow reveal">Propuesta para Sellers · 2026</div>
+  <div class="adidas-badge reveal">
+    <div class="adidas-badge-dot"></div>
+    <div class="adidas-badge-text">Marcas líderes ya operan dentro del ecosistema Marketplace de Sporting</div>
+  </div>
+  <h1 class="hero-h1 reveal">
+    Sporting
+    <span>Market</span>
+    Place
+  </h1>
+  <p class="hero-claim reveal">
+    El canal digital de <strong>Sporting</strong> para marcas y sellers que buscan crecer en un entorno deportivo consolidado.<br>
+    Más alcance, más visibilidad y una operación acompañada desde el inicio.
+  </p>
+  <div class="hero-actions reveal">
+    <a href="#s2" class="btn-primary">Conocer el modelo →</a>
+    <a href="Sporting_Marketplace_Simulador.html" target="_blank" class="btn-ghost">Simular mis números ↗</a>
+  </div>
+  <div class="stats-strip reveal">
+    <div class="stat-item">
+      <div class="stat-num"><em>[XX]</em></div>
+      <div class="stat-label">usuarios mensuales en la plataforma</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num"><em>[XX]</em></div>
+      <div class="stat-label">pedidos mensuales procesados</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num"><em>[XX]</em></div>
+      <div class="stat-label">clientes activos en el canal</div>
+    </div>
+  </div>
+</div>
+<div class="hero-stamp">Confidencial · 2026</div>
+</section>
+
+<!-- 2 · QUÉ ES -->
+<section id="s2">
+<div class="inner">
+  <div class="chip reveal">Qué es Sporting Marketplace</div>
+  <div class="def-grid">
+    <div class="def-text reveal">
+      <h2>El canal que conecta tu marca con miles de compradores</h2>
+      <br>
+      <p class="body-text">
+        Sporting Marketplace es la plataforma dentro de <strong>sporting.com.ar</strong> donde marcas y vendedores externos comercializan sus productos directamente a los clientes de Sporting.<br><br>
+        Vos aportás el producto y la operación. Sporting aporta el canal, la tecnología, la audiencia y la infraestructura comercial.<br><br>
+        El cliente final vive una experiencia de compra <strong>unificada dentro de Sporting</strong>. Tu marca gana visibilidad sin los costos de construir un canal propio.
+      </p>
+    </div>
+    <div class="def-pillars reveal">
+      <div class="pillar">
+        <div class="pillar-icon">🛒</div>
+        <div>
+          <div class="pillar-label">El cliente compra en Sporting</div>
+          <div class="pillar-desc">Experiencia unificada en sporting.com.ar — checkout, pago y atención centralizados.</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">📦</div>
+        <div>
+          <div class="pillar-label">El Seller gestiona su operación</div>
+          <div class="pillar-desc">Catálogo, stock y precio desde tu propia estructura. La logística puede ser propia o delegada al Marketplace.</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">💳</div>
+        <div>
+          <div class="pillar-label">Sporting procesa y liquida</div>
+          <div class="pillar-desc">Cobro seguro, conciliación mensual y transferencia neta de cargos.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="op-flow-compact reveal">
+    <div class="op-step-c">
+      <div class="op-step-c-num">01</div>
+      <div class="op-step-c-title">Compra</div>
+      <div class="op-step-c-desc">El cliente elige tu producto en sporting.com.ar y paga en el checkout de Sporting.</div>
+    </div>
+    <div class="op-step-c">
+      <div class="op-step-c-num">02</div>
+      <div class="op-step-c-title">Notificación</div>
+      <div class="op-step-c-desc">Recibís el pedido, confirmás disponibilidad y preparás el despacho según tu operación.</div>
+    </div>
+    <div class="op-step-c">
+      <div class="op-step-c-num">03</div>
+      <div class="op-step-c-title">Despacho</div>
+      <div class="op-step-c-desc">Enviás con tu logística o la del Marketplace. El seguimiento se informa según el modelo de integración definido.</div>
+    </div>
+    <div class="op-step-c">
+      <div class="op-step-c-num">04</div>
+      <div class="op-step-c-title">Liquidación</div>
+      <div class="op-step-c-desc">Sporting gestiona la postventa. Recibís la liquidación neta en la conciliación mensual.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 3 · POR QUÉ SPORTING -->
+<section id="s3">
+<div class="inner">
+  <div class="chip reveal">Por qué vender en Sporting</div>
+  <div class="value-intro reveal">
+    <h2>Una decisión comercial estratégica</h2>
+    <p>Accedés a un canal con audiencia activa, tecnología lista y soporte real — sin necesidad de construir nada desde cero.</p>
+  </div>
+  <div class="value-grid">
+    <div class="value-card reveal">
+      <div class="value-icon">🏆</div>
+      <div class="value-title">Marca líder</div>
+      <div class="value-desc">Sporting es una de las marcas más reconocidas del mercado deportivo en Argentina, con base de clientes activa y recurrente.</div>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-icon">🚀</div>
+      <div class="value-title">Canal adicional sin inversión</div>
+      <div class="value-desc">Accedés a ventas incrementales sin construir tecnología ni captar tráfico propio. El canal ya existe y tiene audiencia.</div>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-icon">👁️</div>
+      <div class="value-title">Visibilidad real</div>
+      <div class="value-desc">Tu marca y productos frente a compradores de todo el país, dentro de un entorno de confianza y alto intento de compra.</div>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-icon">⚡</div>
+      <div class="value-title">Incorporación acompañada</div>
+      <div class="value-desc">El proceso de incorporación es guiado y progresivo, con un esquema adaptable al nivel operativo y tecnológico de cada seller.</div>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-icon">🤝</div>
+      <div class="value-title">Soporte real</div>
+      <div class="value-desc">Equipo dedicado para integración, carga de catálogo y operación diaria. No estás solo en el proceso.</div>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-icon">🔧</div>
+      <div class="value-title">Flexibilidad operativa</div>
+      <div class="value-desc">Definimos el modelo de integración y operación según la estructura real de tu negocio.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 3B · DIFERENCIACIÓN -->
+<section id="s3b">
+<div class="inner">
+  <div class="chip reveal">Nuestro enfoque</div>
+  <div class="diff-layout">
+    <div class="diff-left reveal">
+      <h2>Especialistas en deporte y moda.<br>No en todo.</h2>
+      <br>
+      <p>Sporting Marketplace no es un marketplace generalista.<br><br>
+      El foco está exclusivamente en <strong>deporte y moda deportiva</strong>. Eso es lo que Sporting sabe vender, lo que su audiencia busca, y lo que vos ya tenés.<br><br>
+      Sumarte acá no es reemplazar MercadoLibre o tu tienda propia — es agregar un canal especializado con <strong>compradores de perfil exacto</strong> al tuyo.</p>
+    </div>
+    <div class="reveal">
+      <div class="diff-hd">
+        <div class="diff-hd-them">Marketplace generalista</div>
+        <div class="diff-hd-mid"></div>
+        <div class="diff-hd-us">Sporting Marketplace</div>
+      </div>
+      <div class="diff-vs">
+        <div class="diff-row">
+          <div class="diff-them">Audiencia de todo tipo y propósito</div>
+          <div class="diff-mid">Audiencia</div>
+          <div class="diff-us">Compradores con interés específico en deporte y moda deportiva</div>
+        </div>
+        <div class="diff-row">
+          <div class="diff-them">Tu marca entre millones de productos de todos los rubros</div>
+          <div class="diff-mid">Contexto</div>
+          <div class="diff-us">Tu marca en un entorno deportivo de referencia</div>
+        </div>
+        <div class="diff-row">
+          <div class="diff-them">Competencia amplia y transversal</div>
+          <div class="diff-mid">Competencia</div>
+          <div class="diff-us">Competencia dentro de un entorno enfocado en deporte y moda deportiva</div>
+        </div>
+        <div class="diff-row">
+          <div class="diff-them">Soporte masivo, ticket de atención</div>
+          <div class="diff-mid">Soporte</div>
+          <div class="diff-us">Equipo dedicado y acompañamiento directo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section id="s_faq">
+<div class="inner">
+  <div class="chip reveal">Preguntas frecuentes</div>
+  <div class="faq-layout">
+    <div class="faq-intro reveal">
+      <h2>Lo que siempre<br>nos preguntan</h2>
+      <p>Respuestas directas a las dudas más comunes antes de arrancar.</p>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item open">
+        <div class="faq-q">¿Puedo fijar mis propios precios? <em class="faq-q-icon">+</em></div>
+        <div class="faq-a">Sí, completamente. Sporting Marketplace nunca interviene en la política de precios del seller. Vos decidís a cuánto vendés, cuándo hacés descuentos y cómo manejás tu margen. El Marketplace no tiene injerencia sobre eso.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿Qué pasa si Sporting también vende un producto que yo vendo? <em class="faq-q-icon">+</em></div>
+        <div class="faq-a">Conviven como publicaciones separadas dentro del sitio, cada una con su propio precio, condiciones y vendedor claramente identificado. El cliente ve de quién es cada publicación y elige libremente. No hay privilegio de ningún lado.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿Cómo gestiono mi catálogo día a día? <em class="faq-q-icon">+</em></div>
+        <div class="faq-a">Podés gestionarlo directamente desde un panel de administración, o integrar tu sistema propio vía API para que el stock, precios y publicaciones se sincronicen automáticamente. El equipo de onboarding te acompaña en esa configuración.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 5 · ROLES -->
+<section id="s5">
+<div class="inner">
+  <div class="chip reveal">Rol de cada parte</div>
+  <h2 class="reveal">Una sociedad clara</h2>
+  <p class="roles-sub reveal">Cada parte hace lo que sabe hacer mejor. Sin grises.</p>
+  <div class="roles-grid">
+    <div class="role-box sporting reveal">
+      <div class="role-head">Sporting aporta</div>
+      <div class="role-head-sub">La plataforma y el canal</div>
+      <div class="role-item">Sitio web, tráfico y audiencia</div>
+      <div class="role-item">Checkout y pasarela de pago</div>
+      <div class="role-item">Seguridad y antifraude</div>
+      <div class="role-item">Atención al cliente del canal</div>
+      <div class="role-item">Infraestructura tecnológica</div>
+      <div class="role-item">Conciliación y liquidación mensual</div>
+    </div>
+    <div class="role-box seller reveal">
+      <div class="role-head">El Seller aporta</div>
+      <div class="role-head-sub">El producto y la operación</div>
+      <div class="role-item">Catálogo de productos</div>
+      <div class="role-item">Gestión de stock y precios</div>
+      <div class="role-item">Preparación y despacho de pedidos <span style="font-size:11px;opacity:.6">(si no contratás logística)</span></div>
+      <div class="role-item">Facturación electrónica</div>
+      <div class="role-item">Resolución de temas vinculados al producto, según el esquema de servicio acordado</div>
+      <div class="role-item">Integración o configuración operativa según el modelo acordado</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 6 · SERVICIOS -->
+<section id="s6">
+<div class="inner">
+  <div class="chip reveal">Servicios disponibles</div>
+  <h2 class="reveal">El modelo se adapta a tu operación</h2>
+  <div class="svc-layout">
+    <div class="svc-intro reveal">
+      <p class="body-text">
+        El modelo combina una <strong>base comercial simple</strong> con servicios opcionales que permiten adaptar la operación a la realidad de cada seller.<br><br>
+        Los servicios especiales se coordinan caso a caso con el equipo comercial.
+      </p>
+    </div>
+    <div class="svc-groups reveal">
+
+      <div>
+        <div class="svc-group-label base-lbl">Base del modelo — siempre aplica</div>
+        <div class="svc-row two-col">
+          <div class="svc-tag base-svc">
+            <div class="svc-tag-icon">💰</div>
+            <div class="svc-tag-name">Comisión por venta</div>
+            <div class="svc-tag-desc">Porcentaje sobre cada venta realizada. Se define en el contrato según categoría y volumen.</div>
+          </div>
+          <div class="svc-tag base-svc">
+            <div class="svc-tag-icon">💳</div>
+            <div class="svc-tag-name">Financiación en cuotas</div>
+            <div class="svc-tag-desc">Cargo por cuotas según el mix de pagos del período. Transparente en la liquidación.</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="svc-group-label">Servicios opcionales — activás los que necesitás</div>
+        <div class="svc-row">
+          <div class="svc-tag">
+            <div class="svc-tag-icon">🚚</div>
+            <div class="svc-tag-name">Logística directa</div>
+            <div class="svc-tag-desc">Despacho al cliente usando nuestra red.</div>
+          </div>
+          <div class="svc-tag">
+            <div class="svc-tag-icon">↩️</div>
+            <div class="svc-tag-name">Logística inversa</div>
+            <div class="svc-tag-desc">Retiro del producto devuelto.</div>
+          </div>
+          <div class="svc-tag">
+            <div class="svc-tag-icon">🔄</div>
+            <div class="svc-tag-name">Gestión de devoluciones</div>
+            <div class="svc-tag-desc">Recepción y aprobación en depósito Marketplace.</div>
+          </div>
+          <div class="svc-tag">
+            <div class="svc-tag-icon">📋</div>
+            <div class="svc-tag-name">Catalogación</div>
+            <div class="svc-tag-desc">Alta y mantenimiento de productos.</div>
+          </div>
+          <div class="svc-tag">
+            <div class="svc-tag-icon">📦</div>
+            <div class="svc-tag-name">Fulfillment</div>
+            <div class="svc-tag-desc">Picking, packing y despacho desde nuestro depósito. <span style="opacity:.7;font-style:italic">Sujeto a evaluación operativa.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="svc-group-label">Servicios especiales — a medida</div>
+        <div class="svc-row two-col">
+          <div class="svc-tag">
+            <div class="svc-tag-icon">📣</div>
+            <div class="svc-tag-name">Retail Media</div>
+            <div class="svc-tag-desc">Espacios en sitio, categorías y redes sociales.</div>
+          </div>
+          <div class="svc-tag">
+            <div class="svc-tag-icon">⚙️</div>
+            <div class="svc-tag-name">Desarrollo técnico</div>
+            <div class="svc-tag-desc">Integraciones o adaptaciones específicas según alcance y complejidad.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 8 · ESQUEMA COMERCIAL -->
+<section id="s8">
+<div class="inner">
+  <div class="chip reveal">Esquema comercial</div>
+  <h2 class="reveal">Esquema comercial<br>claro</h2>
+  <div class="com-layout">
+    <div class="com-left reveal">
+      <div class="com-card">
+        <div class="com-card-head">Cargos base</div>
+        <div class="com-row">
+          <span class="com-row-lbl">Comisión del Marketplace</span>
+          <span class="com-row-val">% sobre ventas</span>
+        </div>
+        <div class="com-row">
+          <span class="com-row-lbl">Cargo por financiación en cuotas</span>
+          <span class="com-row-val">% sobre ventas</span>
+        </div>
+      </div>
+      <div class="com-card">
+        <div class="com-card-head">Servicios opcionales (solo si los activás)</div>
+        <div class="com-row"><span class="com-row-lbl">Logística directa</span><span class="com-row-val">Por envío</span></div>
+        <div class="com-row"><span class="com-row-lbl">Logística inversa</span><span class="com-row-val">Por devolución</span></div>
+        <div class="com-row"><span class="com-row-lbl">Gestión de devoluciones</span><span class="com-row-val">Por operación</span></div>
+        <div class="com-row"><span class="com-row-lbl">Catalogación</span><span class="com-row-val">Por SKU</span></div>
+        <div class="com-row"><span class="com-row-lbl">Fulfillment</span><span class="com-row-val">Por pedido</span></div>
+      </div>
+      <div class="conc-card">
+        <div class="com-card-head">¿Cuándo y cómo recibís el dinero?</div>
+        <div class="conc-steps-mini">
+          <div class="conc-mini-item"><div class="conc-mini-n">1</div><span>Hasta el 5° día hábil de cada mes recibís dos archivos de liquidación.</span></div>
+          <div class="conc-mini-item"><div class="conc-mini-n">2</div><span>Uno con ventas y devoluciones del período. Otro con servicios adicionales utilizados.</span></div>
+          <div class="conc-mini-item"><div class="conc-mini-n">3</div><span>La transferencia es el neto de ventas menos los cargos del mes.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="com-right reveal">
+      <div class="prop-box">
+        <div class="prop-box-title">La propuesta es siempre personalizada</div>
+        <div class="prop-box-body">Los valores exactos de comisión y tarifas se definen según el perfil de cada seller: volumen, categoría, servicios necesarios y modelo de integración.</div>
+        <div class="prop-features">
+          <div class="prop-feat">Comisión según categoría y volumen proyectado</div>
+          <div class="prop-feat">Tarifas de servicios definidas en el contrato</div>
+          <div class="prop-feat">Condiciones revisables con el tiempo</div>
+          <div class="prop-feat">Simulación económica orientativa para construir una propuesta personalizada</div>
+        </div>
+      </div>
+
+      <div class="sim-banner">
+        <div class="sim-banner-text"><strong>¿Querés ver cómo quedan tus números?</strong><br>Usá el simulador para estimar de forma orientativa tus ingresos netos, incluyendo el impacto de los servicios y las cuotas.</div>
+        <a href="Sporting_Marketplace_Simulador.html" target="_blank" class="btn-sim">Abrir simulador →</a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 9 · LOGÍSTICA -->
+<section id="s9">
+<div class="inner">
+  <div class="chip reveal">Logística y devoluciones</div>
+  <h2 class="reveal">Operación clara, sin sorpresas</h2>
+  <div class="log-grid">
+    <div class="log-card reveal">
+      <div class="log-card-head"><span class="log-icon">🚛</span> Envíos — Seller gestiona</div>
+      <ul class="log-items">
+        <li class="log-item">El Seller despacha desde su propio depósito u operador.</li>
+        <li class="log-item">La incidencia del costo logístico depende de las condiciones comerciales y del esquema de envío vigente.</li>
+        <li class="log-item">El Seller informa el número de seguimiento al Marketplace si no está integrado por API.</li>
+      </ul>
+    </div>
+    <div class="log-card reveal">
+      <div class="log-card-head"><span class="log-icon">🏢</span> Envíos — Marketplace gestiona</div>
+      <ul class="log-items">
+        <li class="log-item">Sporting usa su red para despachar al cliente final.</li>
+        <li class="log-item">El costo logístico se traslada al seller en la liquidación mensual.</li>
+        <li class="log-item">Se descuenta lo abonado por el cliente si corresponde.</li>
+      </ul>
+    </div>
+    <div class="log-card reveal">
+      <div class="log-card-head"><span class="log-icon">↩️</span> Devoluciones</div>
+      <ul class="log-items">
+        <li class="log-item">El envío de devolución es siempre gratuito para el cliente.</li>
+        <li class="log-item">La gestión puede estar a cargo del Marketplace si contratás el servicio de gestión de devoluciones.</li>
+        <li class="log-item">Las devoluciones y sus impactos económicos se gestionan según las condiciones comerciales acordadas.</li>
+      </ul>
+    </div>
+    <div class="log-card reveal">
+      <div class="log-card-head"><span class="log-icon">💬</span> Postventa y reclamos</div>
+      <ul class="log-items">
+        <li class="log-item">Toda gestión de reclamos se canaliza a través del Marketplace.</li>
+        <li class="log-item">El Seller resuelve lo que corresponde a su producto y comunica al Marketplace.</li>
+        <li class="log-item">La comunicación con el cliente se canaliza institucionalmente a través del Marketplace.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 10 · PRÓXIMO PASO -->
+<section id="s10">
+<div class="inner">
+  <div class="chip reveal">Cómo sumarte</div>
+  <div class="next-grid">
+    <div>
+      <h2 class="reveal">El camino<br>es claro</h2>
+      <p class="reveal" style="font-size:15px;color:var(--t4);line-height:1.8;margin-top:12px;max-width:400px">Desde el primer contacto hasta la activación, el equipo de Sporting acompaña cada etapa del proceso.</p>
+      <div class="next-steps" style="margin-top:32px">
+        <div class="next-step reveal">
+          <div class="next-n">01</div>
+          <div class="next-text"><strong>Relevamiento.</strong> Completás un formulario breve con datos clave de tu operación, categorías y tecnología.</div>
+        </div>
+        <div class="next-step reveal">
+          <div class="next-n">02</div>
+          <div class="next-text"><strong>Evaluación y propuesta.</strong> Analizamos tu operación y te presentamos una propuesta comercial ajustada a tu perfil.</div>
+        </div>
+        <div class="next-step reveal">
+          <div class="next-n">03</div>
+          <div class="next-text"><strong>Onboarding técnico.</strong> Integración, carga de catálogo y pruebas acompañadas por el equipo.</div>
+        </div>
+        <div class="next-step reveal">
+          <div class="next-n">04</div>
+          <div class="next-text"><strong>Go-Live.</strong> Activación en producción. Tus productos visibles para todos los clientes de Sporting.</div>
+        </div>
+      </div>
+    </div>
+    <div class="cta-box reveal">
+      <div class="cta-tag">El primer paso es simple</div>
+      <div class="cta-headline">Sumarte<br>al Marketplace</div>
+      <p class="cta-body">Completá el formulario de relevamiento y nuestro equipo te presenta una propuesta comercial personalizada a la brevedad.</p>
+      <div class="cta-actions">
+        <a href="LINK_FORMULARIO" target="_blank" class="btn-cta">Completar relevamiento →</a>
+        <a href="Sporting_Marketplace_Simulador.html" target="_blank" class="btn-cta-outline">Simular mis números ↗</a>
+        <a href="Relevamiento_Seller.xlsx" download style="font-size:11px;color:var(--t4);text-align:center;text-decoration:none;padding-top:4px;letter-spacing:.06em;transition:color .18s" onmouseover="this.style.color='var(--w)'" onmouseout="this.style.color='var(--t4)'">Descargar versión Excel ↓</a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 11 · CIERRE -->
+<section id="s11">
+<div class="inner">
+  <div class="close-grid">
+    <div>
+      <div class="chip reveal">Contacto</div>
+      <div class="close-tagline reveal">
+        Tu próximo<br>canal de ventas<br><em>ya existe.</em>
+      </div>
+      <p class="close-body reveal">
+        Sporting Marketplace es el canal digital de una marca con audiencia, tecnología y estructura operativa para acompañar sellers en su crecimiento.<br><br>
+        Vos aportás el producto y la operación. Sporting aporta el canal, la tecnología y la audiencia.
+      </p>
+    </div>
+    <div class="reveal">
+      <div class="contact-card">
+        <div class="contact-label">¿Querés avanzar?</div>
+        <a href="mailto:marketplace@sporting.com.ar" class="contact-email">marketplace@sporting.com.ar</a>
+        <div class="contact-divider"></div>
+        <div class="contact-meta">
+          Equipo eCommerce & Marketplace<br>
+          Sporting — Argentina<br><br>
+          <strong style="color:var(--w)">Confidencial · 2026</strong>
+        </div>
+      </div>
+      <div class="close-stamp">Sporting Marketplace · Propuesta para Sellers · v1.0</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<script>
+// FAQ accordion
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-q').addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 55);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.10 });
+revealEls.forEach(el => io.observe(el));
+
+// Nav active
+const sections = document.querySelectorAll('section[id]');
+const navLinks  = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 70) cur = s.id; });
+  navLinks.forEach(a => a.classList.toggle('act', a.getAttribute('href') === '#' + cur));
+  updateSecNav();
+}, { passive: true });
+
+// Section navigation arrows
+const sectionIds = Array.from(sections).map(s => s.id);
+const btnUp   = document.getElementById('btnUp');
+const btnDown = document.getElementById('btnDown');
+
+function currentSectionIndex(){
+  let idx = 0;
+  sections.forEach((s, i) => { if (window.scrollY >= s.offsetTop - 80) idx = i; });
+  return idx;
+}
+
+function updateSecNav(){
+  const i = currentSectionIndex();
+  btnUp.classList.toggle('disabled', i === 0);
+  btnDown.classList.toggle('disabled', i === sectionIds.length - 1);
+}
+
+btnUp.addEventListener('click', (e) => {
+  e.preventDefault();
+  const i = currentSectionIndex();
+  if (i > 0) document.getElementById(sectionIds[i-1]).scrollIntoView({behavior:'smooth'});
+});
+
+btnDown.addEventListener('click', (e) => {
+  e.preventDefault();
+  const i = currentSectionIndex();
+  if (i < sectionIds.length - 1) document.getElementById(sectionIds[i+1]).scrollIntoView({behavior:'smooth'});
+});
+
+updateSecNav();
+</script>
+</body>
+</html>
