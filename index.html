@@ -3,1201 +3,1438 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sporting Marketplace — Propuesta para Sellers 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,700&family=Barlow+Condensed:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<title>Marketplace Sporting — Hub Central</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
 <style>
 :root {
-  --g:   #5ea832;
-  --g2:  #4a8a26;
-  --g3:  #3a6e1c;
-  --glo: rgba(94,168,50,.10);
-  --glb: rgba(94,168,50,.20);
-  --w:   #ffffff;
-  --k:   #0d0f0d;
-  --k2:  #161a15;
-  --k3:  #1e2420;
-  --s1:  #f4f7f1;
-  --s2:  #e6ede0;
-  --t1:  #1a221a;
-  --t2:  #3d4e3a;
-  --t3:  #6b7d66;
-  --t4:  #adbba7;
+  --g:#5ea832;--g2:#4a8a26;--g3:#3a6e1c;
+  --g-dim:rgba(94,168,50,.10);--g-brd:rgba(94,168,50,.22);
+  --k:#0d0f0d;--k2:#131713;--k3:#181d17;--k4:#1d231c;--k5:#222820;
+  --w:#ffffff;
+  --bdr:rgba(255,255,255,.07);--bdr-l:rgba(255,255,255,.04);
+  --t1:#e8ede4;--t2:#a1b199;--t3:#6b7b65;
+  --danger:#d94040;--warn:#ffb74d;--info:#64b5f6;--teal:#4db6ac;--violet:#ce93d8;
+  --shadow:0 6px 20px rgba(0,0,0,.28);
+  --sb:220px;--tb:52px;
 }
-
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;font-size:16px}
-body{font-family:'Barlow',sans-serif;background:var(--k);color:var(--w);overflow-x:hidden}
+html{font-size:15px;scroll-behavior:smooth}
+body{font-family:'Barlow',sans-serif;background:var(--k);color:var(--t1);min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
-/* ── NAV ─────────────────────── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:999;
-  height:58px;display:flex;align-items:center;justify-content:space-between;
-  padding:0 40px;
-  background:rgba(13,15,13,.96);
-  border-bottom:1px solid rgba(94,168,50,.14);
-  backdrop-filter:blur(20px);
-}
-.nav-logo img{height:28px;display:block}
-.nav-logo-text{font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:900;letter-spacing:.03em;text-transform:uppercase;color:var(--w);white-space:nowrap}
-.nav-logo-text span{color:var(--g)}
-.nav-links{display:flex;gap:0}
-.nav-links a{
-  color:var(--t4);text-decoration:none;
-  font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
-  padding:6px 13px;border-radius:3px;transition:color .18s,background .18s;
-}
-.nav-links a:hover{color:var(--w);background:rgba(255,255,255,.05)}
-.nav-links a.act{color:var(--g)}
-.nav-pill{
-  background:var(--g);color:var(--w);border:none;cursor:pointer;
-  font-family:'Barlow',sans-serif;font-size:11px;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;
-  padding:9px 22px;border-radius:3px;text-decoration:none;
-  transition:background .18s;white-space:nowrap;
-}
-.nav-pill:hover{background:var(--g2)}
+/* ── TOPBAR */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--tb);display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:rgba(13,15,13,.97);border-bottom:1px solid var(--g-brd);backdrop-filter:blur(16px)}
+.tb-left{display:flex;align-items:center;gap:14px}
+.tb-logo{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:var(--w);white-space:nowrap}
+.tb-logo span{color:var(--g)}
+.tb-sep{width:1px;height:18px;background:var(--bdr)}
+.tb-module{font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--t3)}
+.tb-right{display:flex;align-items:center;gap:10px}
+.badge{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:4px;border:1px solid var(--g-brd);color:var(--g);background:var(--g-dim)}
+.dot-live{width:7px;height:7px;border-radius:50%;background:var(--g);box-shadow:0 0 0 3px rgba(94,168,50,.18);animation:pulse 2s infinite;display:inline-block;margin-right:5px}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.tb-status{font-size:11px;color:var(--t2);display:flex;align-items:center}
 
-/* ── SECTION BASE ─────────────── */
-section{
-  min-height:100vh;display:flex;align-items:center;justify-content:center;
-  padding:90px 40px 70px;position:relative;
-  border-bottom:1px solid rgba(255,255,255,.04);
-}
-.inner{width:100%;max-width:1080px}
+/* ── LAYOUT */
+.shell{display:grid;grid-template-columns:var(--sb) 1fr;min-height:100vh;padding-top:var(--tb)}
 
-.chip{
-  display:inline-flex;align-items:center;gap:10px;
-  font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--g);margin-bottom:18px;
-}
-.chip::before{content:'';display:block;width:24px;height:2px;background:var(--g);flex-shrink:0}
+/* ── SIDEBAR */
+.sidebar{position:sticky;top:var(--tb);height:calc(100vh - var(--tb));overflow-y:auto;background:var(--k2);border-right:1px solid var(--bdr);padding:12px 0}
+.sb-section{margin-bottom:16px}
+.sb-label{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--t3);padding:0 14px;margin-bottom:5px;display:block}
+.sb-item{display:flex;align-items:center;gap:8px;padding:7px 14px;cursor:pointer;color:var(--t2);font-size:12px;font-weight:500;transition:all .15s;border:none;background:none;width:100%;text-align:left;border-left:2px solid transparent;line-height:1.3}
+.sb-item:hover{color:var(--t1);background:rgba(255,255,255,.03)}
+.sb-item.active{color:var(--g);background:var(--g-dim);border-left-color:var(--g)}
+.sb-icon{font-size:13px;flex-shrink:0;width:16px;text-align:center}
+.sb-ext{font-size:9px;color:var(--g);margin-left:auto;opacity:.8}
+.sb-divider{height:1px;background:var(--bdr);margin:6px 14px}
+.sb-tool-link{display:flex;align-items:center;gap:8px;padding:7px 14px;color:var(--t3);font-size:11.5px;font-weight:500;transition:all .15s;border:none;background:none;width:100%;text-align:left;border-left:2px solid transparent;text-decoration:none;cursor:pointer}
+.sb-tool-link:hover{color:var(--teal);background:rgba(77,182,172,.06);border-left-color:var(--teal)}
 
-h2{font-family:'Barlow Condensed',sans-serif;line-height:1.05;font-size:clamp(36px,5vw,62px);font-weight:800;text-transform:uppercase;letter-spacing:-.01em}
-h3{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:.03em}
+/* ── MAIN */
+.main{padding:28px 32px 60px;max-width:980px}
+.page{display:none}
+.page.active{display:block;animation:fadeIn .22s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
-.body-text{font-size:15px;line-height:1.80;color:var(--t4);font-weight:400;max-width:560px}
-.body-text strong{color:var(--w);font-weight:600}
+/* ── TYPOGRAPHY */
+.page-title{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;letter-spacing:.02em;text-transform:uppercase;color:var(--w);margin-bottom:5px}
+.page-sub{font-size:13.5px;color:var(--t2);line-height:1.6;margin-bottom:24px;max-width:680px}
+h2{font-size:15px;font-weight:700;color:var(--t1);margin-bottom:10px;letter-spacing:.01em}
+h3{font-size:13.5px;font-weight:600;color:var(--t1);margin-bottom:7px}
+p{font-size:13px;color:var(--t2);line-height:1.65;margin-bottom:9px}
+ul{padding-left:17px;margin-bottom:9px}
+li{font-size:13px;color:var(--t2);line-height:1.65;margin-bottom:3px}
+strong{color:var(--t1);font-weight:600}
 
-/* ── SCROLL REVEAL ─────────────── */
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
-.reveal.visible{opacity:1;transform:none}
+/* ── CARDS */
+.card{background:var(--k3);border:1px solid var(--bdr);border-radius:8px;padding:16px 18px;margin-bottom:12px}
+.card-grid{display:grid;gap:12px;margin-bottom:18px}
+.card-grid.c2{grid-template-columns:1fr 1fr}
+.card-grid.c3{grid-template-columns:1fr 1fr 1fr}
+.card-grid.c4{grid-template-columns:1fr 1fr 1fr 1fr}
+.card h3{margin-bottom:5px}
+.section-block{background:var(--k4);border:1px solid var(--bdr);border-radius:8px;padding:16px 18px;margin-bottom:18px}
 
-/* ═══════════════════════════════════
-   1 · PORTADA
-═══════════════════════════════════ */
-#s1{background:var(--k);overflow:hidden;min-height:100vh}
-#s1::before{
-  content:'';position:absolute;top:-15%;right:-10%;
-  width:75vw;height:75vw;max-width:900px;max-height:900px;
-  background:radial-gradient(ellipse,rgba(94,168,50,.11) 0%,transparent 60%);
-  pointer-events:none;
-}
-#s1::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,var(--g),transparent);
-}
-.hero-eyebrow{
-  font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;
-  color:var(--g);margin-bottom:30px;display:flex;align-items:center;gap:10px;
-}
-.hero-eyebrow::before{content:'';width:20px;height:2px;background:var(--g)}
-.hero-h1{
-  font-family:'Barlow Condensed',sans-serif;font-weight:900;
-  font-size:clamp(64px,10vw,124px);
-  text-transform:uppercase;letter-spacing:-.02em;line-height:.93;
-  color:var(--w);margin-bottom:36px;
-}
-.hero-h1 span{
-  display:block;color:transparent;
-  -webkit-text-stroke:2px var(--g);
-}
-.hero-claim{
-  font-size:18px;color:var(--t3);font-weight:400;line-height:1.75;
-  max-width:520px;margin-bottom:48px;
-  border-left:3px solid var(--g);padding-left:22px;
-}
-.hero-claim strong{color:var(--w);font-weight:600}
-.hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
-.btn-primary{
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--g);color:var(--w);text-decoration:none;
-  font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  padding:14px 28px;border-radius:3px;transition:background .18s,transform .15s;
-}
-.btn-primary:hover{background:var(--g2);transform:translateY(-1px)}
-.btn-ghost{
-  display:inline-flex;align-items:center;gap:6px;
-  color:var(--t3);text-decoration:none;
-  font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
-  padding:14px 20px;border:1px solid rgba(255,255,255,.1);border-radius:3px;
-  transition:color .18s,border-color .18s,background .18s;
-}
-.btn-ghost:hover{color:var(--w);border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.04)}
-.hero-stamp{
-  position:absolute;bottom:44px;right:48px;
-  font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);
-}
+/* ── TAGS */
+.tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:3px;margin-right:5px;margin-bottom:3px}
+.tg{background:var(--g-dim);color:var(--g);border:1px solid var(--g-brd)}
+.tb{background:rgba(33,150,243,.12);color:var(--info);border:1px solid rgba(33,150,243,.25)}
+.tr{background:rgba(217,64,64,.12);color:var(--danger);border:1px solid rgba(217,64,64,.25)}
+.ty{background:rgba(255,152,0,.12);color:var(--warn);border:1px solid rgba(255,152,0,.25)}
+.tt{background:rgba(0,150,136,.12);color:var(--teal);border:1px solid rgba(0,150,136,.25)}
+.tv{background:rgba(206,147,216,.12);color:var(--violet);border:1px solid rgba(206,147,216,.25)}
 
-/* ═══════════════════════════════════
-   4 · QUÉ ES  (#s2 — fondo claro)
-═══════════════════════════════════ */
-#s2{background:var(--s1)}
-#s2 .chip{color:var(--g2)}
-#s2 .chip::before{background:var(--g2)}
-#s2 h2{color:var(--t1)}
-.def-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.def-text .body-text{color:var(--t2);max-width:100%}
-#s2 .body-text strong{color:var(--t1)}
-.def-pillars{display:flex;flex-direction:column;gap:0}
-.pillar{
-  display:flex;align-items:flex-start;gap:18px;
-  padding:20px 0;border-bottom:1px solid var(--s2);
-}
-.pillar:last-child{border-bottom:none}
-.pillar-icon{
-  width:48px;height:48px;flex-shrink:0;border-radius:10px;
-  background:var(--g);display:flex;align-items:center;justify-content:center;
-  font-size:22px;
-}
-.pillar-label{font-size:15px;font-weight:700;color:var(--t1);margin-bottom:4px;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.04em}
-.pillar-desc{font-size:13px;color:var(--t3);line-height:1.6}
+/* ── TABLE */
+table{width:100%;border-collapse:collapse;font-size:12.5px;margin-bottom:18px}
+thead tr{background:var(--k4)}
+th{text-align:left;padding:9px 11px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);border-bottom:1px solid var(--bdr)}
+td{padding:9px 11px;border-bottom:1px solid var(--bdr-l);color:var(--t2);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,255,255,.015)}
 
-/* ═══════════════════════════════════
-   3 · POR QUÉ SPORTING  (#s3 — fondo oscuro k2)
-═══════════════════════════════════ */
-#s3{background:var(--k2)}
-.value-intro{max-width:580px;margin-bottom:44px}
-.value-intro h2{margin-bottom:16px}
-.value-intro p{font-size:15px;color:var(--t4);line-height:1.75;font-weight:400}
-.value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.value-card{
-  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);
-  border-radius:10px;padding:28px 24px;transition:border-color .2s,transform .2s;
-  display:flex;flex-direction:column;gap:12px;
-}
-.value-card:hover{border-color:rgba(94,168,50,.35);transform:translateY(-3px)}
-.value-icon{font-size:28px;line-height:1}
-.value-title{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--w)}
-.value-desc{font-size:13px;color:var(--t4);line-height:1.7;flex:1}
+/* ── STAT BOXES */
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:22px}
+.stat-box{background:var(--k3);border:1px solid var(--bdr);border-radius:8px;padding:14px;text-align:center}
+.stat-num{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;color:var(--g);margin-bottom:2px;line-height:1}
+.stat-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)}
+
+/* ── HOME NAV CARDS */
+.home-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:24px}
+.home-card{background:var(--k3);border:1px solid var(--bdr);border-radius:8px;padding:16px;cursor:pointer;transition:all .2s;text-align:left;border-left:3px solid transparent;display:block;text-decoration:none}
+.home-card:hover{background:var(--k4);border-left-color:var(--g);transform:translateX(2px)}
+.home-card.ext{border-left-color:var(--teal)}
+.home-card.ext:hover{border-left-color:var(--teal)}
+.home-card .hc-icon{font-size:18px;margin-bottom:8px}
+.home-card h3{font-size:13px;color:var(--t1);margin-bottom:4px}
+.home-card p{font-size:11.5px;color:var(--t3);margin:0;line-height:1.45}
+.home-card .hc-badge{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-top:6px;display:block}
+
+/* ── PROCESS FLOW */
+.flow{display:flex;gap:2px;margin-bottom:20px;flex-wrap:nowrap;overflow-x:auto}
+.flow-step{flex:1;min-width:120px;background:var(--k3);border:1px solid var(--bdr);padding:10px 12px;position:relative}
+.flow-step:first-child{border-radius:6px 0 0 6px}
+.flow-step:last-child{border-radius:0 6px 6px 0}
+.flow-step-num{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:3px}
+.flow-step-title{font-size:11px;font-weight:700;color:var(--t1);line-height:1.3}
+.flow-step-sub{font-size:10px;color:var(--t3);margin-top:3px;line-height:1.35}
+.flow-arrow{display:flex;align-items:center;color:var(--t3);font-size:14px;padding:0 1px;align-self:center;flex-shrink:0}
+
+/* ── PATH CARDS */
+.path-card{background:var(--k3);border:1px solid var(--bdr);border-radius:8px;padding:16px 18px;margin-bottom:10px;border-left:3px solid transparent}
+.path-card.priority{border-left-color:var(--g)}
+.path-card.transitorio{border-left-color:var(--warn)}
+.path-card.objetivo{border-left-color:var(--info)}
+.path-card.descartado{border-left-color:var(--t3);opacity:.55}
+.path-arrow{font-size:11px;color:var(--g);font-weight:700;margin:0 3px}
+
+/* ── ETAPAS */
+.etapa-card{background:var(--k3);border:1px solid var(--bdr);border-radius:8px;padding:18px;margin-bottom:12px;border-left:3px solid transparent}
+.etapa-1{border-left-color:var(--g)}
+.etapa-2{border-left-color:var(--info)}
+.etapa-3{border-left-color:var(--warn)}
+.etapa-num{font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:4px}
+.etapa-period{font-size:11px;font-weight:600;margin-bottom:6px}
+
+/* ── MODULE ACCORDION */
+.module-accordion{margin-bottom:6px}
+.module-header{background:var(--k3);border:1px solid var(--bdr);border-radius:6px;padding:11px 15px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:all .15s}
+.module-header:hover{background:var(--k4)}
+.module-header.open{border-radius:6px 6px 0 0;border-bottom-color:transparent}
+.module-header-left{display:flex;align-items:center;gap:9px}
+.module-num{width:22px;height:22px;border-radius:4px;background:var(--g-dim);border:1px solid var(--g-brd);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:var(--g);flex-shrink:0}
+.module-title{font-size:12.5px;font-weight:600;color:var(--t1)}
+.module-chevron{font-size:10px;color:var(--t3);transition:transform .2s}
+.module-chevron.open{transform:rotate(180deg)}
+.module-body{background:var(--k4);border:1px solid var(--bdr);border-top:none;border-radius:0 0 6px 6px;padding:14px;display:none}
+.module-body.open{display:block}
+.camino-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);margin-bottom:5px;margin-top:10px}
+.camino-label:first-child{margin-top:0}
+
+/* ── CHECKLIST */
+.check-item{display:flex;align-items:flex-start;gap:9px;padding:7px 11px;border-radius:5px;background:var(--k3);border:1px solid var(--bdr);margin-bottom:5px}
+.check-box{width:15px;height:15px;border-radius:3px;border:1px solid var(--bdr);flex-shrink:0;margin-top:1px;cursor:pointer;background:transparent;transition:all .15s;display:flex;align-items:center;justify-content:center}
+.check-box.done{background:var(--g);border-color:var(--g)}
+.check-box.done::after{content:'✓';font-size:9px;color:white;font-weight:900}
+.check-text{font-size:12px;color:var(--t2);line-height:1.45;flex:1}
+.check-tag{flex-shrink:0;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px;border-radius:3px;background:rgba(0,150,136,.12);color:var(--teal);border:1px solid rgba(0,150,136,.2)}
+.checklist-group{margin-bottom:18px}
+.checklist-group h3{margin-bottom:8px;display:flex;align-items:center;gap:7px}
+
+/* ── MODELO ECONOMICO */
+.eco-layer{background:var(--k3);border:1px solid var(--bdr);border-radius:8px;padding:18px;margin-bottom:12px}
+.eco-layer-title{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.eco-service-table td{font-size:12px}
+.eco-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:18px}
+.eco-flow-step{background:var(--k3);border:1px solid var(--bdr);padding:10px 12px;text-align:center}
+.eco-flow-step:first-child{border-radius:6px 0 0 6px}
+.eco-flow-step:last-child{border-radius:0 6px 6px 0}
+.eco-flow-step .ef-num{font-size:20px;margin-bottom:4px}
+.eco-flow-step .ef-title{font-size:11.5px;font-weight:600;color:var(--t1);margin-bottom:3px}
+.eco-flow-step .ef-sub{font-size:10.5px;color:var(--t3);line-height:1.4}
+
+/* ── RELEVAMIENTO FORM */
+.rel-section{margin-bottom:20px}
+.rel-section-title{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--g);margin-bottom:10px;padding:6px 10px;background:var(--g-dim);border:1px solid var(--g-brd);border-radius:5px;display:flex;align-items:center;gap:6px}
+.rel-field{display:grid;grid-template-columns:30px 1fr 200px;gap:10px;align-items:start;padding:8px 10px;border-bottom:1px solid var(--bdr-l);font-size:12.5px}
+.rel-field:last-child{border-bottom:none}
+.rel-field:hover{background:rgba(255,255,255,.02);border-radius:4px}
+.rel-num{color:var(--t3);font-size:11px;padding-top:1px}
+.rel-label{color:var(--t1);line-height:1.4}
+.rel-label small{display:block;color:var(--t3);font-size:11px;margin-top:2px}
+.rel-input{font-family:'Barlow',sans-serif;font-size:12px;background:var(--k4);border:1px solid var(--bdr);border-radius:5px;padding:6px 10px;color:var(--t1);width:100%;outline:none;transition:border-color .15s;resize:none}
+.rel-input:focus{border-color:var(--g);background:var(--k5)}
+.rel-input.key-field{border-color:rgba(255,183,77,.3);background:rgba(255,183,77,.04)}
+.rel-input.key-field:focus{border-color:var(--warn)}
+select.rel-input option{background:var(--k3)}
+.rel-services{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:18px}
+.rel-service-card{background:var(--k3);border:1px solid var(--bdr);border-radius:6px;padding:10px 12px;display:flex;align-items:flex-start;gap:10px}
+.rel-service-card h4{font-size:12px;font-weight:600;color:var(--t1);margin-bottom:2px}
+.rel-service-card p{font-size:11px;color:var(--t3);margin:0;line-height:1.4}
+.rel-service-card select{margin-top:6px;width:100%}
+.rel-legend{display:flex;gap:14px;margin-bottom:14px;flex-wrap:wrap}
+.rel-legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--t3)}
+.rel-legend-dot{width:10px;height:10px;border-radius:2px}
+
+/* ── SELLER CENTER GANTT */
+.sc-gantt{overflow-x:auto;margin-bottom:18px}
+.sc-gantt-table{border-collapse:collapse;min-width:900px;width:100%}
+.sc-gantt-table th{padding:7px 10px;font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);background:var(--k4);border:1px solid var(--bdr);white-space:nowrap;text-align:center}
+.sc-gantt-table td{padding:0;border:1px solid var(--bdr-l);height:36px;vertical-align:middle}
+.sc-gantt-table .row-label{padding:8px 12px;font-size:12px;font-weight:600;color:var(--t1);background:var(--k3);white-space:nowrap;min-width:180px;border-right:1px solid var(--bdr)}
+.sc-gantt-table .row-desc{padding:6px 10px;font-size:10.5px;color:var(--t3);background:var(--k3);min-width:120px;border-right:1px solid var(--bdr);line-height:1.35}
+.sc-gantt-table .section-header td{background:var(--k4);padding:6px 12px;font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--t2);border-top:2px solid var(--bdr)}
+.gantt-cell{text-align:center;padding:4px 3px;font-size:9.5px;font-weight:600;line-height:1.2}
+.gc-done{background:rgba(94,168,50,.18);color:var(--g)}
+.gc-prog{background:rgba(255,183,77,.15);color:var(--warn)}
+.gc-plan{background:rgba(100,181,246,.1);color:var(--info)}
+.gc-api{background:rgba(206,147,216,.15);color:var(--violet)}
+.gc-none{background:transparent}
+.q-header{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 0;text-align:center}
+.q1{color:#4ade80}
+.q2{color:var(--info)}
+.q3{color:var(--warn)}
+.q4{color:var(--violet)}
+
+/* ── EXTERNAL TOOLS */
+.ext-tool-card{display:flex;align-items:center;justify-content:space-between;background:var(--k3);border:1px solid var(--bdr);border-radius:8px;padding:14px 18px;margin-bottom:10px;text-decoration:none;transition:all .2s;border-left:3px solid var(--teal)}
+.ext-tool-card:hover{background:var(--k4);border-color:var(--teal)}
+.ext-tool-left{display:flex;align-items:center;gap:12px}
+.ext-tool-icon{font-size:22px}
+.ext-tool-name{font-size:13.5px;font-weight:600;color:var(--t1);margin-bottom:2px}
+.ext-tool-desc{font-size:11.5px;color:var(--t3)}
+.ext-tool-arrow{font-size:16px;color:var(--teal);opacity:.7}
+
+/* ── ECONOMIC LOGIC TABLE */
+.logistica-table th{background:var(--k4)}
+.logistica-table td.positive{color:var(--g)}
+.logistica-table td.negative{color:var(--danger)}
+.logistica-table td.neutral{color:var(--warn)}
+
+/* ── SCROLL */
+.sidebar::-webkit-scrollbar{width:3px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--bdr);border-radius:2px}
+
+/* ── PROGRESS BAR MINI */
+.progress-wrap{background:var(--k3);border-radius:6px;height:6px;overflow:hidden;border:1px solid var(--bdr)}
+.progress-fill{height:100%;background:var(--g);border-radius:6px;transition:width .3s}
+
+/* ── ALERT BOX */
+.alert{border-radius:6px;padding:10px 14px;margin-bottom:14px;font-size:12.5px;line-height:1.5}
+.alert-warn{background:rgba(255,183,77,.08);border:1px solid rgba(255,183,77,.25);color:var(--warn)}
+.alert-info{background:rgba(100,181,246,.08);border:1px solid rgba(100,181,246,.2);color:var(--info)}
+.alert-ok{background:var(--g-dim);border:1px solid var(--g-brd);color:var(--g)}
 
 
-/* ═══════════════════════════════════
-   3.1 · CÍRCULO VIRTUOSO  (#s3c — fondo oscuro k)
-═══════════════════════════════════ */
-#s3c{background:var(--k)}
-.cv-layout{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
-.cv-text h2{margin-bottom:18px}
-.cv-text p{font-size:15px;color:var(--t4);line-height:1.8;max-width:420px}
-.cv-text p strong{color:var(--w)}
-.cv-graphic{position:relative;width:100%;max-width:420px;margin:0 auto}
 
-/* op-flow compact inside s2 */
-.op-flow-compact{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
-  margin-top:36px;position:relative;
-  border:1px solid var(--s2);border-radius:10px;overflow:hidden;
-}
-.op-step-c{
-  padding:20px 18px;border-right:1px solid var(--s2);
-  display:flex;flex-direction:column;gap:8px;
-  position:relative;
-}
-.op-step-c:last-child{border-right:none}
-.op-step-c-num{
-  font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:800;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--g2);
-}
-.op-step-c-title{
-  font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;
-  text-transform:uppercase;letter-spacing:.03em;color:var(--t1);
-}
-.op-step-c-desc{font-size:12px;color:var(--t3);line-height:1.55}
-@media(max-width:880px){.op-flow-compact{grid-template-columns:1fr 1fr}
-.op-step-c:nth-child(2){border-right:none}
-.op-step-c:nth-child(3){border-top:1px solid var(--s2)}
-.op-step-c:nth-child(4){border-top:1px solid var(--s2);border-right:none}}
+/* ── SELLER CENTER LIVE SUMMARY */
+.sc-live-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+.sc-live-stat{background:var(--k3);border:1px solid var(--bdr);border-radius:8px;padding:14px;text-align:center;position:relative;overflow:hidden}
+.sc-live-stat::before{content:'';position:absolute;inset:0 0 auto 0;height:2px;background:var(--g);opacity:.75}
+.sc-live-num{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;color:var(--g);line-height:1;margin-bottom:3px}
+.sc-live-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)}
+.sc-live-sub{font-size:10.5px;color:var(--t3);margin-top:5px;line-height:1.35}
+.sc-progress-card{background:var(--k3);border:1px solid var(--bdr);border-radius:8px;padding:16px 18px;margin-bottom:18px;border-left:3px solid var(--g)}
+.sc-progress-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:9px}
+.sc-progress-title{font-size:13px;font-weight:700;color:var(--t1)}
+.sc-progress-pct{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;color:var(--g);line-height:1}
+.sc-progress-track{height:8px;background:var(--k4);border:1px solid var(--bdr);border-radius:12px;overflow:hidden;margin-bottom:8px}
+.sc-progress-fill{height:100%;background:linear-gradient(90deg,var(--g),var(--teal));width:0%;transition:width .35s;border-radius:12px}
+.sc-progress-note{font-size:11.5px;color:var(--t3);line-height:1.45}
+.sc-status-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:18px}
+.sc-status-item{background:var(--k3);border:1px solid var(--bdr);border-radius:7px;padding:10px 8px;text-align:center}
+.sc-status-count{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;line-height:1;margin-bottom:3px}
+.sc-status-label{font-size:9.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--t3)}
+.sc-module-list{display:grid;gap:7px;margin-bottom:0}
+.sc-module-row{display:grid;grid-template-columns:1.2fr 90px 1fr 70px;gap:10px;align-items:center;background:var(--k3);border:1px solid var(--bdr);border-radius:6px;padding:9px 11px}
+.sc-module-name{font-size:12.3px;font-weight:700;color:var(--t1)}
+.sc-module-meta{font-size:10.5px;color:var(--t3);margin-top:1px}
+.sc-mini-track{height:6px;background:var(--k4);border-radius:10px;overflow:hidden;border:1px solid var(--bdr)}
+.sc-mini-fill{height:100%;background:var(--g);width:0%;border-radius:10px}
+.sc-module-pct{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;color:var(--g);text-align:right}
+.sc-insight-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
+.sc-insight-card{background:var(--k3);border:1px solid var(--bdr);border-radius:8px;padding:16px 18px}
+.sc-insight-card h3{display:flex;align-items:center;gap:7px}
+.sc-task-list{display:grid;gap:7px;margin-top:8px}
+.sc-task-item{background:var(--k4);border:1px solid var(--bdr-l);border-radius:6px;padding:9px 10px}
+.sc-task-title{font-size:12px;font-weight:700;color:var(--t1);line-height:1.3;margin-bottom:3px}
+.sc-task-meta{font-size:10.5px;color:var(--t3);line-height:1.35}
+.sc-task-links{display:flex;gap:6px;margin-top:7px;flex-wrap:wrap}
+.sc-small-link{display:inline-flex;align-items:center;gap:4px;text-decoration:none;border:1px solid var(--g-brd);background:var(--g-dim);color:var(--g);border-radius:4px;padding:4px 7px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.sc-small-link:hover{background:rgba(94,168,50,.16)}
+.sc-live-updated{font-size:10.5px;color:var(--t3);margin-top:-8px;margin-bottom:14px;text-align:right}
+.sc-empty{font-size:12px;color:var(--t3);padding:10px 0}
 
-/* ═══════════════════════════════════
-   5 · ROLES  (#s5 — fondo claro)
-═══════════════════════════════════ */
-#s5{background:var(--s1)}
-#s5 .chip{color:var(--g2)}
-#s5 .chip::before{background:var(--g2)}
-#s5 h2{color:var(--t1);margin-bottom:8px}
-.roles-sub{font-size:15px;color:var(--t3);margin-bottom:32px;font-weight:400}
-.roles-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.role-box{border-radius:12px;padding:32px 28px}
-.role-box.sporting{background:var(--t1);border:1px solid var(--s2)}
-.role-box.seller{background:var(--g);border:1px solid var(--g)}
-.role-head{
-  font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;
-  letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px;
-}
-.role-head-sub{font-size:12px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;margin-bottom:22px;opacity:.6}
-.role-box.sporting .role-head{color:var(--g)}
-.role-box.sporting .role-head-sub{color:var(--t4)}
-.role-box.seller .role-head{color:rgba(255,255,255,.95)}
-.role-box.seller .role-head-sub{color:rgba(255,255,255,.65)}
-.role-item{
-  display:flex;align-items:flex-start;gap:10px;
-  padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08);
-  font-size:14px;line-height:1.5;
-}
-.role-box.sporting .role-item{color:#c8d8c3}
-.role-box.seller .role-item{color:rgba(255,255,255,.9);border-bottom-color:rgba(255,255,255,.15)}
-.role-item:last-child{border-bottom:none}
-.role-item::before{content:'→';flex-shrink:0;font-size:12px;margin-top:2px}
-.role-box.sporting .role-item::before{color:var(--g)}
-.role-box.seller .role-item::before{color:rgba(255,255,255,.5)}
-
-/* ═══════════════════════════════════
-   7 · SERVICIOS  (#s6 — fondo oscuro k)
-═══════════════════════════════════ */
-#s6{background:var(--k)}
-.svc-layout{display:grid;grid-template-columns:1fr 2fr;gap:60px;align-items:start;margin-top:40px}
-.svc-intro .body-text{color:var(--t4)}
-.svc-intro .body-text strong{color:var(--w)}
-.svc-groups{display:flex;flex-direction:column;gap:28px}
-.svc-group-label{
-  font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--t4);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.06);
-}
-.svc-group-label.base-lbl{color:var(--g)}
-.svc-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.svc-row.two-col{grid-template-columns:repeat(2,1fr)}
-.svc-tag{
-  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
-  border-radius:8px;padding:16px;transition:border-color .2s,background .2s;
-}
-.svc-tag:hover{border-color:rgba(94,168,50,.3);background:rgba(94,168,50,.04)}
-.svc-tag-icon{font-size:22px;margin-bottom:10px;line-height:1}
-.svc-tag-name{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--w);margin-bottom:4px}
-.svc-tag-desc{font-size:11px;color:var(--t4);line-height:1.55}
-.svc-tag.base-svc{background:rgba(94,168,50,.08);border-color:rgba(94,168,50,.22)}
-/* ═══════════════════════════════════
-   6 · COMERCIAL  (#s8 — fondo oscuro k3)
-═══════════════════════════════════ */
-#s8{background:var(--k3)}
-.com-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:start;margin-top:40px}
-.com-left{display:flex;flex-direction:column;gap:16px}
-.com-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:24px}
-.com-card-head{
-  font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;
-  letter-spacing:.16em;text-transform:uppercase;color:var(--g);margin-bottom:16px;
-}
-.com-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:13px}
-.com-row:last-child{border-bottom:none}
-.com-row-lbl{color:var(--t4)}
-.com-row-val{font-weight:600;color:var(--w);font-size:13px}
-.conc-card{background:var(--glo);border:1px solid var(--glb);border-radius:10px;padding:24px}
-.conc-card .com-card-head{color:var(--g)}
-.conc-steps-mini{display:flex;flex-direction:column;gap:12px;margin-top:6px}
-.conc-mini-item{display:flex;gap:14px;align-items:flex-start;font-size:13px;color:var(--t3)}
-.conc-mini-n{
-  width:24px;height:24px;border-radius:50%;background:var(--g);color:var(--w);
-  display:flex;align-items:center;justify-content:center;
-  font-size:11px;font-weight:800;flex-shrink:0;
-}
-.prop-box{
-  background:var(--g);border-radius:12px;padding:32px;margin-bottom:20px;
-}
-.prop-box-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--w);margin-bottom:10px}
-.prop-box-body{font-size:14px;color:rgba(255,255,255,.82);line-height:1.75;margin-bottom:22px}
-.prop-features{display:flex;flex-direction:column;gap:8px}
-.prop-feat{font-size:13px;color:rgba(255,255,255,.78);display:flex;gap:10px;align-items:flex-start}
-.prop-feat::before{content:'✓';color:rgba(255,255,255,.55);flex-shrink:0;margin-top:1px}
-/* Simulador CTA dentro de comercial */
-.sim-banner{
-  margin-top:20px;background:rgba(94,168,50,.08);border:1px solid var(--glb);
-  border-radius:10px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;
-  flex-wrap:wrap;
-}
-.sim-banner-text{font-size:14px;color:var(--t3);line-height:1.6}
-.sim-banner-text strong{color:var(--w)}
-.btn-sim{
-  display:inline-flex;align-items:center;gap:8px;flex-shrink:0;
-  background:transparent;border:1.5px solid var(--g);color:var(--g);
-  text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  padding:11px 22px;border-radius:3px;transition:background .18s,color .18s;
-}
-.btn-sim:hover{background:var(--g);color:var(--w)}
-
-/* ═══════════════════════════════════
-   9 · LOGÍSTICA  (#s9 — fondo claro)
-═══════════════════════════════════ */
-#s9{background:var(--s1)}
-#s9 .chip{color:var(--g2)}
-#s9 .chip::before{background:var(--g2)}
-#s9 h2{color:var(--t1)}
-.log-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px}
-.log-card{background:var(--w);border:1px solid var(--s2);border-radius:10px;padding:28px}
-.log-card-head{
-  font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;color:var(--g2);margin-bottom:16px;
-  display:flex;align-items:center;gap:8px;
-}
-.log-card-head .log-icon{font-size:18px}
-.log-items{list-style:none}
-.log-item{
-  display:flex;gap:10px;font-size:13px;color:var(--t2);
-  padding:8px 0;border-bottom:1px solid var(--s2);line-height:1.55;
-}
-.log-item:last-child{border-bottom:none}
-.log-item::before{content:'—';color:var(--g);flex-shrink:0;font-weight:700}
-
-/* ═══════════════════════════════════
-   10 · CÓMO SUMARTE  (#s10 — fondo oscuro k2)
-═══════════════════════════════════ */
-#s10{background:var(--k2)}
-.next-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.next-steps{display:flex;flex-direction:column;gap:0;margin-top:28px}
-.next-step{display:flex;gap:20px;align-items:flex-start;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.05)}
-.next-step:last-child{border-bottom:none}
-.next-n{
-  font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;
-  color:var(--g);line-height:1;flex-shrink:0;width:36px;
-}
-.next-text{font-size:14px;color:var(--t3);line-height:1.7;padding-top:6px}
-.next-text strong{color:var(--w)}
-.cta-box{
-  background:rgba(94,168,50,.08);border:1px solid rgba(94,168,50,.22);border-radius:12px;padding:40px 36px;
-}
-.cta-tag{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--g);margin-bottom:14px}
-.cta-headline{
-  font-family:'Barlow Condensed',sans-serif;font-size:clamp(36px,4vw,52px);font-weight:900;
-  text-transform:uppercase;line-height:1.0;color:var(--w);margin-bottom:20px;letter-spacing:-.01em;
-}
-.cta-body{font-size:14px;color:var(--t3);line-height:1.75;margin-bottom:28px}
-.cta-actions{display:flex;flex-direction:column;gap:12px}
-.btn-cta{
-  display:inline-flex;align-items:center;gap:8px;justify-content:center;
-  background:var(--g);color:var(--w);text-decoration:none;
-  font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  padding:15px 28px;border-radius:3px;transition:background .18s;
-}
-.btn-cta:hover{background:var(--g2)}
-.btn-cta-outline{
-  display:inline-flex;align-items:center;gap:8px;justify-content:center;
-  background:transparent;border:1.5px solid rgba(94,168,50,.4);color:var(--g);
-  text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  padding:14px 28px;border-radius:3px;transition:border-color .18s,background .18s,color .18s;
-}
-.btn-cta-outline:hover{border-color:var(--g);background:rgba(94,168,50,.08);color:var(--w)}
-
-/* ═══════════════════════════════════
-   11 · CIERRE
-═══════════════════════════════════ */
-#s11{background:var(--k);overflow:hidden}
-#s11::before{
-  content:'';position:absolute;bottom:-20%;left:-10%;
-  width:60vw;height:60vw;max-width:700px;max-height:700px;
-  background:radial-gradient(ellipse,rgba(94,168,50,.09) 0%,transparent 65%);
-  pointer-events:none;
-}
-.close-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center}
-.close-tagline{
-  font-family:'Barlow Condensed',sans-serif;font-size:clamp(32px,4.5vw,58px);
-  font-weight:900;text-transform:uppercase;line-height:1.05;color:var(--w);
-  margin-top:20px;margin-bottom:28px;
-}
-.close-tagline em{color:var(--g);font-style:normal}
-.close-body{font-size:15px;color:var(--t4);font-weight:400;line-height:1.85;max-width:440px}
-.contact-card{
-  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:36px;
-}
-.contact-label{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--g);margin-bottom:20px}
-.contact-email{
-  font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;
-  color:var(--w);display:block;margin-bottom:24px;text-decoration:none;
-  transition:color .18s;
-}
-.contact-email:hover{color:var(--g)}
-.contact-divider{height:1px;background:rgba(255,255,255,.06);margin:0 0 24px}
-.contact-meta{font-size:12px;color:var(--t4);line-height:1.9}
-.close-stamp{margin-top:20px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--t4)}
-
-/* ── NAVEGACIÓN ENTRE SECCIONES ─── */
-.sec-nav{
-  position:fixed;right:24px;top:50%;transform:translateY(-50%);
-  display:flex;flex-direction:column;gap:10px;z-index:998;
-}
-.sec-nav-btn{
-  width:40px;height:40px;border-radius:50%;
-  background:rgba(13,15,13,.8);border:1px solid rgba(94,168,50,.25);
-  color:var(--g);cursor:pointer;display:flex;align-items:center;justify-content:center;
-  font-size:16px;transition:background .2s,border-color .2s,transform .15s;
-  backdrop-filter:blur(8px);
-  text-decoration:none;
-}
-.sec-nav-btn:hover{background:var(--g);color:var(--w);border-color:var(--g);transform:scale(1.1)}
-.sec-nav-btn.disabled{opacity:.2;pointer-events:none}
-@media(max-width:880px){.sec-nav{display:none}}
-
-/* ── ADIDAS BADGE (hero) ─────────── */
-.adidas-badge{
-  display:inline-flex;align-items:center;gap:10px;
-  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
-  border-radius:4px;padding:8px 16px;margin-bottom:28px;
-}
-.adidas-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--g);flex-shrink:0}
-.adidas-badge-text{font-size:12px;font-weight:500;color:var(--t4);letter-spacing:.04em}
-.adidas-badge-text strong{color:var(--w);font-weight:700}
-
-/* ── STATS STRIP ─────────────────── */
-.stats-strip{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  border:1px solid rgba(255,255,255,.07);border-radius:10px;overflow:hidden;
-  margin-top:48px;
-}
-.stat-item{
-  padding:28px 24px;border-right:1px solid rgba(255,255,255,.07);
-  display:flex;flex-direction:column;gap:4px;
-}
-.stat-item:last-child{border-right:none}
-.stat-num{
-  font-family:'Barlow Condensed',sans-serif;font-size:clamp(32px,3.5vw,46px);
-  font-weight:900;color:var(--w);line-height:1;letter-spacing:-.02em;
-}
-.stat-num em{color:var(--g);font-style:normal}
-.stat-label{font-size:12px;color:var(--t4);font-weight:400;line-height:1.5}
-
-/* ── DIFERENCIACIÓN ─────────────── */
-#s3b{background:var(--k3)}
-.diff-layout{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:16px}
-.diff-left h2{margin-bottom:16px}
-.diff-left p{font-size:15px;color:var(--t4);line-height:1.8;font-weight:400}
-.diff-left p strong{color:var(--w)}
-.diff-vs{display:flex;flex-direction:column;gap:12px}
-.diff-row{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:center}
-.diff-them{
-  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);
-  border-radius:6px 0 0 6px;padding:12px 16px;
-  font-size:13px;color:var(--t4);text-align:right;line-height:1.4;
-}
-.diff-us{
-  background:rgba(94,168,50,.1);border:1px solid rgba(94,168,50,.25);
-  border-radius:0 6px 6px 0;padding:12px 16px;
-  font-size:13px;color:var(--w);font-weight:500;line-height:1.4;
-}
-.diff-mid{
-  background:var(--k2);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);
-  padding:12px 10px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--t4);text-align:center;white-space:nowrap;
-}
-.diff-hd{display:grid;grid-template-columns:1fr auto 1fr;gap:0;margin-bottom:4px}
-.diff-hd-them{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--t4);text-align:right;padding-right:10px}
-.diff-hd-us{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g);padding-left:10px}
-.diff-hd-mid{padding:0 10px}
-
-/* ── FAQ  (#s_faq — fondo oscuro k2) ─ */
-#s_faq{background:var(--k2)}
-#s_faq{background:var(--k2)}
-.faq-layout{display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;margin-top:16px}
-.faq-intro p{font-size:15px;color:var(--t4);line-height:1.8;font-weight:400;margin-top:14px}
-.faq-list{display:flex;flex-direction:column;gap:0}
-.faq-item{
-  border-bottom:1px solid rgba(255,255,255,.06);
-  padding:22px 0;cursor:pointer;
-}
-.faq-item:first-child{border-top:1px solid rgba(255,255,255,.06)}
-.faq-q{
-  display:flex;justify-content:space-between;align-items:flex-start;gap:20px;
-  font-size:15px;font-weight:600;color:var(--w);line-height:1.5;
-  list-style:none;
-}
-.faq-q-icon{
-  font-size:18px;color:var(--g);flex-shrink:0;line-height:1;
-  transition:transform .25s;font-style:normal;font-weight:400;
-  margin-top:2px;
-}
-.faq-item.open .faq-q-icon{transform:rotate(45deg)}
-.faq-a{
-  font-size:14px;color:var(--t4);line-height:1.75;
-  max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;
-  font-weight:400;
-}
-.faq-item.open .faq-a{max-height:200px;padding-top:12px}
-
-@media(max-width:880px){
-  .stats-strip{grid-template-columns:1fr 1fr}
-  .stat-item:nth-child(2){border-right:none}
-  .stat-item:nth-child(3){border-top:1px solid rgba(255,255,255,.07)}
-  .diff-layout,.faq-layout{grid-template-columns:1fr}
-  .diff-row{grid-template-columns:1fr}
-  .diff-them{border-radius:6px 6px 0 0;text-align:left}
-  .diff-mid{display:none}
-  .diff-us{border-radius:0 0 6px 6px}
-}
-@media(max-width:880px){
-  nav{padding:0 20px}
-  .nav-links{display:none}
-  section{padding:80px 22px 52px}
-  .def-grid,.roles-grid,.log-grid,.next-grid,.close-grid,
-  .com-layout,.svc-layout,.value-grid,.cv-layout{grid-template-columns:1fr}
-  .op-flow,.inc-steps{grid-template-columns:repeat(2,1fr)}
-  .op-flow::before,.inc-steps::before{display:none}
-  .svc-row,.svc-row.two-col{grid-template-columns:1fr 1fr}
-  .hero-h1{font-size:clamp(54px,14vw,90px)}
-  .sim-banner{flex-direction:column;align-items:flex-start}
+/* ── RESPONSIVE */
+@media(max-width:860px){
+  .sc-live-grid,.sc-status-strip{grid-template-columns:repeat(2,1fr)}
+  .sc-insight-grid{grid-template-columns:1fr}
+  .sc-module-row{grid-template-columns:1fr 60px}
+  .sc-module-row .sc-mini-track{grid-column:1 / -1}
+  .shell{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .card-grid.c2,.card-grid.c3,.card-grid.c4{grid-template-columns:1fr}
+  .stat-grid{grid-template-columns:repeat(2,1fr)}
+  .home-grid{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV SECCIONES -->
-<div class="sec-nav" id="secNav">
-  <a class="sec-nav-btn" id="btnUp" title="Sección anterior">↑</a>
-  <a class="sec-nav-btn" id="btnDown" title="Siguiente sección">↓</a>
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="tb-left">
+    <div class="tb-logo">Sporting <span>Marketplace</span></div>
+    <div class="tb-sep"></div>
+    <div class="tb-module">Hub Central · 2026</div>
+  </div>
+  <div class="tb-right">
+    <div class="tb-status"><span class="dot-live"></span>En curso — Etapa Activación</div>
+    <div class="badge">Champion: Octavio Pfeiffer</div>
+  </div>
 </div>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">
-    <div class="nav-logo-text">Sporting <span>Market</span></div>
+<div class="shell">
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sb-section">
+    <span class="sb-label">Inicio</span>
+    <button class="sb-item active" onclick="nav('home')"><span class="sb-icon">🏠</span>Página principal</button>
+    <button class="sb-item" onclick="nav('proyecto')"><span class="sb-icon">📋</span>Proyecto Marketplace</button>
   </div>
-  <div class="nav-links">
-    <a href="#s1">Inicio</a>
-    <a href="#s3b">Diferencial</a>
-    <a href="#s3">Por qué Sporting</a>
-    <a href="#s3c">Círculo</a>
-    <a href="#s2">Modelo</a>
-    <a href="#s5">Roles</a>
-    <a href="#s8">Comercial</a>
-    <a href="#s10">Sumarte</a>
+
+  <div class="sb-divider"></div>
+
+  <div class="sb-section">
+    <span class="sb-label">Integración de Sellers</span>
+    <button class="sb-item" onclick="nav('modelos')"><span class="sb-icon">🔌</span>Modelos de Integración</button>
+    <button class="sb-item" onclick="nav('proceso')"><span class="sb-icon">📍</span>Proceso de Incorporación</button>
+    <button class="sb-item" onclick="nav('relevamiento')"><span class="sb-icon">📝</span>Relevamiento de Seller<span class="sb-ext">↗</span></button>
+    <button class="sb-item" onclick="nav('modulos')"><span class="sb-icon">⚙️</span>Módulos Operativos</button>
+    <button class="sb-item" onclick="nav('backlog')"><span class="sb-icon">📊</span>Sellers Potenciales</button>
   </div>
-  <a href="https://antonioluquin-ecomm.github.io/sporting-marketplace-simulador-economico" target="_blank" class="nav-pill">Simular mis números →</a>
+
+  <div class="sb-divider"></div>
+
+  <div class="sb-section">
+    <span class="sb-label">Modelo y Economía</span>
+    <button class="sb-item" onclick="nav('economico')"><span class="sb-icon">💰</span>Modelo Económico</button>
+    <button class="sb-item" onclick="nav('estrategia')"><span class="sb-icon">📈</span>Estrategia de Evolución</button>
+  </div>
+
+  <div class="sb-divider"></div>
+
+  <div class="sb-section">
+    <span class="sb-label">Plataforma</span>
+    <button class="sb-item" onclick="nav('seller_center')"><span class="sb-icon">🛠️</span>Seller Center — Roadmap<span class="sb-ext">↗</span></button>
+  </div>
+
+  <div class="sb-divider"></div>
+
+  <div class="sb-section">
+    <span class="sb-label">Herramientas</span>
+    <button class="sb-item" onclick="nav('checklist')"><span class="sb-icon">✅</span>Checklist por Seller</button>
+  </div>
+
+  <div class="sb-divider"></div>
+
+  <div class="sb-section">
+    <span class="sb-label">Herramientas externas</span>
+    <a class="sb-tool-link" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-backlog/" target="_blank"><span class="sb-icon">📊</span>Backlog Live<span class="sb-ext">↗</span></a>
+    <a class="sb-tool-link" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-gantt-operativo/" target="_blank"><span class="sb-icon">📅</span>Gantt Operativo<span class="sb-ext">↗</span></a>
+    <a class="sb-tool-link" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-gantt-seller-center/" target="_blank"><span class="sb-icon">📅</span>Gantt Seller Center<span class="sb-ext">↗</span></a>
+    <a class="sb-tool-link" href="#" target="_blank"><span class="sb-icon">📝</span>Formulario Relevamiento<span class="sb-ext">↗</span></a>
+    <a class="sb-tool-link" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-simulador-economico/" target="_blank"><span class="sb-icon">🧮</span>Simulador Económico<span class="sb-ext">↗</span></a>
+    <a class="sb-tool-link" href="https://antonioluquin-ecomm.github.io/sporting-marketplace/" target="_blank"><span class="sb-icon">🏪</span>Propuesta para Sellers<span class="sb-ext">↗</span></a>
+    <a class="sb-tool-link" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-presentacion-comercial/" target="_blank"><span class="sb-icon">📑</span>Presentación Comercial<span class="sb-ext">↗</span></a>
+  </div>
 </nav>
 
-<!-- 1 · PORTADA -->
-<section id="s1">
-<div class="inner">
-  <div class="hero-eyebrow reveal">Propuesta para Sellers · 2026</div>
-  <div class="adidas-badge reveal">
-    <div class="adidas-badge-dot"></div>
-    <div class="adidas-badge-text">Marcas líderes ya operan dentro del ecosistema Marketplace de Sporting</div>
+<!-- MAIN -->
+<main class="main">
+
+<!-- ══════════════════════════════════════════
+     HOME
+══════════════════════════════════════════ -->
+<section id="page-home" class="page active">
+  <div class="page-title">Marketplace Sporting</div>
+  <p class="page-sub">Hub central de documentación e integración. Nueva línea de negocio del canal eCommerce: modelo institucional, escalable y controlado para la incorporación de sellers externos.</p>
+
+  <div class="stat-grid">
+    <div class="stat-box"><div class="stat-num">Q2</div><div class="stat-label">Etapa actual · 2026</div></div>
+    <div class="stat-box"><div class="stat-num">3</div><div class="stat-label">Etapas de evolución</div></div>
+    <div class="stat-box"><div class="stat-num">10</div><div class="stat-label">Módulos operativos</div></div>
+    <div class="stat-box"><div class="stat-num" style="font-size:18px">$5.475M</div><div class="stat-label">GMV objetivo ARS</div></div>
   </div>
-  <h1 class="hero-h1 reveal">
-    Sporting
-    <span>Market</span>
-    Place
-  </h1>
-  <p class="hero-claim reveal">
-    <strong>Vendé dentro del ecosistema deportivo más sólido de Argentina.</strong><br>
-    Canal especializado, audiencia activa y estructura lista para escalar desde el día uno.
-  </p>
-  <p class="reveal" style="font-size:14px;color:var(--t4);line-height:1.7;max-width:540px;margin-bottom:36px">
-    Tu marca mantiene el control de precio, stock y operación. Sporting aporta tráfico, confianza de marca, checkout, estructura comercial y una experiencia de compra unificada.
-  </p>
-  <div class="hero-actions reveal">
-    <a href="#s10" class="btn-primary">Quiero mi propuesta comercial →</a>
-    <a href="https://antonioluquin-ecomm.github.io/sporting-marketplace-simulador-economico" target="_blank" class="btn-ghost">Simular mis números ↗</a>
+
+  <h2 style="margin-bottom:10px">Documentación interna</h2>
+  <div class="home-grid" style="margin-bottom:22px">
+    <button class="home-card" onclick="nav('proyecto')"><div class="hc-icon">📋</div><h3>Proyecto Marketplace</h3><p>Estado, equipo, OKRs, alcance e impacto esperado.</p></button>
+    <button class="home-card" onclick="nav('modelos')"><div class="hc-icon">🔌</div><h3>Modelos de Integración</h3><p>Los caminos técnicos disponibles para cada seller.</p></button>
+    <button class="home-card" onclick="nav('proceso')"><div class="hc-icon">📍</div><h3>Proceso de Incorporación</h3><p>Flujo de 6 etapas: evaluación → go-live.</p></button>
+    <button class="home-card ext" onclick="nav('relevamiento')"><div class="hc-icon">📝</div><h3>Relevamiento de Seller</h3><p>Formulario externo · respuestas automáticas a Google Sheets y email al equipo.</p><span class="hc-badge">↗ Herramienta externa</span></button>
+    <button class="home-card" onclick="nav('modulos')"><div class="hc-icon">⚙️</div><h3>Módulos Operativos</h3><p>Articulado, stock, precio, pedidos, logística y más.</p></button>
+    <button class="home-card" onclick="nav('economico')"><div class="hc-icon">💰</div><h3>Modelo Económico</h3><p>Comisiones, servicios, liquidación y lógica de envíos.</p></button>
+    <button class="home-card ext" onclick="nav('seller_center')"><div class="hc-icon">🛠️</div><h3>Seller Center — Gantt</h3><p>Resumen ejecutivo del avance · Gantt completo conectado a Google Sheets.</p><span class="hc-badge">↗ Gantt externo</span></button>
+    <button class="home-card" onclick="nav('checklist')"><div class="hc-icon">✅</div><h3>Checklist por Seller</h3><p>Plantilla interactiva de integración por módulo.</p></button>
+    <button class="home-card" onclick="nav('estrategia')"><div class="hc-icon">📈</div><h3>Estrategia de Evolución</h3><p>Las tres etapas: Activación, Construcción y Escala.</p></button>
   </div>
-  <div class="stats-strip reveal">
-    <div class="stat-item">
-      <div class="stat-num"><em>4,5</em>M</div>
-      <div class="stat-label">usuarios mensuales en la plataforma</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num"><em>40</em>K</div>
-      <div class="stat-label">pedidos mensuales procesados</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">+<em>500</em>K</div>
-      <div class="stat-label">clientes activos en el canal</div>
-    </div>
+
+  <h2 style="margin-bottom:10px">Herramientas externas conectadas</h2>
+  <div class="card-grid c2" style="margin-bottom:0">
+    <a class="ext-tool-card" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-backlog/" target="_blank">
+      <div class="ext-tool-left"><div class="ext-tool-icon">📊</div><div><div class="ext-tool-name">Backlog de Sellers</div><div class="ext-tool-desc">Live · conectado a Google Sheets</div></div></div>
+      <div class="ext-tool-arrow">↗</div>
+    </a>
+    <a class="ext-tool-card" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-gantt-operativo/" target="_blank">
+      <div class="ext-tool-left"><div class="ext-tool-icon">📅</div><div><div class="ext-tool-name">Gantt Operativo por Seller</div><div class="ext-tool-desc">Live · tareas y estados por seller</div></div></div>
+      <div class="ext-tool-arrow">↗</div>
+    </a>
+    <a class="ext-tool-card" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-simulador-economico/" target="_blank">
+      <div class="ext-tool-left"><div class="ext-tool-icon">🧮</div><div><div class="ext-tool-name">Simulador Económico</div><div class="ext-tool-desc">Estimador de comisiones y servicios para sellers</div></div></div>
+      <div class="ext-tool-arrow">↗</div>
+    </a>
+    <a class="ext-tool-card" href="https://antonioluquin-ecomm.github.io/sporting-marketplace/" target="_blank">
+      <div class="ext-tool-left"><div class="ext-tool-icon">🏪</div><div><div class="ext-tool-name">Propuesta Comercial para Sellers</div><div class="ext-tool-desc">Landing pública para presentar el modelo</div></div></div>
+      <div class="ext-tool-arrow">↗</div>
+    </a>
   </div>
-</div>
-<div class="hero-stamp">Confidencial · 2026</div>
 </section>
 
-<!-- 2 · NUESTRO ENFOQUE (antes s3b) -->
-<section id="s3b">
-<div class="inner">
-  <div class="chip reveal">Nuestro enfoque</div>
-  <div class="diff-layout">
-    <div class="diff-left reveal">
-      <h2>Especialistas en deporte.<br>Enfocados en lo que mejor funciona.</h2>
-      <br>
-      <p>El foco está puesto en <strong>deporte y moda deportiva</strong>.<br><br>
-      En Sporting Marketplace tu marca no compite por atención dentro de un universo infinito de categorías. Se presenta dentro de un entorno donde el deporte y la moda deportiva son protagonistas.<br><br>
-      Sumarte acá no reemplaza tu tienda propia ni otros canales. Los complementa con una propuesta más enfocada, más alineada y más consistente con el perfil de tu cliente.<br><br>
-      Esto mejora la calidad del tráfico, el contexto de compra y la afinidad entre tu propuesta y la audiencia.</p>
-    </div>
-    <div class="reveal">
-      <div class="diff-hd">
-        <div class="diff-hd-them">Marketplace generalista</div>
-        <div class="diff-hd-mid"></div>
-        <div class="diff-hd-us">Sporting Marketplace</div>
+<!-- ══════════════════════════════════════════
+     PROYECTO
+══════════════════════════════════════════ -->
+<section id="page-proyecto" class="page">
+  <div class="page-title">Proyecto | Marketplace Sporting</div>
+  <p class="page-sub">Seguimiento del proyecto institucional — estado, equipo, OKRs, alcance y objetivos 2026.</p>
+
+  <div class="section-block">
+    <h2>Información general</h2>
+    <table><tbody>
+      <tr><td style="width:160px"><strong>Estado</strong></td><td><span class="tag tg">En curso</span></td></tr>
+      <tr><td><strong>Champion</strong></td><td>Octavio Pfeiffer</td></tr>
+      <tr><td><strong>Co-líderes</strong></td><td>Gabriel Luna / Rafael Nieto Leone</td></tr>
+      <tr><td><strong>Equipo</strong></td><td>Gonzalo Nougues · Martín Cejas · David Amoedo · Gustavo Alaniz</td></tr>
+      <tr><td><strong>GMV objetivo</strong></td><td><strong style="color:var(--g)">ARS $ 5.475 MM</strong></td></tr>
+      <tr><td><strong>Margen objetivo</strong></td><td>6,03% sobre GMV · MOC ~21,9%</td></tr>
+      <tr><td><strong>Año</strong></td><td>2026</td></tr>
+    </tbody></table>
+  </div>
+
+  <div class="card-grid c2">
+    <div class="card"><h3>Propósito</h3><p>Desarrollar el Marketplace Sporting como nueva palanca de crecimiento del canal digital, incorporando sellers externos con criterios claros de integración, operación, rentabilidad y gobernanza.</p></div>
+    <div class="card"><h3>Objetivo 2026</h3><p>Activar y validar el Marketplace con sellers priorizados, cerrar el modelo operativo, económico y contractual del piloto, y dejar preparada la base institucional para escalar.</p></div>
+  </div>
+
+  <div class="section-block">
+    <h2>OKRs 2026</h2>
+    <div class="card-grid c3" style="margin-bottom:0">
+      <div class="card" style="margin-bottom:0;border-left:3px solid var(--g)">
+        <span class="tag tg" style="font-size:9px">O1</span>
+        <h3 style="margin-top:6px">Motor de Crecimiento Rentable</h3>
+        <ul>
+          <li>≥ 21% aporte al MOC del canal</li>
+          <li>12,5% de participación sobre GMV total</li>
+          <li>+85% crecimiento vs 2025</li>
+          <li>≥ 6% margen neto sobre GMV</li>
+        </ul>
       </div>
-      <div class="diff-vs">
-        <div class="diff-row">
-          <div class="diff-them">Audiencia de todo tipo y propósito</div>
-          <div class="diff-mid">Audiencia</div>
-          <div class="diff-us">Audiencia con interés específico en deporte y moda deportiva</div>
-        </div>
-        <div class="diff-row">
-          <div class="diff-them">Tu marca entre millones de productos de todos los rubros</div>
-          <div class="diff-mid">Contexto</div>
-          <div class="diff-us">Tu marca en un entorno deportivo de referencia</div>
-        </div>
-        <div class="diff-row">
-          <div class="diff-them">Competencia amplia y transversal</div>
-          <div class="diff-mid">Competencia</div>
-          <div class="diff-us">Competencia dentro de un entorno enfocado en deporte y moda deportiva</div>
-        </div>
-        <div class="diff-row">
-          <div class="diff-them">Soporte masivo y relación más impersonal</div>
-          <div class="diff-mid">Soporte</div>
-          <div class="diff-us">Acompañamiento directo y equipo dedicado</div>
-        </div>
+      <div class="card" style="margin-bottom:0;border-left:3px solid var(--info)">
+        <span class="tag tb" style="font-size:9px">O2</span>
+        <h3 style="margin-top:6px">Base Comercial y Operativa</h3>
+        <ul>
+          <li>≥ 1 seller estratégico implementado</li>
+          <li>≥ 3 sellers pequeños activos en piloto</li>
+          <li>Seller Center: ≥ 1 dominio en producción vía API</li>
+          <li>Operación autónoma en módulos clave</li>
+        </ul>
+      </div>
+      <div class="card" style="margin-bottom:0;border-left:3px solid var(--warn)">
+        <span class="tag ty" style="font-size:9px">O3</span>
+        <h3 style="margin-top:6px">Monetización Profesionalizada</h3>
+        <ul>
+          <li>Modelo económico formalizado y contractualizado</li>
+          <li>Conciliación mensual operativa</li>
+          <li>Dashboard de KPIs activo</li>
+          <li>Proceso de incorporación estandarizado</li>
+        </ul>
       </div>
     </div>
   </div>
-</div>
+
+  <div class="section-block">
+    <h2>Alcance del proyecto</h2>
+    <div class="card-grid c2" style="margin-bottom:0">
+      <div class="card" style="margin-bottom:0;border-left:3px solid var(--g)">
+        <h3><span class="tag tg">Incluye</span></h3>
+        <ul>
+          <li>Desarrollo del modelo Marketplace como nueva línea de negocio</li>
+          <li>Definición de la estructura institucional para incorporación de sellers</li>
+          <li>Ejecución de un piloto controlado con sellers priorizados</li>
+          <li>Marco operativo, económico y contractual</li>
+          <li>Desarrollo progresivo del Seller Center</li>
+        </ul>
+      </div>
+      <div class="card" style="margin-bottom:0;border-left:3px solid var(--danger)">
+        <h3><span class="tag tr">No incluye</span></h3>
+        <ul>
+          <li>Reemplazo del modelo de stock propio</li>
+          <li>Incorporación de sellers sin evaluación previa</li>
+          <li>Escalamiento sin validación del piloto</li>
+          <li>Desarrollos específicos fuera del estándar</li>
+          <li>Crecimiento sin reglas de control y rentabilidad</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-ok">📌 <strong>Estado actual:</strong> Etapa de Activación (Q2 2026). El modelo está definido. El foco es validar la operación real con los primeros sellers, cerrar el marco económico-contractual del piloto y avanzar en el Seller Center en paralelo.</div>
 </section>
 
-<!-- 3 · POR QUÉ SPORTING -->
-<section id="s3">
-<div class="inner">
-  <div class="chip reveal">Por qué vender en Sporting</div>
-  <div class="value-intro reveal">
-    <h2>El canal correcto para crecer</h2>
-    <p>No se trata de sumar otro canal. Se trata de entrar en <strong>un ecosistema con audiencia, marca e infraestructura</strong> para crecer de forma más rápida y rentable en deporte y moda.</p>
+<!-- ══════════════════════════════════════════
+     MODELOS DE INTEGRACIÓN
+══════════════════════════════════════════ -->
+<section id="page-modelos" class="page">
+  <div class="page-title">Modelos de Integración</div>
+  <p class="page-sub">Los caminos técnicos disponibles para incorporar sellers al Marketplace, según su punto de partida tecnológico y operativo.</p>
+
+  <div class="section-block">
+    <h2>Resumen comparativo</h2>
+    <table>
+      <thead><tr><th>Modelo</th><th>Punto de partida</th><th>Centralización Seller Center</th><th>Posicionamiento</th></tr></thead>
+      <tbody>
+        <tr><td><strong>VTEX → VTEX</strong></td><td>Seller con VTEX propio</td><td><span class="tag ty">Baja</span></td><td><span class="tag tg">Prioritario</span></td></tr>
+        <tr><td><strong>Interfaz Sporting</strong></td><td>Sin infraestructura</td><td><span class="tag ty">Parcial</span></td><td><span class="tag ty">Transitorio</span></td></tr>
+        <tr><td><strong>API → Seller Center → VTEX</strong></td><td>Seller con sistemas propios</td><td><span class="tag tg">Alta</span></td><td><span class="tag tb">Objetivo institucional</span></td></tr>
+        <tr><td><strong>Externo → VTEX directo</strong></td><td>Seller con sistemas propios</td><td><span class="tag ty">Baja</span></td><td>Excepción puntual</td></tr>
+        <tr><td><strong>VTEX proporcionado → VTEX</strong></td><td>Seller sin VTEX</td><td><span class="tag ty">Baja</span></td><td><span class="tag" style="background:rgba(255,255,255,.04);color:var(--t3);border:1px solid var(--bdr)">Descartado</span></td></tr>
+      </tbody>
+    </table>
   </div>
-  <div class="value-grid">
-    <div class="value-card reveal">
-      <div class="value-icon">🏆</div>
-      <div class="value-title">Canal especializado en deporte</div>
-      <div class="value-desc">Tu producto en un entorno 100% deportivo. Audiencia afín, contexto correcto y mejor calidad de tráfico.</div>
-    </div>
-    <div class="value-card reveal">
-      <div class="value-icon">📈</div>
-      <div class="value-title">Tráfico consolidado</div>
-      <div class="value-desc">4,5M de usuarios mensuales y 40K pedidos procesados. Entrás a una demanda ya generada, sin arrancar de cero.</div>
-    </div>
-    <div class="value-card reveal">
-      <div class="value-icon">🥇</div>
-      <div class="value-title">Top 4 en deporte y calzado</div>
-      <div class="value-desc">Marca referente según Segmenta, con credibilidad, reconocimiento y base de clientes activa.</div>
-    </div>
-    <div class="value-card reveal">
-      <div class="value-icon">👁️</div>
-      <div class="value-title">Visión 360 del cliente</div>
-      <div class="value-desc">Datos, comportamiento y preferencias reales del consumidor deportivo para potenciar decisiones comerciales.</div>
-    </div>
-    <div class="value-card reveal">
-      <div class="value-icon">⚙️</div>
-      <div class="value-title">Estructura lista para escalar</div>
-      <div class="value-desc">Tecnología, checkout, pagos y atención al cliente ya construidos. Vos traés producto y operación.</div>
-    </div>
-    <div class="value-card reveal">
-      <div class="value-icon">🔥</div>
-      <div class="value-title">Acompañamiento real</div>
-      <div class="value-desc">Un equipo que acompaña la integración, la carga y la operación cotidiana del canal desde el primer día.</div>
+
+  <h2 style="margin-bottom:10px">Modelos principales</h2>
+
+  <div class="path-card priority">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px"><span class="tag tg">Prioritario</span><h3 style="margin:0">1. VTEX <span class="path-arrow">→</span> VTEX</h3></div>
+    <p>Aplica cuando el seller ya opera sobre una instancia propia de VTEX. Implementación rápida con menor esfuerzo técnico inicial. El seller opera desde su propio entorno.</p>
+    <div class="card-grid c2" style="margin-top:10px;margin-bottom:0">
+      <div><strong style="font-size:11px;color:var(--g)">✓ VENTAJAS</strong><p style="margin-top:3px;font-size:12px">Implementación rápida, menor esfuerzo técnico inicial, salida ágil al mercado.</p></div>
+      <div><strong style="font-size:11px;color:var(--danger)">✗ LIMITACIONES</strong><p style="margin-top:3px;font-size:12px">No centraliza en Seller Center; tracking llega parcialmente; puede requerir articulación adicional.</p></div>
     </div>
   </div>
-  <div class="reveal" style="margin-top:40px;padding:24px 32px;border-left:3px solid var(--g);background:rgba(94,168,50,.06);border-radius:0 8px 8px 0">
-    <p style="font-size:17px;color:var(--w);font-weight:500;line-height:1.6;font-style:italic">No se trata solo de estar en otro canal. Se trata de estar en el canal correcto.</p>
+
+  <div class="path-card transitorio">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px"><span class="tag ty">Transitorio</span><h3 style="margin:0">2. Seller sin VTEX <span class="path-arrow">→</span> Interfaz Sporting</h3></div>
+    <p>Para sellers sin infraestructura tecnológica propia. Opera desde los sistemas de Sporting. Algunos componentes (catálogo, stock, precio) requieren carga asistida en la etapa inicial.</p>
+    <div class="card-grid c2" style="margin-top:10px;margin-bottom:0">
+      <div><strong style="font-size:11px;color:var(--g)">✓ VENTAJAS</strong><p style="margin-top:3px;font-size:12px">Permite incorporar sellers desde etapas tempranas sin exigir integración técnica.</p></div>
+      <div><strong style="font-size:11px;color:var(--danger)">✗ LIMITACIONES</strong><p style="margin-top:3px;font-size:12px">Mayor dependencia del equipo interno. Modelo transitorio, no es el estado objetivo.</p></div>
+    </div>
   </div>
-</div>
+
+  <div class="path-card objetivo">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px"><span class="tag tb">Objetivo institucional</span><h3 style="margin:0">3. Seller <span class="path-arrow">→</span> API <span class="path-arrow">→</span> Seller Center <span class="path-arrow">→</span> VTEX</h3></div>
+    <p>El modelo objetivo. El seller se conecta por API al Seller Center, que centraliza la operación y articula con VTEX. Alta trazabilidad y menor dependencia manual.</p>
+    <div class="card-grid c2" style="margin-top:10px;margin-bottom:0">
+      <div><strong style="font-size:11px;color:var(--g)">✓ VENTAJAS</strong><p style="margin-top:3px;font-size:12px">Alta centralización, trazabilidad completa, operación autónoma, escalable.</p></div>
+      <div><strong style="font-size:11px;color:var(--danger)">✗ LIMITACIONES</strong><p style="margin-top:3px;font-size:12px">Requiere plataforma madura (Seller Center) y capacidad técnica del seller.</p></div>
+    </div>
+  </div>
+
+  <div class="section-block" style="margin-top:18px">
+    <h2>Cobertura operativa por modelo</h2>
+    <table>
+      <thead><tr><th>Dominio</th><th>VTEX → VTEX</th><th>Interfaz Sporting</th><th>API → Seller Center</th></tr></thead>
+      <tbody>
+        <tr><td>Articulado / Catálogo</td><td><span class="tag tg">✓ VTEX propio</span></td><td><span class="tag ty">Carga asistida</span></td><td><span class="tag tg">✓ API completa</span></td></tr>
+        <tr><td>Stock</td><td><span class="tag tg">✓ VTEX propio</span></td><td><span class="tag ty">Excel diario</span></td><td><span class="tag tg">✓ Tiempo real</span></td></tr>
+        <tr><td>Precio</td><td><span class="tag tg">✓ VTEX propio</span></td><td><span class="tag ty">Excel manual</span></td><td><span class="tag tg">✓ API</span></td></tr>
+        <tr><td>Pedidos</td><td><span class="tag tg">✓ VTEX</span></td><td><span class="tag tg">✓ PIM</span></td><td><span class="tag tg">✓ Integrado</span></td></tr>
+        <tr><td>Devoluciones</td><td><span class="tag ty">Articulación adicional</span></td><td><span class="tag tg">✓ PIM</span></td><td><span class="tag tg">✓ Aceptación/rechazo API</span></td></tr>
+        <tr><td>Tracking logístico</td><td><span class="tag ty">Parcial</span></td><td>Según carrier</td><td><span class="tag tg">✓ Estados completos</span></td></tr>
+        <tr><td>Comprobantes</td><td><span class="tag ty">Articulación adicional</span></td><td><span class="tag tg">✓ PIM</span></td><td><span class="tag tg">✓ API integrada</span></td></tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 
-<!-- 3.1 · CÍRCULO VIRTUOSO -->
-<section id="s3c">
-<div class="inner">
-  <div class="cv-layout">
-    <div class="cv-text">
-      <div class="chip reveal">El modelo</div>
-      <h2 class="reveal">Un círculo<br>que crece<br>con vos.</h2>
-      <p class="reveal">Cada seller que se suma <strong>amplía la oferta</strong>, lo que genera mayor valor para el cliente, más tráfico y posicionamiento, y más valor para cada seller. <strong>Un ciclo que se potencia solo.</strong></p>
-    </div>
-    <div class="cv-graphic reveal">
-      <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-        <defs>
-          <marker id="arr1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L8,3 z" fill="#5ea832"/>
-          </marker>
-          <filter id="shadow">
-            <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="rgba(0,0,0,.3)"/>
-          </filter>
-        </defs>
-        <path d="M 155,100 A 110,110 0 0,1 265,100" stroke="#5ea832" stroke-width="2.5" fill="none" marker-end="url(#arr1)" opacity=".8"/>
-        <path d="M 320,155 A 110,110 0 0,1 320,265" stroke="#5ea832" stroke-width="2.5" fill="none" marker-end="url(#arr1)" opacity=".8"/>
-        <path d="M 265,320 A 110,110 0 0,1 155,320" stroke="#5ea832" stroke-width="2.5" fill="none" marker-end="url(#arr1)" opacity=".8"/>
-        <path d="M 100,265 A 110,110 0 0,1 100,155" stroke="#5ea832" stroke-width="2.5" fill="none" marker-end="url(#arr1)" opacity=".8"/>
+<!-- ══════════════════════════════════════════
+     PROCESO DE INCORPORACIÓN
+══════════════════════════════════════════ -->
+<section id="page-proceso" class="page">
+  <div class="page-title">Proceso de Incorporación</div>
+  <p class="page-sub">Flujo institucional para integrar nuevos sellers al Marketplace Sporting — desde la evaluación inicial hasta la activación en producción. Proceso único, secuencial y controlado.</p>
 
-        <rect x="30" y="40" width="150" height="90" rx="12" fill="#1e2420" filter="url(#shadow)"/>
-        <rect x="30" y="40" width="150" height="90" rx="12" fill="none" stroke="#5ea832" stroke-width="1.5" opacity=".5"/>
-        <text x="105" y="78" text-anchor="middle" fill="#5ea832" font-family="'Barlow Condensed',sans-serif" font-size="13" font-weight="700" letter-spacing="1">AMPLIAR</text>
-        <text x="105" y="96" text-anchor="middle" fill="#ffffff" font-family="'Barlow Condensed',sans-serif" font-size="18" font-weight="900" letter-spacing=".5">OFERTA</text>
-        <text x="105" y="116" text-anchor="middle" fill="#adbba7" font-family="'Barlow',sans-serif" font-size="11" font-weight="400">Más sellers, más productos</text>
+  <div class="alert alert-warn">⚠️ <strong>Regla clave:</strong> No se avanza de etapa sin haber completado los outputs de la anterior. Cada seller tiene un Proyecto por Seller como centro de seguimiento y toma de decisiones.</div>
 
-        <rect x="240" y="40" width="150" height="90" rx="12" fill="#1e2420" filter="url(#shadow)"/>
-        <rect x="240" y="40" width="150" height="90" rx="12" fill="none" stroke="#5ea832" stroke-width="1.5" opacity=".5"/>
-        <text x="315" y="68" text-anchor="middle" fill="#5ea832" font-family="'Barlow Condensed',sans-serif" font-size="13" font-weight="700" letter-spacing="1">MAYOR VALOR</text>
-        <text x="315" y="88" text-anchor="middle" fill="#ffffff" font-family="'Barlow Condensed',sans-serif" font-size="18" font-weight="900">CLIENTE</text>
-        <text x="315" y="108" text-anchor="middle" fill="#adbba7" font-family="'Barlow',sans-serif" font-size="11">Más opciones, mejor exp.</text>
-
-        <rect x="240" y="290" width="150" height="90" rx="12" fill="#1e2420" filter="url(#shadow)"/>
-        <rect x="240" y="290" width="150" height="90" rx="12" fill="none" stroke="#5ea832" stroke-width="1.5" opacity=".5"/>
-        <text x="315" y="318" text-anchor="middle" fill="#5ea832" font-family="'Barlow Condensed',sans-serif" font-size="13" font-weight="700" letter-spacing="1">TRÁFICO</text>
-        <text x="315" y="338" text-anchor="middle" fill="#ffffff" font-family="'Barlow Condensed',sans-serif" font-size="18" font-weight="900">+ POSIC.</text>
-        <text x="315" y="358" text-anchor="middle" fill="#adbba7" font-family="'Barlow',sans-serif" font-size="11">Más visitas, mejor ranking</text>
-
-        <rect x="30" y="290" width="150" height="90" rx="12" fill="#5ea832" filter="url(#shadow)"/>
-        <text x="105" y="318" text-anchor="middle" fill="rgba(255,255,255,.7)" font-family="'Barlow Condensed',sans-serif" font-size="13" font-weight="700" letter-spacing="1">MAYOR VALOR</text>
-        <text x="105" y="338" text-anchor="middle" fill="#ffffff" font-family="'Barlow Condensed',sans-serif" font-size="18" font-weight="900">SELLER</text>
-        <text x="105" y="358" text-anchor="middle" fill="rgba(255,255,255,.75)" font-family="'Barlow',sans-serif" font-size="11">Más ventas, más canal</text>
-
-        <text x="210" y="204" text-anchor="middle" fill="#5ea832" font-family="'Barlow Condensed',sans-serif" font-size="14" font-weight="800" letter-spacing="2" opacity=".6">SPORTING</text>
-        <text x="210" y="222" text-anchor="middle" fill="#6b7d66" font-family="'Barlow',sans-serif" font-size="11" font-weight="400" opacity=".8">Ecosistema deportivo</text>
-      </svg>
-    </div>
+  <div class="flow" style="margin-bottom:20px">
+    <div class="flow-step"><div class="flow-step-num">Etapa 1</div><div class="flow-step-title">Evaluación preliminar</div><div class="flow-step-sub">Comercial eCommerce</div></div>
+    <div class="flow-arrow">›</div>
+    <div class="flow-step"><div class="flow-step-num">Etapa 2</div><div class="flow-step-title">Contacto y presentación</div><div class="flow-step-sub">Comercial + Gerencia</div></div>
+    <div class="flow-arrow">›</div>
+    <div class="flow-step"><div class="flow-step-num">Etapa 3</div><div class="flow-step-title">Relevamiento</div><div class="flow-step-sub">Plataformas + Seller</div></div>
+    <div class="flow-arrow">›</div>
+    <div class="flow-step"><div class="flow-step-num">Etapa 4</div><div class="flow-step-title">Evaluación y definición</div><div class="flow-step-sub">Plataformas + Comercial</div></div>
+    <div class="flow-arrow">›</div>
+    <div class="flow-step"><div class="flow-step-num">Etapa 5</div><div class="flow-step-title">Validación y acuerdo</div><div class="flow-step-sub">+ Gerencia + Legal</div></div>
+    <div class="flow-arrow">›</div>
+    <div class="flow-step"><div class="flow-step-num">Etapa 6</div><div class="flow-step-title">Onboarding y Go-Live</div><div class="flow-step-sub">Plataformas + Seller</div></div>
   </div>
-</div>
+
+  <div class="section-block">
+    <h2>Detalle por etapa</h2>
+    <table>
+      <thead><tr><th>Etapa</th><th>Responsable</th><th>Output obligatorio</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1 — Evaluación preliminar</strong><br><small style="color:var(--t3)">Análisis de categoría, surtido, posicionamiento y alineación estratégica.</small></td><td>Comercial eCommerce</td><td><span class="tag tg">Seller clasificado en backlog</span></td></tr>
+        <tr><td><strong>2 — Contacto y presentación</strong><br><small style="color:var(--t3)">Primer contacto formal y presentación del modelo del Marketplace.</small></td><td>Comercial + Gerencia eCommerce</td><td><span class="tag tg">Interés confirmado + Proyecto creado</span></td></tr>
+        <tr><td><strong>3 — Relevamiento</strong><br><small style="color:var(--t3)">Recopilación de información operativa, técnica y comercial. Envío de Matriz de Relevamiento.</small></td><td>Plataformas y Procesos + Seller</td><td><span class="tag tg">Matriz de relevamiento completa</span></td></tr>
+        <tr><td><strong>4 — Evaluación y definición</strong><br><small style="color:var(--t3)">Análisis integral. Define modelo de integración, servicios y propuesta económica.</small></td><td>Plataformas + Comercial eCommerce</td><td><span class="tag tg">Caso estructurado + propuesta económica</span></td></tr>
+        <tr><td><strong>5 — Validación y acuerdo</strong><br><small style="color:var(--t3)">Validación institucional y acuerdo de condiciones con el seller.</small></td><td>Plataformas + Comercial + Gerencia + Legal</td><td><span class="tag tg">Go/No Go + condiciones + precontrato</span></td></tr>
+        <tr><td><strong>6 — Onboarding y Go-Live</strong><br><small style="color:var(--t3)">Configuración técnica, pruebas, capacitación y activación en producción.</small></td><td>Plataformas y Procesos + Seller</td><td><span class="tag tg">Seller activo + contrato final</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card-grid c4">
+    <div class="card" style="text-align:center;margin-bottom:0"><div style="font-size:20px;margin-bottom:5px">🔧</div><h3 style="font-size:11px">Viabilidad técnica</h3></div>
+    <div class="card" style="text-align:center;margin-bottom:0"><div style="font-size:20px;margin-bottom:5px">⚙️</div><h3 style="font-size:11px">Sustentabilidad operativa</h3></div>
+    <div class="card" style="text-align:center;margin-bottom:0"><div style="font-size:20px;margin-bottom:5px">💰</div><h3 style="font-size:11px">Validación económica</h3></div>
+    <div class="card" style="text-align:center;margin-bottom:0"><div style="font-size:20px;margin-bottom:5px">🏛️</div><h3 style="font-size:11px">Alineación institucional</h3></div>
+  </div>
 </section>
 
-<!-- 4 · QUÉ ES -->
-<section id="s2">
-<div class="inner">
-  <div class="chip reveal">Cómo funciona el modelo</div>
-  <div class="def-grid">
-    <div class="def-text reveal">
-      <h2>Un canal listo para que tu marca venda más</h2>
-      <br>
-      <p class="body-text">
-        Sporting Marketplace te permite comercializar tus productos dentro de sporting.com.ar, en un entorno donde el cliente ya está buscando deporte, moda deportiva y marcas del rubro.<br><br>
-        Entrás a un canal ya construido, con menor inversión, menor complejidad de salida y mayor velocidad de implementación que desarrollar una operación propia desde cero.<br><br>
-        El cliente compra dentro de Sporting con una experiencia simple, confiable y unificada. Tu marca gana visibilidad y acceso a demanda sin tener que construir su propio canal digital desde cero.<br><br>
-        <strong>Vos aportás el producto y la operación. Sporting aporta el canal, la tecnología, la audiencia y la infraestructura comercial.</strong>
-      </p>
-    </div>
-    <div class="def-pillars reveal">
-      <div class="pillar">
-        <div class="pillar-icon">🛒</div>
-        <div>
-          <div class="pillar-label">El cliente compra en Sporting</div>
-          <div class="pillar-desc">Experiencia unificada en sporting.com.ar — checkout, pago y atención centralizados.</div>
-        </div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-icon">📦</div>
-        <div>
-          <div class="pillar-label">El Seller gestiona su operación</div>
-          <div class="pillar-desc">Catálogo, stock y precio desde tu propia estructura. La logística puede ser propia o delegada al Marketplace.</div>
-        </div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-icon">🏅</div>
-        <div>
-          <div class="pillar-label">Servicio postventa especializado</div>
-          <div class="pillar-desc">Más de 10 años de experiencia en el rubro deportivo, con equipos de atención al cliente del canal.</div>
-        </div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-icon">💳</div>
-        <div>
-          <div class="pillar-label">Sporting procesa y liquida</div>
-          <div class="pillar-desc">Cobro seguro, conciliación mensual y transferencia neta de cargos.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="op-flow-compact reveal">
-    <div class="op-step-c">
-      <div class="op-step-c-num">01</div>
-      <div class="op-step-c-title">Compra</div>
-      <div class="op-step-c-desc">El cliente elige tu producto en sporting.com.ar y paga en el checkout de Sporting.</div>
-    </div>
-    <div class="op-step-c">
-      <div class="op-step-c-num">02</div>
-      <div class="op-step-c-title">Confirmación</div>
-      <div class="op-step-c-desc">Recibís el pedido, confirmás disponibilidad y preparás el despacho según tu operación.</div>
-    </div>
-    <div class="op-step-c">
-      <div class="op-step-c-num">03</div>
-      <div class="op-step-c-title">Despacho</div>
-      <div class="op-step-c-desc">Enviás con tu logística o la del Marketplace. El seguimiento se informa según el modelo de integración definido.</div>
-    </div>
-    <div class="op-step-c">
-      <div class="op-step-c-num">04</div>
-      <div class="op-step-c-title">Liquidación</div>
-      <div class="op-step-c-desc">Sporting gestiona la postventa. Recibís la liquidación neta en la conciliación mensual.</div>
-    </div>
-  </div>
-</div>
-</section>
+<!-- ══════════════════════════════════════════
+     RELEVAMIENTO
+══════════════════════════════════════════ -->
+<section id="page-relevamiento" class="page">
+  <div class="page-title">Relevamiento de Seller</div>
+  <p class="page-sub">Formulario externo de relevamiento — Etapa 3 del proceso de incorporación. El seller completa el formulario de forma autónoma y el resultado llega automáticamente por email al equipo.</p>
 
-<!-- 5 · ROLES -->
-<section id="s5">
-<div class="inner">
-  <div class="chip reveal">Rol de cada parte</div>
-  <h2 class="reveal">Un modelo claro</h2>
-  <p class="roles-sub reveal">Cada parte aporta lo que sabe hacer mejor.</p>
-  <div class="roles-grid">
-    <div class="role-box sporting reveal">
-      <div class="role-head">Sporting Marketplace</div>
-      <div class="role-head-sub">Lo que Sporting aporta</div>
-      <div class="role-item">Canal digital y plataforma tecnológica</div>
-      <div class="role-item">Tráfico, visibilidad y posicionamiento</div>
-      <div class="role-item">Checkout, pagos y seguridad de cobro</div>
-      <div class="role-item">Atención al cliente y postventa</div>
-      <div class="role-item">Liquidación mensual y conciliación</div>
-      <div class="role-item">Soporte comercial y de integración</div>
-    </div>
-    <div class="role-box seller reveal">
-      <div class="role-head">El Seller</div>
-      <div class="role-head-sub">Lo que vos aportás</div>
-      <div class="role-item">Productos, catálogo y stock</div>
-      <div class="role-item">Política de precios y descuentos</div>
-      <div class="role-item">Operación logística (propia o delegada)</div>
-      <div class="role-item">Calidad del producto y la oferta</div>
-      <div class="role-item">Cumplimiento de tiempos de despacho</div>
-      <div class="role-item">Resolución de productos bajo garantía</div>
-    </div>
-  </div>
-</div>
-</section>
+  <div class="alert alert-ok">✓ <strong>Flujo automático:</strong> El seller completa el formulario → las respuestas se registran en Google Sheets → se envía un resumen por email al equipo de Plataformas y Comercial. No requiere intervención manual.</div>
 
-<!-- 6 · ESQUEMA COMERCIAL -->
-<section id="s8">
-<div class="inner">
-  <div class="chip reveal">Esquema comercial</div>
-  <h2 class="reveal">Transparente,<br>sin sorpresas.</h2>
-  <p class="reveal" style="font-size:15px;color:var(--t4);line-height:1.8;max-width:620px;margin-bottom:36px">Comisión por venta, servicios opcionales y liquidación mensual. Todo claro desde el inicio, con una propuesta ajustada a tu categoría, volumen y forma de operar.</p>
-  <div class="com-layout">
-    <div class="com-left reveal">
-      <div class="com-card">
-        <div class="com-card-head">Cargos base</div>
-        <div class="com-row">
-          <span class="com-row-lbl">Comisión del Marketplace</span>
-          <span class="com-row-val">% sobre ventas</span>
-        </div>
-        <div class="com-row">
-          <span class="com-row-lbl">Cargo por financiación en cuotas</span>
-          <span class="com-row-val">% sobre ventas</span>
-        </div>
-      </div>
-      <div class="com-card">
-        <div class="com-card-head">Servicios opcionales (solo si los activás)</div>
-        <div class="com-row"><span class="com-row-lbl">Logística directa</span><span class="com-row-val">Por envío</span></div>
-        <div class="com-row"><span class="com-row-lbl">Logística inversa</span><span class="com-row-val">Por devolución</span></div>
-        <div class="com-row"><span class="com-row-lbl">Gestión de devoluciones</span><span class="com-row-val">Por operación</span></div>
-        <div class="com-row"><span class="com-row-lbl">Catalogación</span><span class="com-row-val">Por SKU</span></div>
-        <div class="com-row"><span class="com-row-lbl">Fulfillment</span><span class="com-row-val">Por pedido</span></div>
-      </div>
-      <div class="conc-card">
-        <div class="com-card-head">¿Cuándo y cómo recibís el dinero?</div>
-        <div class="conc-steps-mini">
-          <div class="conc-mini-item"><div class="conc-mini-n">1</div><span>Hasta el 5° día hábil de cada mes recibís dos archivos de liquidación.</span></div>
-          <div class="conc-mini-item"><div class="conc-mini-n">2</div><span>Uno con ventas y devoluciones del período. Otro con servicios adicionales utilizados.</span></div>
-          <div class="conc-mini-item"><div class="conc-mini-n">3</div><span>La transferencia es el neto de ventas menos los cargos del mes.</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="com-right reveal">
-      <div class="prop-box">
-        <div class="prop-box-title">Propuesta a tu medida</div>
-        <div class="prop-box-body">La estructura se define según tu categoría, volumen y forma de operar. No hay un modelo único.</div>
-        <div class="prop-features">
-          <div class="prop-feat">Comisión según categoría y volumen proyectado</div>
-          <div class="prop-feat">Tarifas de servicios definidas en el contrato</div>
-          <div class="prop-feat">Condiciones revisables con el tiempo</div>
-          <div class="prop-feat">Simulación económica orientativa incluida</div>
-        </div>
-      </div>
-      <div class="sim-banner">
-        <div class="sim-banner-text"><strong>Estimá cómo podría verse tu negocio dentro del Marketplace</strong><br>Usá el simulador para proyectar ingresos, visualizar impacto de cuotas y servicios, y tener una aproximación económica antes de avanzar con una propuesta formal.</div>
-        <a href="Sporting_Marketplace_Simulador.html" target="_blank" class="btn-sim">Quiero estimar mis números →</a>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- 7 · SERVICIOS -->
-<section id="s6">
-<div class="inner">
-  <div class="chip reveal">Servicios disponibles</div>
-  <h2 class="reveal">El modelo se adapta a tu operación</h2>
-  <div class="svc-layout">
-    <div class="svc-intro reveal">
-      <p class="body-text">
-        No todos los sellers necesitan lo mismo. Por eso la propuesta combina una <strong>base comercial simple</strong> con servicios opcionales y desarrollos a medida.<br><br>
-        Activás solo lo que necesitás. La propuesta se arma en función de tu operación real, de tu categoría y del nivel de soporte que quieras sumar.
-      </p>
-    </div>
-    <div class="svc-groups reveal">
+  <a class="ext-tool-card" href="#" target="_blank" style="margin-bottom:8px;border-left-color:var(--g)">
+    <div class="ext-tool-left">
+      <div class="ext-tool-icon">📝</div>
       <div>
-        <div class="svc-group-label base-lbl">Base del modelo — siempre aplica</div>
-        <div class="svc-row two-col">
-          <div class="svc-tag base-svc">
-            <div class="svc-tag-icon">💰</div>
-            <div class="svc-tag-name">Comisión por venta</div>
-            <div class="svc-tag-desc">Porcentaje sobre cada venta realizada. Se define en el contrato según categoría y volumen.</div>
-          </div>
-          <div class="svc-tag base-svc">
-            <div class="svc-tag-icon">💳</div>
-            <div class="svc-tag-name">Financiación en cuotas</div>
-            <div class="svc-tag-desc">Cargo por cuotas según el mix de pagos del período. Transparente en la liquidación.</div>
-          </div>
-        </div>
+        <div class="ext-tool-name">Formulario de Relevamiento</div>
+        <div class="ext-tool-desc">Completar con el seller · respuestas automáticas a Google Sheets + email al equipo</div>
       </div>
+    </div>
+    <div class="ext-tool-arrow" style="color:var(--g)">↗</div>
+  </a>
+
+  <a class="ext-tool-card" href="#" target="_blank" style="margin-bottom:20px">
+    <div class="ext-tool-left">
+      <div class="ext-tool-icon">📊</div>
       <div>
-        <div class="svc-group-label">Servicios opcionales — activás los que necesitás</div>
-        <div class="svc-row">
-          <div class="svc-tag">
-            <div class="svc-tag-icon">🚚</div>
-            <div class="svc-tag-name">Logística directa</div>
-            <div class="svc-tag-desc">Despacho al cliente usando nuestra red.</div>
-          </div>
-          <div class="svc-tag">
-            <div class="svc-tag-icon">↩️</div>
-            <div class="svc-tag-name">Logística inversa</div>
-            <div class="svc-tag-desc">Retiro del producto devuelto.</div>
-          </div>
-          <div class="svc-tag">
-            <div class="svc-tag-icon">🔄</div>
-            <div class="svc-tag-name">Gestión de devoluciones</div>
-            <div class="svc-tag-desc">Recepción y aprobación en depósito Marketplace.</div>
-          </div>
-          <div class="svc-tag">
-            <div class="svc-tag-icon">📋</div>
-            <div class="svc-tag-name">Catalogación</div>
-            <div class="svc-tag-desc">Alta y mantenimiento de productos.</div>
-          </div>
-          <div class="svc-tag">
-            <div class="svc-tag-icon">📦</div>
-            <div class="svc-tag-name">Fulfillment</div>
-            <div class="svc-tag-desc">Picking, packing y despacho desde nuestro depósito. <span style="opacity:.7;font-style:italic">Sujeto a evaluación operativa.</span></div>
-          </div>
-        </div>
+        <div class="ext-tool-name">Respuestas — Google Sheets</div>
+        <div class="ext-tool-desc">Registro histórico de todos los relevamientos completados</div>
       </div>
+    </div>
+    <div class="ext-tool-arrow">↗</div>
+  </a>
+
+  <div class="section-block">
+    <h2>¿Cómo funciona el flujo?</h2>
+    <div class="flow" style="margin-bottom:0">
+      <div class="flow-step">
+        <div class="flow-step-num">Paso 1</div>
+        <div class="flow-step-title">Envío del link</div>
+        <div class="flow-step-sub">El equipo comercial comparte el link del formulario con el seller (email / WhatsApp)</div>
+      </div>
+      <div class="flow-arrow">›</div>
+      <div class="flow-step">
+        <div class="flow-step-num">Paso 2</div>
+        <div class="flow-step-title">Seller completa</div>
+        <div class="flow-step-sub">Datos generales, técnicos, económicos, logísticos y servicios requeridos</div>
+      </div>
+      <div class="flow-arrow">›</div>
+      <div class="flow-step">
+        <div class="flow-step-num">Paso 3</div>
+        <div class="flow-step-title">Registro automático</div>
+        <div class="flow-step-sub">Las respuestas se guardan en Google Sheets con fecha y nombre del seller</div>
+      </div>
+      <div class="flow-arrow">›</div>
+      <div class="flow-step">
+        <div class="flow-step-num">Paso 4</div>
+        <div class="flow-step-title">Email al equipo</div>
+        <div class="flow-step-sub">Resumen estructurado llega automáticamente a Plataformas + Comercial</div>
+      </div>
+      <div class="flow-arrow">›</div>
+      <div class="flow-step">
+        <div class="flow-step-num">Paso 5</div>
+        <div class="flow-step-title">Evaluación interna</div>
+        <div class="flow-step-sub">El equipo analiza el relevamiento y define modelo de integración y propuesta económica</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <h2>Secciones del formulario</h2>
+    <div class="card-grid c2" style="margin-bottom:0">
+      <div class="card" style="margin-bottom:0"><span class="tag tg">Datos generales</span><p style="margin-top:6px;margin-bottom:0">Nombre comercial, razón social, CUIT, contactos principal y técnico.</p></div>
+      <div class="card" style="margin-bottom:0"><span class="tag ty">Datos económicos</span><p style="margin-top:6px;margin-bottom:0">GMV estimado, ticket promedio, SKUs Fase 1, % devoluciones, cuotas.</p></div>
+      <div class="card" style="margin-bottom:0"><span class="tag tb">Catálogo y tecnología</span><p style="margin-top:6px;margin-bottom:0">Formato de catálogo, plataforma, disponibilidad de API, equipo técnico.</p></div>
+      <div class="card" style="margin-bottom:0"><span class="tag tt">Operación y logística</span><p style="margin-top:6px;margin-bottom:0">Stock, precios, pedidos, facturación, operador logístico, devoluciones.</p></div>
+      <div class="card" style="margin-bottom:0"><span class="tag tv">Servicios requeridos</span><p style="margin-top:6px;margin-bottom:0">Logística directa/inversa, fulfillment, catalogación, retail media, soporte técnico.</p></div>
+      <div class="card" style="margin-bottom:0"><span class="tag" style="background:rgba(255,255,255,.05);color:var(--t2);border:1px solid var(--bdr)">Observaciones</span><p style="margin-top:6px;margin-bottom:0">Comentarios libres, restricciones y particularidades operativas del seller.</p></div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <h2>Responsables</h2>
+    <table style="margin-bottom:0"><thead><tr><th>Acción</th><th>Responsable</th></tr></thead>
+    <tbody>
+      <tr><td>Envío del link al seller</td><td>Comercial eCommerce</td></tr>
+      <tr><td>Completar el formulario</td><td>Seller (con asistencia de Plataformas si es necesario)</td></tr>
+      <tr><td>Evaluación de respuestas y definición de modelo</td><td>Plataformas y Procesos + Comercial eCommerce</td></tr>
+    </tbody></table>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     MÓDULOS OPERATIVOS
+══════════════════════════════════════════ -->
+<section id="page-modulos" class="page">
+  <div class="page-title">Módulos Operativos</div>
+  <p class="page-sub">10 módulos que organizan el proceso de integración. Cada uno opera de forma distinta según el tipo de integración del seller.</p>
+
+  <div class="alert alert-ok">✓ Al completar Articulado + Catalogación + OMS + Stock + Precio → el producto queda <strong>publicado en el sitio</strong>.</div>
+
+  <div class="card-grid c4" style="margin-bottom:18px">
+    <div class="card" style="border-left:3px solid var(--g);margin-bottom:0;text-align:center"><div style="font-size:16px;margin-bottom:4px">🏷️</div><h3 style="font-size:11px">Articulado</h3></div>
+    <div class="card" style="border-left:3px solid var(--g);margin-bottom:0;text-align:center"><div style="font-size:16px;margin-bottom:4px">📂</div><h3 style="font-size:11px">Catalogación</h3></div>
+    <div class="card" style="border-left:3px solid var(--g);margin-bottom:0;text-align:center"><div style="font-size:16px;margin-bottom:4px">💲</div><h3 style="font-size:11px">Precio</h3></div>
+    <div class="card" style="border-left:3px solid var(--g);margin-bottom:0;text-align:center"><div style="font-size:16px;margin-bottom:4px">📦</div><h3 style="font-size:11px">Stock</h3></div>
+  </div>
+  <div style="text-align:center;color:var(--g);font-size:18px;margin-bottom:8px">↓</div>
+  <div class="card" style="border-left:3px solid var(--g);text-align:center;margin-bottom:22px"><strong style="color:var(--g);font-size:13px">✓ Producto publicado en el sitio y listo para recibir pedidos</strong></div>
+
+  <div id="modules-list">
+    <!-- Generated by JS -->
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     BACKLOG SELLERS
+══════════════════════════════════════════ -->
+<section id="page-backlog" class="page">
+  <div class="page-title">Sellers Potenciales — Backlog</div>
+  <p class="page-sub">Registro inicial y oficial de oportunidades de incorporación al Marketplace. Centralizá los sellers identificados y mantené trazabilidad desde la etapa preliminar.</p>
+
+  <div class="alert alert-info">📊 El backlog operativo live está conectado a Google Sheets. Usá el link de abajo para ver el estado actualizado en tiempo real.</div>
+
+  <a class="ext-tool-card" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-backlog/" target="_blank" style="margin-bottom:20px">
+    <div class="ext-tool-left"><div class="ext-tool-icon">📊</div><div><div class="ext-tool-name">Backlog de Sellers — Live</div><div class="ext-tool-desc">Conectado a Google Sheets · Kanban + Tabla · Filtros por camino, prioridad y estado</div></div></div>
+    <div class="ext-tool-arrow">↗</div>
+  </a>
+
+  <div class="section-block">
+    <h2>Reglas de uso</h2>
+    <div class="card-grid c2" style="margin-bottom:0">
+      <div class="card" style="margin-bottom:0"><p>Todo seller potencial <strong>debe registrarse</strong> en el backlog antes de avanzar.</p></div>
+      <div class="card" style="margin-bottom:0"><p>No se eliminan registros — cada caso se conserva mediante su <strong>estado</strong>.</p></div>
+      <div class="card" style="margin-bottom:0"><p>Las observaciones deben ser <strong>breves, claras y útiles</strong> para el seguimiento.</p></div>
+      <div class="card" style="margin-bottom:0"><p>Un seller descartado solo se reabre ante un <strong>cambio relevante y justificado</strong>.</p></div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <h2>Responsables</h2>
+    <table><thead><tr><th>Rol</th><th>Responsable</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Gestión y actualización</strong></td><td>Comercial eCommerce</td></tr>
+      <tr><td><strong>Supervisión</strong></td><td>Gerencia eCommerce</td></tr>
+      <tr><td><strong>Soporte puntual</strong></td><td>Plataformas y Procesos</td></tr>
+    </tbody></table>
+  </div>
+
+  <div class="section-block">
+    <h2>Campos del backlog</h2>
+    <table><thead><tr><th>Campo</th><th>Descripción</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Seller / Marca</strong></td><td>Nombre del seller o marca</td></tr>
+      <tr><td><strong>Sistema / Plataforma</strong></td><td>VTEX / propio / sin sistema</td></tr>
+      <tr><td><strong>Modelo de integración tentativo</strong></td><td>VTEX→VTEX / Interfaz / API / Manual</td></tr>
+      <tr><td><strong>Camino (priorización)</strong></td><td>Rápida activación / Integración VTEX / Seller Center</td></tr>
+      <tr><td><strong>Estado</strong></td><td>Contactado / Relevamiento / Propuesta / Acuerdo / Onboarding</td></tr>
+      <tr><td><strong>Prioridad</strong></td><td>Alta / Media / Baja</td></tr>
+      <tr><td><strong>Observaciones</strong></td><td>Notas de situación, pausa o descarte</td></tr>
+    </tbody></table>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     MODELO ECONÓMICO
+══════════════════════════════════════════ -->
+<section id="page-economico" class="page">
+  <div class="page-title">Modelo Económico</div>
+  <p class="page-sub">Define los conceptos que pueden cobrarse y cómo se reflejan en la liquidación mensual. Los valores específicos se acuerdan durante el proceso de incorporación y se formalizan contractualmente.</p>
+
+  <div class="section-block">
+    <h2>Principios del modelo</h2>
+    <div class="card-grid c2" style="margin-bottom:0">
+      <div class="card" style="margin-bottom:0"><h3>Dos capas complementarias</h3><p>Capa transaccional (por venta) y capa operativa (por servicio). Pueden convivir dentro de una misma operación.</p></div>
+      <div class="card" style="margin-bottom:0"><h3>Configuración por seller</h3><p>La estructura económica final se define según el modelo de integración, los servicios requeridos y la complejidad operativa de cada seller.</p></div>
+      <div class="card" style="margin-bottom:0"><h3>Liquidación mensual</h3><p>Clara, trazable y desagregada. Basada en pedidos cobrados, no entregados, con ajustes por cancelaciones, devoluciones y servicios.</p></div>
+      <div class="card" style="margin-bottom:0"><h3>Escalable sin rediseñar</h3><p>La lógica general no se modifica al incorporar nuevos sellers. Dos sellers pueden tener estructuras económicas distintas bajo las mismas reglas.</p></div>
+    </div>
+  </div>
+
+  <div class="eco-layer">
+    <div class="eco-layer-title" style="color:var(--g)">📊 CAPA 1 — TRANSACCIONAL · por venta</div>
+    <table style="margin-bottom:0">
+      <thead><tr><th>Concepto</th><th>Descripción</th><th>Variable según</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Comisión del Marketplace</strong></td>
+          <td>Remunera el acceso al ecosistema: exposición, infraestructura tecnológica, checkout, medios de pago, antifraude, atención al cliente y monitoreo.</td>
+          <td>Modelo de integración · nivel de autonomía · volumen · categoría · complejidad · riesgo</td>
+        </tr>
+        <tr>
+          <td><strong>Costo financiero</strong></td>
+          <td>Aplica únicamente sobre pedidos abonados en cuotas. Se calcula por pedido individual según la financiación utilizada por el cliente.</td>
+          <td>Cuotas seleccionadas por el cliente · financiación utilizada</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="eco-layer">
+    <div class="eco-layer-title" style="color:var(--info)">⚙️ CAPA 2 — OPERATIVA · por servicio prestado</div>
+    <table style="margin-bottom:0" class="eco-service-table">
+      <thead><tr><th>Servicio</th><th>Alcance</th><th>Criterio de cobro</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Catalogación</strong></td><td>Carga inicial, mantenimiento y gestión operativa del catálogo</td><td>Cargo por SKU</td></tr>
+        <tr><td><strong>Fulfillment</strong></td><td>Preparación y despacho al cliente desde la operación del Marketplace</td><td>Cargo por pedido</td></tr>
+        <tr><td><strong>Gestión de devoluciones</strong></td><td>Recepción, control y aprobación de devoluciones</td><td>Cargo por operación</td></tr>
+        <tr><td><strong>Almacenamiento</strong></td><td>Guarda de stock en depósitos del Marketplace</td><td>Cargo por pallet / posición / período</td></tr>
+        <tr><td><strong>Logística directa</strong></td><td>Envío al cliente final mediante logística gestionada por el Marketplace</td><td>Cargo por envío</td></tr>
+        <tr><td><strong>Logística inversa</strong></td><td>Retorno del paquete desde el cliente hacia el seller</td><td>Cargo por devolución</td></tr>
+        <tr><td><strong>Desarrollo y soporte</strong></td><td>Desarrollos, integraciones o soporte puntual</td><td>Cargo por proyecto / requerimiento</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-block">
+    <h2>Lógica económica de envíos y devoluciones</h2>
+    <h3 style="margin-bottom:8px">Envíos</h3>
+    <table class="logistica-table">
+      <thead><tr><th>Escenario</th><th>Cliente paga envío</th><th>Cliente tiene envío gratis</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Seller gestiona logística</strong></td><td class="positive">Recupera el monto abonado por el cliente</td><td class="negative">Absorbe el costo logístico</td></tr>
+        <tr><td><strong>Marketplace gestiona logística</strong></td><td class="neutral">Paga el costo neto (costo menos lo abonado por el cliente)</td><td class="negative">Absorbe el costo logístico</td></tr>
+      </tbody>
+    </table>
+    <h3 style="margin-bottom:8px">Devoluciones</h3>
+    <p>Las devoluciones son <strong>gratuitas para el cliente</strong> y se reflejan como reversión total o parcial de la transacción:</p>
+    <ul>
+      <li>Se registran como ajustes negativos en la conciliación</li>
+      <li>Si el Marketplace gestiona la logística inversa, el costo se traslada al seller</li>
+      <li>Si la gestiona el seller, no se registra en la conciliación del Marketplace</li>
+    </ul>
+  </div>
+
+  <div class="section-block">
+    <h2>Liquidación y conciliación mensual</h2>
+    <div class="eco-flow">
+      <div class="eco-flow-step"><div class="ef-num">📥</div><div class="ef-title">Archivo 1</div><div class="ef-sub">Conciliación de transacciones: pedidos cobrados, cancelaciones, no entregados, devoluciones</div></div>
+      <div class="eco-flow-step"><div class="ef-num">➖</div><div class="ef-title">Archivo 2</div><div class="ef-sub">Liquidación de servicios adicionales: logística, fulfillment, catalogación, desarrollos, penalizaciones</div></div>
+      <div class="eco-flow-step"><div class="ef-num">💳</div><div class="ef-title">Transferencia final</div><div class="ef-sub">Neto de transacciones (A1) menos servicios y ajustes (A2). Condiciones formalizadas contractualmente.</div></div>
+    </div>
+    <div class="alert alert-info" style="margin-bottom:0">📌 <strong>Base de la liquidación:</strong> pedidos <em>cobrados</em> del período, no pedidos entregados. Los ajustes por cancelaciones, devoluciones y no entregados se aplican sobre esa base.</div>
+  </div>
+
+  <h2 style="margin-bottom:10px">Herramientas relacionadas</h2>
+  <a class="ext-tool-card" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-simulador-economico/" target="_blank">
+    <div class="ext-tool-left"><div class="ext-tool-icon">🧮</div><div><div class="ext-tool-name">Simulador Económico para Sellers</div><div class="ext-tool-desc">Estimá el impacto económico de la operación según el esquema de servicios</div></div></div>
+    <div class="ext-tool-arrow">↗</div>
+  </a>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ESTRATEGIA
+══════════════════════════════════════════ -->
+<section id="page-estrategia" class="page">
+  <div class="page-title">Estrategia de Evolución</div>
+  <p class="page-sub">La lógica de crecimiento del Marketplace: de la activación inicial a la escala sostenida. El criterio de priorización de sellers evoluciona junto con la madurez de la plataforma.</p>
+
+  <div class="section-block" style="border-left:3px solid var(--g)">
+    <h2>Principio estratégico</h2>
+    <p>En la etapa inicial los sellers se priorizan por su <strong>capacidad de integración</strong>. A medida que el modelo madura, el criterio evoluciona hacia <strong>rentabilidad, conveniencia estratégica y potencial de crecimiento</strong>.</p>
+    <p>El objetivo no es acelerar la complejidad desde el inicio, sino construir un modelo sólido que pueda crecer con mayor autonomía, control y sustentabilidad.</p>
+  </div>
+
+  <h2 style="margin-bottom:10px">Criterio de priorización por etapa</h2>
+  <div class="card-grid c2" style="margin-bottom:22px">
+    <div class="card" style="border-left:3px solid var(--g)"><span class="tag tg">Prioridad inmediata</span><h3 style="margin-top:6px">Sellers con VTEX propio</h3><p>Menor esfuerzo técnico y salida más rápida al mercado.</p></div>
+    <div class="card" style="border-left:3px solid var(--warn)"><span class="tag ty">Etapa temprana</span><h3 style="margin-top:6px">Sellers sin VTEX — Interfaz Sporting</h3><p>Esquema transitorio mientras evoluciona la plataforma.</p></div>
+    <div class="card" style="border-left:3px solid var(--info)"><span class="tag tb">Modelo objetivo</span><h3 style="margin-top:6px">Sellers con sistemas propios — API</h3><p>Requieren Seller Center maduro. Son el centro de la escala.</p></div>
+    <div class="card" style="border-left:3px solid var(--danger)"><span class="tag tr">No prioritario</span><h3 style="margin-top:6px">Desarrollos específicos fuera del roadmap</h3><p>Complejidad no justificada mientras el modelo aún valida.</p></div>
+  </div>
+
+  <h2 style="margin-bottom:10px">Las tres etapas</h2>
+  <div class="etapa-card etapa-1">
+    <div class="etapa-num">Etapa 1</div>
+    <h3>Activación</h3>
+    <div class="etapa-period" style="color:var(--g)">Q2 2026</div>
+    <p>El Marketplace entra en operación real con los sellers que pueden integrarse con las capacidades disponibles hoy: VTEX propio e Interfaz Sporting. <strong>Objetivo: validar el modelo, no escalarlo.</strong></p>
+  </div>
+  <div class="etapa-card etapa-2">
+    <div class="etapa-num">Etapa 2</div>
+    <h3>Construcción</h3>
+    <div class="etapa-period" style="color:var(--info)">Q2 – Q3 2026</div>
+    <p>El Marketplace opera. En paralelo se completa la plataforma: articulado, stock, precio, planillas, comprobantes y capa API. <strong>Objetivo: completar la base operativa sin frenar la operación ya iniciada.</strong></p>
+  </div>
+  <div class="etapa-card etapa-3">
+    <div class="etapa-num">Etapa 3</div>
+    <h3>Escala</h3>
+    <div class="etapa-period" style="color:var(--warn)">Q4 2026 en adelante</div>
+    <p>El Seller Center alcanza madurez suficiente para incorporar sellers con sistemas propios vía API. El criterio de incorporación pasa de viabilidad técnica a conveniencia estratégica. <strong>Objetivo: crecimiento sostenido, autónomo y controlado.</strong></p>
+  </div>
+
+  <div class="section-block" style="background:var(--g-dim);border-color:var(--g-brd);margin-top:4px">
+    <h2>Estado objetivo institucional</h2>
+    <ul>
+      <li>Los sellers se incorporan por conveniencia para el negocio, no solo por facilidad técnica.</li>
+      <li>La operación está centralizada dentro de una estructura trazable y gobernada.</li>
+      <li>La dependencia del equipo interno se reduce de forma significativa.</li>
+      <li>La arquitectura soporta crecimiento sin rediseñar el modelo en cada incorporación.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SELLER CENTER — ROADMAP
+══════════════════════════════════════════ -->
+<section id="page-seller_center" class="page">
+  <div class="page-title">Seller Center — Avance Ejecutivo</div>
+  <p class="page-sub">Panel resumen vivo del desarrollo del Seller Center. Esta vista consume la misma hoja de Google Sheets que alimenta el Gantt operativo, pero presenta solo los indicadores clave para seguimiento ejecutivo.</p>
+
+  <div class="sc-live-updated" id="scLiveUpdated">Conectando con Google Sheets…</div>
+
+  <div class="sc-live-grid">
+    <div class="sc-live-stat">
+      <div class="sc-live-num" id="scTotalTasks">—</div>
+      <div class="sc-live-label">Tareas totales</div>
+      <div class="sc-live-sub">Roadmap Seller Center</div>
+    </div>
+    <div class="sc-live-stat">
+      <div class="sc-live-num" id="scOverallProgress">—</div>
+      <div class="sc-live-label">Avance general</div>
+      <div class="sc-live-sub">Promedio por avance / estado</div>
+    </div>
+    <div class="sc-live-stat">
+      <div class="sc-live-num" id="scActiveTasks">—</div>
+      <div class="sc-live-label">En curso</div>
+      <div class="sc-live-sub">Tareas activas actualmente</div>
+    </div>
+    <div class="sc-live-stat">
+      <div class="sc-live-num" id="scCriticalTasks">—</div>
+      <div class="sc-live-label">Bloqueadas</div>
+      <div class="sc-live-sub">Requieren gestión</div>
+    </div>
+  </div>
+
+  <div class="sc-progress-card">
+    <div class="sc-progress-top">
       <div>
-        <div class="svc-group-label">Servicios especiales — a medida</div>
-        <div class="svc-row two-col">
-          <div class="svc-tag">
-            <div class="svc-tag-icon">📣</div>
-            <div class="svc-tag-name">Retail Media</div>
-            <div class="svc-tag-desc">Espacios en sitio, categorías y redes sociales.</div>
-          </div>
-          <div class="svc-tag">
-            <div class="svc-tag-icon">⚙️</div>
-            <div class="svc-tag-name">Desarrollo técnico</div>
-            <div class="svc-tag-desc">Integraciones o adaptaciones específicas según alcance y complejidad.</div>
-          </div>
-        </div>
+        <div class="sc-progress-title">Avance consolidado del Seller Center</div>
+        <p style="margin:4px 0 0">Lectura resumida del roadmap completo: tareas manuales, masivas y API, agrupadas por módulo funcional.</p>
+      </div>
+      <div class="sc-progress-pct" id="scProgressPct">—</div>
+    </div>
+    <div class="sc-progress-track"><div class="sc-progress-fill" id="scProgressFill"></div></div>
+    <div class="sc-progress-note" id="scProgressNote">Calculando avance desde Google Sheets…</div>
+  </div>
+
+  <div class="sc-status-strip">
+    <div class="sc-status-item"><div class="sc-status-count st-noiniciado" id="scStNoIni">0</div><div class="sc-status-label">No iniciado</div></div>
+    <div class="sc-status-item"><div class="sc-status-count" style="color:var(--info)" id="scStPlan">0</div><div class="sc-status-label">Planificado</div></div>
+    <div class="sc-status-item"><div class="sc-status-count" style="color:var(--warn)" id="scStCurso">0</div><div class="sc-status-label">En curso</div></div>
+    <div class="sc-status-item"><div class="sc-status-count" style="color:var(--danger)" id="scStBloq">0</div><div class="sc-status-label">Bloqueado</div></div>
+    <div class="sc-status-item"><div class="sc-status-count" style="color:var(--g)" id="scStComp">0</div><div class="sc-status-label">Completado</div></div>
+  </div>
+
+  <a class="ext-tool-card" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-gantt-seller-center/" target="_blank" style="margin-bottom:20px;border-left-color:var(--violet)">
+    <div class="ext-tool-left">
+      <div class="ext-tool-icon">📅</div>
+      <div>
+        <div class="ext-tool-name">Abrir Gantt Seller Center completo</div>
+        <div class="ext-tool-desc">Vista operativa detallada · tareas, fechas, responsables, Jira, GitLab y observaciones</div>
+      </div>
+    </div>
+    <div class="ext-tool-arrow" style="color:var(--violet)">↗</div>
+  </a>
+
+  <div class="section-block">
+    <h2>Avance por módulo funcional</h2>
+    <p>Resumen del avance por frente de trabajo. El detalle de cada tarea se consulta en el Gantt completo.</p>
+    <div class="sc-module-list" id="scModuleSummary">
+      <div class="sc-empty">Cargando módulos…</div>
+    </div>
+  </div>
+
+  <div class="sc-insight-grid">
+    <div class="sc-insight-card" style="border-left:3px solid var(--warn)">
+      <h3>Próximos hitos</h3>
+      <p>Hitos marcados en la hoja, ordenados por fecha de finalización.</p>
+      <div class="sc-task-list" id="scUpcomingMilestones">
+        <div class="sc-empty">Cargando hitos…</div>
+      </div>
+    </div>
+    <div class="sc-insight-card" style="border-left:3px solid var(--danger)">
+      <h3>Alertas / bloqueos</h3>
+      <p>Tareas bloqueadas o con prioridad alta que requieren seguimiento.</p>
+      <div class="sc-task-list" id="scRisks">
+        <div class="sc-empty">Cargando alertas…</div>
       </div>
     </div>
   </div>
-</div>
+
+  <div class="section-block" style="border-left:3px solid var(--info)">
+    <h2>Lectura ejecutiva</h2>
+    <div class="card-grid c3" style="margin-bottom:0;margin-top:12px">
+      <div class="card" style="margin-bottom:0;border-left:3px solid var(--g)">
+        <span class="tag tg">Q2 · Activación</span>
+        <h3 style="margin-top:6px">Base operativa</h3>
+        <p>Se priorizan los flujos necesarios para operar sellers con las capacidades actuales.</p>
+      </div>
+      <div class="card" style="margin-bottom:0;border-left:3px solid var(--info)">
+        <span class="tag tb">Q3 · Construcción</span>
+        <h3 style="margin-top:6px">Estandarización</h3>
+        <p>Se consolidan procesos masivos, responsables, trazabilidad y desarrollos por módulo.</p>
+      </div>
+      <div class="card" style="margin-bottom:0;border-left:3px solid var(--violet)">
+        <span class="tag tv">Q4 · Escala</span>
+        <h3 style="margin-top:6px">Integración API</h3>
+        <p>Se habilita la evolución hacia integración automática según madurez de cada módulo.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">📌 <strong>Criterio:</strong> el HUB muestra el estado ejecutivo y consume datos vivos. El Gantt completo queda como herramienta operativa para revisar tareas, dependencias, observaciones y links de Jira/GitLab.</div>
 </section>
 
-<!-- 8 · FAQ -->
-<section id="s_faq">
-<div class="inner">
-  <div class="chip reveal">Preguntas frecuentes</div>
-  <div class="faq-layout">
-    <div class="faq-intro reveal">
-      <h2>Lo que siempre<br>nos preguntan</h2>
-      <p>Respuestas directas a las dudas más comunes antes de arrancar.</p>
+<!-- ══════════════════════════════════════════
+     CHECKLIST
+══════════════════════════════════════════ -->
+<section id="page-checklist" class="page">
+  <div class="page-title">Checklist por Seller</div>
+  <p class="page-sub">Plantilla operativa interactiva para definir el alcance de integración de cada nuevo seller, módulo por módulo. Seleccioná el tipo de integración y tildá los ítems a medida que se completan.</p>
+
+  <div class="section-block">
+    <h2>Tipo de integración del seller</h2>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px">
+      <button class="int-btn" id="btn-manual" onclick="setInt('manual')" style="background:rgba(255,183,77,.12);color:var(--warn);border:1px solid rgba(255,183,77,.3);border-radius:5px;padding:7px 14px;font-family:'Barlow',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">Manual / Interfaz</button>
+      <button class="int-btn" id="btn-vtex" onclick="setInt('vtex')" style="background:var(--k3);color:var(--t2);border:1px solid var(--bdr);border-radius:5px;padding:7px 14px;font-family:'Barlow',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">VTEX → VTEX</button>
+      <button class="int-btn" id="btn-api" onclick="setInt('api')" style="background:var(--k3);color:var(--t2);border:1px solid var(--bdr);border-radius:5px;padding:7px 14px;font-family:'Barlow',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">API → Seller Center</button>
     </div>
-    <div class="faq-list reveal">
-      <div class="faq-item open">
-        <div class="faq-q">¿Puedo fijar mis propios precios? <em class="faq-q-icon">+</em></div>
-        <div class="faq-a">Sí, completamente. Sporting Marketplace nunca interviene en la política de precios del seller. Vos decidís a cuánto vendés, cuándo hacés descuentos y cómo manejás tu margen.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">¿Qué pasa si Sporting también vende un producto que yo vendo? <em class="faq-q-icon">+</em></div>
-        <div class="faq-a">Conviven como publicaciones separadas dentro del sitio, cada una con su propio precio, condiciones y vendedor claramente identificado. El cliente ve de quién es cada publicación y elige libremente.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">¿Cómo gestiono mi catálogo día a día? <em class="faq-q-icon">+</em></div>
-        <div class="faq-a">Podés gestionarlo directamente desde un panel de administración, o integrar tu sistema propio vía API para que el stock, precios y publicaciones se sincronicen automáticamente. El equipo de onboarding te acompaña en esa configuración.</div>
-      </div>
+    <div style="margin-top:12px;padding:10px 14px;background:var(--k3);border:1px solid var(--bdr);border-radius:6px;font-size:12.5px;color:var(--t2)" id="int-desc">
+      Seller sin infraestructura tecnológica propia. Opera desde los sistemas de Sporting. Mayor dependencia del equipo interno en las etapas iniciales.
     </div>
   </div>
-</div>
+
+  <div style="margin-bottom:18px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <h2 style="margin:0">Progreso</h2>
+      <button onclick="resetCL()" style="font-size:11px;color:var(--t3);background:none;border:1px solid var(--bdr);border-radius:4px;padding:4px 10px;cursor:pointer;font-family:'Barlow',sans-serif">Resetear</button>
+    </div>
+    <div class="progress-wrap"><div class="progress-fill" id="cl-bar" style="width:0%"></div></div>
+    <div style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--t3);margin-top:4px">
+      <span id="cl-text">0 de 0 completados</span>
+      <span id="cl-pct">0%</span>
+    </div>
+  </div>
+
+  <div id="cl-content"></div>
 </section>
 
-<!-- 9 · LOGÍSTICA -->
-<section id="s9">
-<div class="inner">
-  <div class="chip reveal">Logística y devoluciones</div>
-  <h2 class="reveal">Operación clara, sin sorpresas</h2>
-  <p class="reveal" style="font-size:15px;color:var(--t4);line-height:1.8;max-width:600px;margin-bottom:32px">El modelo logístico puede adaptarse a la realidad del seller. Podés operar con tu propia estructura o apoyarte en servicios del Marketplace, según el esquema acordado.</p>
-  <div class="log-grid">
-    <div class="log-card reveal">
-      <div class="log-card-head"><span class="log-icon">🚛</span> Si operás con tu logística</div>
-      <ul class="log-items">
-        <li class="log-item">Despachás desde tu depósito o con tu operador logístico.</li>
-        <li class="log-item">La incidencia del costo logístico depende de las condiciones comerciales y del esquema de envío vigente.</li>
-        <li class="log-item">Informás el seguimiento cuando corresponda según el modelo de integración.</li>
-      </ul>
-    </div>
-    <div class="log-card reveal">
-      <div class="log-card-head"><span class="log-icon">🏢</span> Si operás con logística del Marketplace</div>
-      <ul class="log-items">
-        <li class="log-item">Sporting gestiona el despacho al cliente final usando su red.</li>
-        <li class="log-item">Los cargos asociados se reflejan en la liquidación mensual.</li>
-        <li class="log-item">Se descuenta lo abonado por el cliente si corresponde.</li>
-      </ul>
-    </div>
-    <div class="log-card reveal">
-      <div class="log-card-head"><span class="log-icon">↩️</span> Devoluciones</div>
-      <ul class="log-items">
-        <li class="log-item">El envío de devolución es siempre gratuito para el cliente.</li>
-        <li class="log-item">La gestión puede estar a cargo del Marketplace si contratás el servicio correspondiente.</li>
-        <li class="log-item">Las devoluciones y sus impactos económicos se gestionan según las condiciones comerciales acordadas.</li>
-      </ul>
-    </div>
-    <div class="log-card reveal">
-      <div class="log-card-head"><span class="log-icon">💬</span> Postventa y reclamos</div>
-      <ul class="log-items">
-        <li class="log-item">Toda gestión de reclamos se canaliza a través del Marketplace.</li>
-        <li class="log-item">El seller resuelve lo vinculado a su producto dentro del marco acordado.</li>
-        <li class="log-item">La comunicación con el cliente es siempre institucional — sin contacto directo entre seller y cliente final.</li>
-      </ul>
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- 10 · CÓMO SUMARTE -->
-<section id="s10">
-<div class="inner">
-  <div class="chip reveal">Cómo sumarte</div>
-  <div class="next-grid">
-    <div>
-      <h2 class="reveal">El camino es claro para empezar a vender</h2>
-      <p class="reveal" style="font-size:15px;color:var(--t4);line-height:1.8;margin-top:14px;max-width:400px">Un proceso simple, acompañado y pensado para salir bien desde el inicio.</p>
-      <div class="next-steps" style="margin-top:32px">
-        <div class="next-step reveal">
-          <div class="next-n">01</div>
-          <div class="next-text"><strong>Relevamiento inicial.</strong> Nos compartís información básica sobre tu operación, categorías y nivel de integración.</div>
-        </div>
-        <div class="next-step reveal">
-          <div class="next-n">02</div>
-          <div class="next-text"><strong>Evaluación y propuesta.</strong> Analizamos tu perfil y te presentamos una propuesta ajustada a tu realidad.</div>
-        </div>
-        <div class="next-step reveal">
-          <div class="next-n">03</div>
-          <div class="next-text"><strong>Onboarding técnico.</strong> Trabajamos integración, catálogo y pruebas con soporte del equipo.</div>
-        </div>
-        <div class="next-step reveal">
-          <div class="next-n">04</div>
-          <div class="next-text"><strong>Go-Live.</strong> Tus productos quedan visibles dentro del canal Sporting para todos los clientes.</div>
-        </div>
-      </div>
-    </div>
-    <div class="cta-box reveal">
-      <div class="cta-tag">El primer paso es simple</div>
-      <div class="cta-headline">Sumáte al<br>Marketplace</div>
-      <p class="cta-body">Completá el formulario y te preparamos una propuesta comercial personalizada a la brevedad.</p>
-      <div class="cta-actions">
-        <a href="LINK_FORMULARIO" target="_blank" class="btn-cta">Completar relevamiento →</a>
-        <a href="https://antonioluquin-ecomm.github.io/sporting-marketplace-simulador-economico" target="_blank" class="btn-cta-outline">Simular mis números ↗</a>
-        <a href="Relevamiento_Seller.xlsx" download style="font-size:11px;color:var(--t4);text-align:center;text-decoration:none;padding-top:4px;letter-spacing:.06em;transition:color .18s" onmouseover="this.style.color='var(--w)'" onmouseout="this.style.color='var(--t4)'">Descargar versión Excel ↓</a>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- 11 · CIERRE -->
-<section id="s11">
-<div class="inner">
-  <div class="close-grid">
-    <div>
-      <div class="chip reveal">Contacto</div>
-      <div class="close-tagline reveal">
-        El lugar correcto<br>para hacer<br><em>crecer tu marca.</em>
-      </div>
-      <p class="close-body reveal">
-        Sporting Marketplace combina canal especializado, tráfico consolidado, tecnología, operación comercial y acompañamiento real para que marcas del mundo deportivo puedan crecer dentro de un entorno preparado para vender.<br><br>
-        Si tu propuesta está alineada con deporte y moda deportiva, podemos construir una propuesta comercial y operativa ajustada a tu negocio.
-      </p>
-    </div>
-    <div class="reveal">
-      <div class="contact-card">
-        <div class="contact-label">¿Querés avanzar?</div>
-        <a href="mailto:marketplace@sporting.com.ar" class="contact-email">marketplace@sporting.com.ar</a>
-        <div class="contact-divider"></div>
-        <div class="contact-meta">
-          4,5M usuarios mensuales<br>
-          40K pedidos mensuales<br>
-          +500K clientes activos<br><br>
-          <strong style="color:var(--w)">Confidencial · 2026</strong>
-        </div>
-      </div>
-      <div class="close-stamp">Sporting Marketplace · Propuesta para Sellers · 2026</div>
-    </div>
-  </div>
-</div>
-</section>
+</main>
+</div><!-- /shell -->
 
 <script>
-// FAQ accordion
-document.querySelectorAll('.faq-item').forEach(item => {
-  item.querySelector('.faq-q').addEventListener('click', () => {
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
+// ══════════════════════════════════
+// NAVIGATION
+// ══════════════════════════════════
+function nav(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.sb-item').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.querySelectorAll('.sb-item').forEach(b => {
+    if(b.getAttribute('onclick') && b.getAttribute('onclick').includes("'"+page+"'")) b.classList.add('active');
   });
-});
+  document.querySelector('.main').scrollTop = 0;
+  window.scrollTo(0,0);
+}
 
-// Scroll reveal
-const revealEls = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('visible'), i * 55);
-      io.unobserve(e.target);
+// ══════════════════════════════════
+// MODULES
+// ══════════════════════════════════
+const MODULES = [
+  {num:1, title:'Articulado — Creación de SKUs', tags:['tg','ty','tb'],
+   note:'Identificador del producto: Código producto – Código color – Talle',
+   sections:[
+    {label:'Camino 1 · Manual', cls:'ty', items:['Creación en PIM (backoffice) — No interviene BAS','Se crean productos y variantes (color, talle)','Se solicita al seller: código producto, código color, talle','EAN (opcional)']},
+    {label:'Evolución · Caminos 2–4', cls:'tb', items:['Creación masiva vía planilla Excel','Creación individual desde PIM Frontend','Creación vía API desde sistemas del seller']},
+  ]},
+  {num:2, title:'Catalogación', tags:['tg','ty','tb'],
+   note:'Proceso posterior a la creación del SKU. La publicación en VTEX debe quedar asociada a la política y condición comercial del seller.',
+   sections:[
+    {label:'Camino 1 · Manual', cls:'ty', items:['Catalogación desde PIM Frontend por el equipo interno','Producto a producto','Información provista por el seller o relevada desde su sitio']},
+    {label:'Evolución', cls:'tb', items:['Catalogación masiva por planilla','Integración vía API']},
+  ]},
+  {num:3, title:'OMS — Configuración logística base', tags:['tg'],
+   sections:[
+    {label:'En VTEX', cls:'tg', items:['Creación de almacén del seller','Configuración de muelle','Estrategia de envío']},
+    {label:'En PIM', cls:'tg', items:['Creación de tienda del seller','Creación de depósito','Asociación con almacén de VTEX']},
+  ]},
+  {num:4, title:'Stock', tags:['tg','ty','tb'],
+   sections:[
+    {label:'Camino 1 · Manual', cls:'ty', items:['Carga masiva vía Excel con frecuencia diaria','Definición de stock de seguridad']},
+    {label:'Evolución', cls:'tb', items:['Integración vía API en tiempo real','Gestión desde PIM Frontend (manual o masiva)']},
+  ]},
+  {num:5, title:'Precio', tags:['tg','ty','tb'],
+   sections:[
+    {label:'Camino 1 · Manual', cls:'ty', items:['Carga masiva vía Excel, definición por SKU']},
+    {label:'Evolución', cls:'tb', items:['Gestión desde Seller Center','Carga masiva por planilla','Integración vía API']},
+  ]},
+  {num:6, title:'Pedidos', tags:['tg'],
+   note:'Los pedidos se generan en VTEX y se gestionan en PIM.',
+   sections:[
+    {label:'Seller usando sistemas actuales', cls:'ty', items:['Opera en PIM Depósitos','Evitar validación de stock en PIM','El pedido se asigna directamente al depósito del seller']},
+    {label:'Seller con integración API', cls:'tb', items:['Se consulta stock en tiempo real','Si no hay stock → flujo de conflicto actual']},
+  ]},
+  {num:7, title:'Facturación', tags:['tr'],
+   note:'Estado: pendiente de definición final.',
+   sections:[
+    {label:'Alternativa inicial', cls:'ty', items:['Facturación desde Sporting con credenciales del seller','Envío de comprobante al cliente vía PIM']},
+    {label:'Pendiente', cls:'tr', items:['Acceso del seller a sus propios comprobantes']},
+  ]},
+  {num:8, title:'Logística directa', tags:['tg','ty'],
+   sections:[
+    {label:'Escenarios', cls:'tg', items:['Seller con logística propia (Andreani) → configurar contrato','Seller con logística propia (otro carrier) → integrar carrier','Seller con logística Sporting → sin configuración adicional','VTEX–VTEX → llega tracking, no estado completo','API → integración completa de tracking y estados']},
+  ]},
+  {num:9, title:'Logística inversa y Devoluciones', tags:['tg','tb'],
+   note:'Misma lógica que logística directa. En caso de logística Sporting: solo definir dirección de retorno.',
+   sections:[
+    {label:'Seller con sistemas actuales', cls:'ty', items:['Impactar stock en su base al aceptar la devolución']},
+    {label:'Seller con API', cls:'tb', items:['Integración para aceptación / rechazo de devoluciones','Actualización automática de stock']},
+  ]},
+  {num:10, title:'Conciliación', tags:['ty'],
+   note:'Módulo de conciliación económica entre Sporting y el seller. Incluye validación de pedidos, comisiones y liquidaciones periódicas.',
+   sections:[
+    {label:'Pendiente de definición detallada', cls:'ty', items:['Definir período de liquidación','Establecer proceso de conciliación de comisiones y servicios','Diseño de archivos de conciliación (Archivo 1 y Archivo 2)']},
+  ]},
+];
+
+function renderModules(){
+  const list = document.getElementById('modules-list');
+  list.innerHTML = MODULES.map(m => `
+    <div class="module-accordion">
+      <div class="module-header" onclick="toggleMod(this)">
+        <div class="module-header-left">
+          <div class="module-num">${m.num}</div>
+          <div class="module-title">${m.title}</div>
+        </div>
+        <span class="module-chevron">▼</span>
+      </div>
+      <div class="module-body">
+        ${m.note ? `<p style="margin-bottom:10px;padding:7px 10px;background:var(--k3);border-radius:5px;border-left:2px solid var(--g)">${m.note}</p>` : ''}
+        ${m.sections.map(s => `
+          <div class="camino-label"><span class="tag ${s.cls}">${s.label}</span></div>
+          <ul>${s.items.map(i => `<li>${i}</li>`).join('')}</ul>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleMod(header){
+  const body = header.nextElementSibling;
+  const ch = header.querySelector('.module-chevron');
+  const open = header.classList.contains('open');
+  document.querySelectorAll('.module-header').forEach(h=>{h.classList.remove('open');h.nextElementSibling.classList.remove('open');h.querySelector('.module-chevron').classList.remove('open');});
+  if(!open){header.classList.add('open');body.classList.add('open');ch.classList.add('open');}
+}
+renderModules();
+
+// ══════════════════════════════════
+// CHECKLIST
+// ══════════════════════════════════
+const CL = {
+  manual:[
+    {mod:'1 — Articulado',items:[{t:'Solicitar código de producto, color y talle al seller',r:'Comercial'},{t:'Solicitar EAN si está disponible',r:'Comercial'},{t:'Crear productos y variantes en PIM backoffice',r:'Plataformas'},{t:'Validar formato: Cód.Prod – Cód.Color – Talle',r:'Plataformas'}]},
+    {mod:'2 — Catalogación',items:[{t:'Recopilar información del producto del seller',r:'Comercial'},{t:'Catalogar producto a producto desde PIM Frontend',r:'Plataformas'},{t:'Asociar publicación en VTEX a política y condición comercial del seller',r:'Plataformas'},{t:'Validar publicación correcta en el sitio',r:'Plataformas'}]},
+    {mod:'3 — OMS',items:[{t:'Crear almacén del seller en VTEX',r:'Plataformas'},{t:'Configurar muelle en VTEX',r:'Plataformas'},{t:'Definir estrategia de envío',r:'Plataformas'},{t:'Crear tienda del seller en PIM',r:'Plataformas'},{t:'Crear depósito en PIM y asociar con almacén VTEX',r:'Plataformas'}]},
+    {mod:'4 — Stock',items:[{t:'Definir template Excel para carga de stock',r:'Plataformas'},{t:'Acordar frecuencia de actualización (mínimo diaria)',r:'Comercial'},{t:'Definir stock de seguridad con el seller',r:'Comercial'},{t:'Realizar primera carga masiva de stock',r:'Plataformas'},{t:'Validar stock disponible en el sitio',r:'Plataformas'}]},
+    {mod:'5 — Precio',items:[{t:'Definir template Excel para carga de precios',r:'Plataformas'},{t:'Cargar precios por SKU',r:'Plataformas'},{t:'Validar precios publicados en el sitio',r:'Comercial'}]},
+    {mod:'6 — Pedidos',items:[{t:'Configurar PIM Depósitos para el seller',r:'Plataformas'},{t:'Deshabilitar validación de stock en PIM para este seller',r:'Plataformas'},{t:'Verificar asignación directa de pedidos al depósito',r:'Plataformas'},{t:'Realizar prueba de pedido end-to-end',r:'Plataformas'}]},
+    {mod:'7 — Facturación',items:[{t:'Definir esquema de facturación (pendiente de def. final)',r:'Comercial'},{t:'Obtener credenciales del seller si aplica',r:'Legal'},{t:'Configurar envío de comprobante vía PIM',r:'Plataformas'}]},
+    {mod:'8 — Logística',items:[{t:'Definir si el seller usa logística Sporting, Andreani u otro',r:'Comercial'},{t:'Si usa Andreani: configurar contrato',r:'Plataformas'},{t:'Si usa otro carrier: gestionar integración',r:'Plataformas'},{t:'Validar tracking llegue al cliente',r:'Plataformas'}]},
+    {mod:'9 — Devoluciones',items:[{t:'Definir dirección de retorno del seller',r:'Comercial'},{t:'Configurar proceso de devolución en PIM',r:'Plataformas'},{t:'Definir responsable de impacto de stock en devoluciones',r:'Plataformas'}]},
+    {mod:'10 — Conciliación',items:[{t:'Definir período de liquidación',r:'Comercial'},{t:'Establecer proceso de conciliación de comisiones',r:'Comercial'}]},
+  ],
+  vtex:[
+    {mod:'1 — Articulado',items:[{t:'Verificar estructura de catálogo en VTEX del seller',r:'Plataformas'},{t:'Definir mapeo de identificadores VTEX seller ↔ Sporting',r:'Plataformas'},{t:'Validar que los SKUs estén disponibles para sincronizar',r:'Plataformas'}]},
+    {mod:'2 — Catalogación',items:[{t:'Sincronizar catálogo entre VTEX seller y VTEX Sporting',r:'Plataformas'},{t:'Asociar publicación a política y condición comercial del seller',r:'Plataformas'},{t:'Validar publicación en el sitio',r:'Plataformas'}]},
+    {mod:'3 — OMS',items:[{t:'Configurar integración VTEX–VTEX (affiliate ID)',r:'Plataformas'},{t:'Definir estrategia de envío',r:'Plataformas'},{t:'Crear tienda del seller en PIM y asociar con almacén VTEX',r:'Plataformas'}]},
+    {mod:'4 — Stock',items:[{t:'Verificar sincronización automática de stock VTEX→VTEX',r:'Plataformas'},{t:'Definir stock de seguridad',r:'Comercial'},{t:'Validar actualización en tiempo real',r:'Plataformas'}]},
+    {mod:'5 — Precio',items:[{t:'Verificar sincronización de precios entre VTEXs',r:'Plataformas'},{t:'Definir si precios se heredan o se definen aparte',r:'Comercial'}]},
+    {mod:'6 — Pedidos',items:[{t:'Verificar flujo de notificación VTEX→VTEX',r:'Plataformas'},{t:'Validar que el seller recibe pedidos en su VTEX',r:'Plataformas'},{t:'Realizar prueba de pedido end-to-end',r:'Plataformas'}]},
+    {mod:'7 — Facturación',items:[{t:'Definir esquema de facturación',r:'Legal'},{t:'Configurar envío de comprobante al cliente',r:'Plataformas'}]},
+    {mod:'8 — Logística',items:[{t:'Configurar logística en VTEX del seller',r:'Plataformas'},{t:'Validar tracking (en VTEX–VTEX llega parcialmente)',r:'Plataformas'}]},
+    {mod:'9 — Devoluciones',items:[{t:'Definir proceso de devolución y articulación con VTEX del seller',r:'Plataformas'},{t:'Definir dirección de retorno',r:'Comercial'}]},
+    {mod:'10 — Conciliación',items:[{t:'Definir período de liquidación',r:'Comercial'},{t:'Establecer proceso de conciliación de comisiones',r:'Comercial'}]},
+  ],
+  api:[
+    {mod:'1 — Articulado',items:[{t:'Definir formato de payload para creación de SKUs vía API',r:'Plataformas'},{t:'Documentar endpoints disponibles en Seller Center',r:'Plataformas'},{t:'Probar creación de SKU desde sistemas del seller',r:'Plataformas'}]},
+    {mod:'2 — Catalogación',items:[{t:'Definir y probar endpoint de catalogación vía API',r:'Plataformas'},{t:'Validar asociación a política y condición comercial',r:'Plataformas'}]},
+    {mod:'3 — OMS',items:[{t:'Crear almacén y muelle en VTEX',r:'Plataformas'},{t:'Conectar Seller Center con VTEX',r:'Plataformas'},{t:'Crear tienda y depósito en PIM',r:'Plataformas'}]},
+    {mod:'4 — Stock',items:[{t:'Definir endpoint y frecuencia de actualización de stock vía API',r:'Plataformas'},{t:'Probar actualización de stock desde sistemas del seller',r:'Plataformas'},{t:'Definir manejo del flujo de conflicto si no hay stock',r:'Plataformas'}]},
+    {mod:'5 — Precio',items:[{t:'Definir endpoint para actualización de precios vía API',r:'Plataformas'},{t:'Probar actualización de precio en tiempo real',r:'Plataformas'}]},
+    {mod:'6 — Pedidos',items:[{t:'Configurar notificación de pedidos al seller vía API',r:'Plataformas'},{t:'Verificar flujo de confirmación y rechazo',r:'Plataformas'},{t:'Probar flujo de conflicto por stock insuficiente',r:'Plataformas'}]},
+    {mod:'7 — Facturación',items:[{t:'Definir esquema de facturación vía API',r:'Legal'},{t:'Configurar envío de comprobante vía PIM',r:'Plataformas'},{t:'Habilitar acceso del seller a sus comprobantes (pendiente)',r:'Plataformas'}]},
+    {mod:'8 — Logística',items:[{t:'Configurar integración completa de tracking vía API',r:'Plataformas'},{t:'Verificar actualización de estados de envío en tiempo real',r:'Plataformas'}]},
+    {mod:'9 — Devoluciones',items:[{t:'Implementar endpoint de aceptación/rechazo de devoluciones',r:'Plataformas'},{t:'Configurar actualización automática de stock en devoluciones',r:'Plataformas'}]},
+    {mod:'10 — Conciliación',items:[{t:'Definir período y esquema de liquidación',r:'Comercial'},{t:'Configurar conciliación automática si aplica',r:'Plataformas'}]},
+  ]
+};
+
+const INT_DESC = {
+  manual:'Seller sin infraestructura tecnológica propia. Opera desde los sistemas de Sporting. Mayor dependencia del equipo interno en las etapas iniciales.',
+  vtex:'Seller con VTEX propio. Integración entre sistemas VTEX. Activación más rápida y menor esfuerzo técnico inicial.',
+  api:'Seller con sistemas propios que se conecta vía API al Seller Center. Modelo objetivo institucional con mayor centralización y trazabilidad.'
+};
+
+let currentInt = 'manual', checked = {};
+
+function setInt(t){
+  currentInt = t; checked = {};
+  ['manual','vtex','api'].forEach(k=>{
+    const btn = document.getElementById('btn-'+k);
+    if(k===t){ btn.style.background='rgba(94,168,50,.15)'; btn.style.color='var(--g)'; btn.style.borderColor='var(--g-brd)'; }
+    else { btn.style.background='var(--k3)'; btn.style.color='var(--t2)'; btn.style.borderColor='var(--bdr)'; }
+  });
+  document.getElementById('int-desc').textContent = INT_DESC[t];
+  renderCL(); updateCL();
+}
+
+function renderCL(){
+  const data = CL[currentInt];
+  document.getElementById('cl-content').innerHTML = data.map((g,gi)=>`
+    <div class="checklist-group">
+      <h3><span class="module-num">${gi+1}</span> ${g.mod}</h3>
+      ${g.items.map((item,ii)=>{
+        const key=`${currentInt}-${gi}-${ii}`;
+        return `<div class="check-item">
+          <div class="check-box ${checked[key]?'done':''}" onclick="toggleCL('${key}',this)"></div>
+          <div class="check-text">${item.t}</div>
+          <span class="check-tag">${item.r}</span>
+        </div>`;
+      }).join('')}
+    </div>
+  `).join('');
+}
+
+function toggleCL(key,el){ checked[key]=!checked[key]; el.classList.toggle('done',checked[key]); updateCL(); }
+
+function updateCL(){
+  const total = CL[currentInt].reduce((a,g)=>a+g.items.length,0);
+  const done = Object.values(checked).filter(Boolean).length;
+  const pct = total ? Math.round(done/total*100) : 0;
+  document.getElementById('cl-bar').style.width = pct+'%';
+  document.getElementById('cl-text').textContent = `${done} de ${total} completados`;
+  document.getElementById('cl-pct').textContent = pct+'%';
+}
+
+function resetCL(){ checked={}; renderCL(); updateCL(); }
+setInt('manual');
+
+// ══════════════════════════════════
+// SELLER CENTER LIVE SUMMARY FROM GOOGLE SHEETS
+// ══════════════════════════════════
+const SC_SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTwd-qIMhoH1poJpaTZqN-7O5IGAfPDTxslBAX8LCPogTkwheW2vWsq59JkvvYakM8ndCKgUQualQyi/pub?gid=1440698993&single=true&output=csv';
+const SC_MODULE_ORDER = ['Articulado','Catalogacion','Stock','Precio','Pedidos','Devoluciones','Comprobantes','Logistica Directa','Logistica Inversa','Conciliacion'];
+
+function scNormalize(str){
+  return String(str || '').trim().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ');
+}
+function scSlug(str){ return scNormalize(str).toLowerCase().replace(/[^a-z0-9%]+/g,''); }
+function scParseDate(value){
+  if(!value) return null;
+  const s = String(value).trim();
+  if(/^\d{4}-\d{2}-\d{2}$/.test(s)){ const [y,m,d]=s.split('-').map(Number); return new Date(y,m-1,d); }
+  if(/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(s)){ const [d,m,y]=s.split('/').map(Number); return new Date(y,m-1,d); }
+  const d = new Date(s); return isNaN(d) ? null : d;
+}
+function scFmtDate(d){ return d ? d.toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'numeric'}) : '-'; }
+function scCsvParse(text){
+  const rows=[]; let row=[], cell='', q=false;
+  for(let i=0;i<text.length;i++){
+    const c=text[i], n=text[i+1];
+    if(c==='"' && q && n==='"'){ cell+='"'; i++; continue; }
+    if(c==='"'){ q=!q; continue; }
+    if(c===',' && !q){ row.push(cell); cell=''; continue; }
+    if((c==='\n'||c==='\r') && !q){
+      if(c==='\r' && n==='\n') i++;
+      row.push(cell); cell='';
+      if(row.some(v=>String(v).trim()!=='')) rows.push(row);
+      row=[]; continue;
     }
-  });
-}, { threshold: 0.10 });
-revealEls.forEach(el => io.observe(el));
-
-// Nav active
-const sections = document.querySelectorAll('section[id]');
-const navLinks  = document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll', () => {
-  let cur = '';
-  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 70) cur = s.id; });
-  navLinks.forEach(a => a.classList.toggle('act', a.getAttribute('href') === '#' + cur));
-  updateSecNav();
-}, { passive: true });
-
-// Section navigation arrows
-const sectionIds = Array.from(sections).map(s => s.id);
-const btnUp   = document.getElementById('btnUp');
-const btnDown = document.getElementById('btnDown');
-
-function currentSectionIndex() {
-  let idx = 0;
-  sections.forEach((s, i) => { if (window.scrollY >= s.offsetTop - 80) idx = i; });
-  return idx;
+    cell+=c;
+  }
+  row.push(cell); if(row.some(v=>String(v).trim()!=='')) rows.push(row);
+  return rows;
 }
-
-function updateSecNav() {
-  const i = currentSectionIndex();
-  btnUp.classList.toggle('disabled', i === 0);
-  btnDown.classList.toggle('disabled', i === sectionIds.length - 1);
+function scMapRows(rows){
+  if(!rows.length) return [];
+  const headers = rows[0].map(h => scSlug(h));
+  const idx = name => headers.indexOf(scSlug(name));
+  const get = (row,name) => { const i=idx(name); return i>=0 ? String(row[i]||'').trim() : ''; };
+  return rows.slice(1).map(row => {
+    const avanceRaw = get(row,'% Avance') || get(row,'Avance') || '';
+    let avance = parseFloat(String(avanceRaw).replace('%','').replace(',','.'));
+    if(isNaN(avance)) avance = null;
+    const estado = get(row,'Estado') || 'No iniciado';
+    return {
+      id:get(row,'ID'), modulo:get(row,'Modulo'), tarea:get(row,'Tarea'), descripcion:get(row,'Descripcion'),
+      modalidad:get(row,'Modalidad'), responsable:get(row,'Responsable'), estado, prioridad:get(row,'Prioridad'),
+      inicio:scParseDate(get(row,'Fecha Inicio')), fin:scParseDate(get(row,'Fecha Fin')), dependencia:get(row,'Dependencia'),
+      observaciones:get(row,'Observaciones'), tipo:get(row,'Tipo'), avance, hito:get(row,'Hito'),
+      jira:get(row,'Link Jira'), gitlab:get(row,'Link GitLab'), actualizacion:scParseDate(get(row,'Fecha Ultima Actualizacion'))
+    };
+  }).filter(x => x.id && x.modulo && x.tarea);
 }
+function scProgressFromStatus(estado){
+  const s=scSlug(estado);
+  if(s==='completado') return 100;
+  if(s==='encurso') return 50;
+  if(s==='planificado') return 10;
+  if(s==='bloqueado') return 25;
+  return 0;
+}
+function scProgressValue(item){
+  if(typeof item.avance === 'number' && item.avance >= 0) return Math.max(0, Math.min(100, item.avance));
+  return scProgressFromStatus(item.estado);
+}
+function scSetText(id,value){ const el=document.getElementById(id); if(el) el.textContent=value; }
+function scEscape(str){ return String(str ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m])); }
+function scTagClass(value,type){
+  const s=scSlug(value);
+  if(type==='estado'){
+    if(s==='completado') return 'tg';
+    if(s==='encurso') return 'ty';
+    if(s==='bloqueado') return 'tr';
+    if(s==='planificado') return 'tb';
+    return '';
+  }
+  if(type==='prioridad'){
+    if(s==='alta') return 'tr';
+    if(s==='media') return 'ty';
+    return '';
+  }
+  return 'tb';
+}
+function scTaskCard(item){
+  const links=[];
+  if(item.jira) links.push(`<a class="sc-small-link" href="${scEscape(item.jira)}" target="_blank">Jira ↗</a>`);
+  if(item.gitlab) links.push(`<a class="sc-small-link" href="${scEscape(item.gitlab)}" target="_blank">GitLab ↗</a>`);
+  return `<div class="sc-task-item">
+    <div class="sc-task-title">${scEscape(item.tarea)}</div>
+    <div class="sc-task-meta"><strong>${scEscape(item.modulo)}</strong> · ${scEscape(item.responsable || 'Sin responsable')} · ${scFmtDate(item.fin)}</div>
+    <div style="margin-top:6px"><span class="tag ${scTagClass(item.estado,'estado')}">${scEscape(item.estado)}</span><span class="tag ${scTagClass(item.prioridad,'prioridad')}">${scEscape(item.prioridad || 'Sin prioridad')}</span></div>
+    ${item.observaciones ? `<div class="sc-task-meta" style="margin-top:5px">Obs: ${scEscape(item.observaciones)}</div>` : ''}
+    ${links.length ? `<div class="sc-task-links">${links.join('')}</div>` : ''}
+  </div>`;
+}
+function scRenderSummary(data){
+  const total=data.length;
+  const avg = total ? Math.round(data.reduce((a,x)=>a+scProgressValue(x),0)/total) : 0;
+  const count = label => data.filter(x=>scSlug(x.estado)===scSlug(label)).length;
+  const noini=count('No iniciado'), plan=count('Planificado'), curso=count('En curso'), bloq=count('Bloqueado'), comp=count('Completado');
+  scSetText('scTotalTasks', total);
+  scSetText('scOverallProgress', avg + '%');
+  scSetText('scActiveTasks', curso);
+  scSetText('scCriticalTasks', bloq);
+  scSetText('scProgressPct', avg + '%');
+  const fill=document.getElementById('scProgressFill'); if(fill) fill.style.width=avg+'%';
+  scSetText('scProgressNote', `${comp} tareas completadas · ${curso} en curso · ${bloq} bloqueadas · ${plan} planificadas.`);
+  scSetText('scStNoIni', noini); scSetText('scStPlan', plan); scSetText('scStCurso', curso); scSetText('scStBloq', bloq); scSetText('scStComp', comp);
 
-btnUp.addEventListener('click', (e) => {
-  e.preventDefault();
-  const i = currentSectionIndex();
-  if (i > 0) document.getElementById(sectionIds[i - 1]).scrollIntoView({ behavior: 'smooth' });
-});
+  const groups = new Map();
+  data.forEach(item=>{ if(!groups.has(item.modulo)) groups.set(item.modulo, []); groups.get(item.modulo).push(item); });
+  const moduleRows = Array.from(groups.entries()).sort((a,b)=>{
+    const ai=SC_MODULE_ORDER.indexOf(a[0]); const bi=SC_MODULE_ORDER.indexOf(b[0]);
+    return (ai<0?999:ai)-(bi<0?999:bi);
+  }).map(([mod,items])=>{
+    const pct = items.length ? Math.round(items.reduce((a,x)=>a+scProgressValue(x),0)/items.length) : 0;
+    const done = items.filter(x=>scSlug(x.estado)==='completado').length;
+    const active = items.filter(x=>scSlug(x.estado)==='encurso').length;
+    return `<div class="sc-module-row">
+      <div><div class="sc-module-name">${scEscape(mod)}</div><div class="sc-module-meta">${items.length} tareas · ${done} completas · ${active} en curso</div></div>
+      <div class="sc-module-pct">${pct}%</div>
+      <div class="sc-mini-track"><div class="sc-mini-fill" style="width:${pct}%"></div></div>
+      <div style="text-align:right"><span class="tag ${pct>=75?'tg':pct>=35?'ty':'tb'}">${pct>=75?'Avanzado':pct>=35?'En curso':'Inicial'}</span></div>
+    </div>`;
+  }).join('');
+  document.getElementById('scModuleSummary').innerHTML = moduleRows || '<div class="sc-empty">Sin datos por módulo.</div>';
 
-btnDown.addEventListener('click', (e) => {
-  e.preventDefault();
-  const i = currentSectionIndex();
-  if (i < sectionIds.length - 1) document.getElementById(sectionIds[i + 1]).scrollIntoView({ behavior: 'smooth' });
-});
+  const now = new Date();
+  const milestones = data.filter(x=>scSlug(x.hito)==='si' || scSlug(x.hito)==='sí' || scSlug(x.hito)==='s').sort((a,b)=>(a.fin||now)-(b.fin||now)).slice(0,4);
+  document.getElementById('scUpcomingMilestones').innerHTML = milestones.length ? milestones.map(scTaskCard).join('') : '<div class="sc-empty">No hay hitos marcados en la hoja.</div>';
 
-updateSecNav();
+  const risks = data.filter(x=>scSlug(x.estado)==='bloqueado' || (scSlug(x.prioridad)==='alta' && scSlug(x.estado)!=='completado')).sort((a,b)=>{
+    if(scSlug(a.estado)==='bloqueado' && scSlug(b.estado)!=='bloqueado') return -1;
+    if(scSlug(b.estado)==='bloqueado' && scSlug(a.estado)!=='bloqueado') return 1;
+    return (a.fin||now)-(b.fin||now);
+  }).slice(0,4);
+  document.getElementById('scRisks').innerHTML = risks.length ? risks.map(scTaskCard).join('') : '<div class="sc-empty">Sin bloqueos ni alertas de prioridad alta.</div>';
+
+  const latest = data.map(x=>x.actualizacion).filter(Boolean).sort((a,b)=>b-a)[0];
+  const updated = latest ? `Datos actualizados según hoja: ${scFmtDate(latest)}` : `Datos cargados desde Google Sheets · ${new Date().toLocaleString('es-AR')}`;
+  scSetText('scLiveUpdated', updated);
+}
+async function scLoadSellerCenterSummary(){
+  if(!document.getElementById('scTotalTasks')) return;
+  try{
+    const res = await fetch(SC_SHEET_CSV_URL + '&t=' + Date.now(), {cache:'no-store'});
+    if(!res.ok) throw new Error('No se pudo leer el CSV publicado.');
+    const rows = scCsvParse(await res.text());
+    const data = scMapRows(rows);
+    if(!data.length) throw new Error('La hoja no contiene filas válidas.');
+    scRenderSummary(data);
+  }catch(err){
+    scSetText('scLiveUpdated', 'No se pudo actualizar el resumen desde Google Sheets.');
+    document.getElementById('scModuleSummary').innerHTML = `<div class="sc-empty">${scEscape(err.message)}</div>`;
+    document.getElementById('scUpcomingMilestones').innerHTML = '<div class="sc-empty">Sin datos disponibles.</div>';
+    document.getElementById('scRisks').innerHTML = '<div class="sc-empty">Sin datos disponibles.</div>';
+  }
+}
+scLoadSellerCenterSummary();
+
 </script>
 </body>
 </html>
