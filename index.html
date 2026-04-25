@@ -246,51 +246,47 @@ select.rel-input option{background:var(--k3)}
 .alert-ok{background:var(--g-dim);border:1px solid var(--g-brd);color:var(--g)}
 
 
-
-/* ── SELLER CENTER LIVE SUMMARY */
-.sc-live-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
-.sc-live-stat{background:var(--k3);border:1px solid var(--bdr);border-radius:8px;padding:14px;text-align:center;position:relative;overflow:hidden}
-.sc-live-stat::before{content:'';position:absolute;inset:0 0 auto 0;height:2px;background:var(--g);opacity:.75}
-.sc-live-num{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;color:var(--g);line-height:1;margin-bottom:3px}
-.sc-live-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)}
-.sc-live-sub{font-size:10.5px;color:var(--t3);margin-top:5px;line-height:1.35}
-.sc-progress-card{background:var(--k3);border:1px solid var(--bdr);border-radius:8px;padding:16px 18px;margin-bottom:18px;border-left:3px solid var(--g)}
-.sc-progress-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:9px}
-.sc-progress-title{font-size:13px;font-weight:700;color:var(--t1)}
-.sc-progress-pct{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;color:var(--g);line-height:1}
-.sc-progress-track{height:8px;background:var(--k4);border:1px solid var(--bdr);border-radius:12px;overflow:hidden;margin-bottom:8px}
-.sc-progress-fill{height:100%;background:linear-gradient(90deg,var(--g),var(--teal));width:0%;transition:width .35s;border-radius:12px}
-.sc-progress-note{font-size:11.5px;color:var(--t3);line-height:1.45}
-.sc-status-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:18px}
-.sc-status-item{background:var(--k3);border:1px solid var(--bdr);border-radius:7px;padding:10px 8px;text-align:center}
-.sc-status-count{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;line-height:1;margin-bottom:3px}
-.sc-status-label{font-size:9.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--t3)}
-.sc-module-list{display:grid;gap:7px;margin-bottom:0}
-.sc-module-row{display:grid;grid-template-columns:1.2fr 90px 1fr 70px;gap:10px;align-items:center;background:var(--k3);border:1px solid var(--bdr);border-radius:6px;padding:9px 11px}
-.sc-module-name{font-size:12.3px;font-weight:700;color:var(--t1)}
-.sc-module-meta{font-size:10.5px;color:var(--t3);margin-top:1px}
-.sc-mini-track{height:6px;background:var(--k4);border-radius:10px;overflow:hidden;border:1px solid var(--bdr)}
-.sc-mini-fill{height:100%;background:var(--g);width:0%;border-radius:10px}
-.sc-module-pct{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;color:var(--g);text-align:right}
-.sc-insight-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
-.sc-insight-card{background:var(--k3);border:1px solid var(--bdr);border-radius:8px;padding:16px 18px}
-.sc-insight-card h3{display:flex;align-items:center;gap:7px}
-.sc-task-list{display:grid;gap:7px;margin-top:8px}
-.sc-task-item{background:var(--k4);border:1px solid var(--bdr-l);border-radius:6px;padding:9px 10px}
-.sc-task-title{font-size:12px;font-weight:700;color:var(--t1);line-height:1.3;margin-bottom:3px}
-.sc-task-meta{font-size:10.5px;color:var(--t3);line-height:1.35}
-.sc-task-links{display:flex;gap:6px;margin-top:7px;flex-wrap:wrap}
-.sc-small-link{display:inline-flex;align-items:center;gap:4px;text-decoration:none;border:1px solid var(--g-brd);background:var(--g-dim);color:var(--g);border-radius:4px;padding:4px 7px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
-.sc-small-link:hover{background:rgba(94,168,50,.16)}
-.sc-live-updated{font-size:10.5px;color:var(--t3);margin-top:-8px;margin-bottom:14px;text-align:right}
-.sc-empty{font-size:12px;color:var(--t3);padding:10px 0}
+/* ── BACKLOG SELLERS LIVE SUMMARY */
+.bl-live-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}
+.bl-status{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--t3);white-space:nowrap}
+.bl-dot{width:7px;height:7px;border-radius:50%;background:var(--warn);box-shadow:0 0 0 3px rgba(255,183,77,.12)}
+.bl-dot.ok{background:var(--g);box-shadow:0 0 0 3px rgba(94,168,50,.18)}
+.bl-dot.err{background:var(--danger);box-shadow:0 0 0 3px rgba(217,64,64,.14)}
+.bl-kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:18px}
+.bl-kpi{background:var(--k3);border:1px solid var(--bdr);border-radius:8px;padding:14px;text-align:center}
+.bl-kpi-num{font-family:'Barlow Condensed',sans-serif;font-size:27px;font-weight:900;color:var(--g);line-height:1;margin-bottom:3px}
+.bl-kpi-label{font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)}
+.bl-kpi.warn .bl-kpi-num{color:var(--warn)}
+.bl-kpi.danger .bl-kpi-num{color:var(--danger)}
+.bl-kpi.info .bl-kpi-num{color:var(--info)}
+.bl-kpi.teal .bl-kpi-num{color:var(--teal)}
+.bl-funnel{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:18px}
+.bl-funnel-step{background:var(--k3);border:1px solid var(--bdr);border-radius:7px;padding:12px 10px;position:relative;min-height:72px}
+.bl-funnel-step:not(:last-child)::after{content:'›';position:absolute;right:-7px;top:50%;transform:translateY(-50%);color:var(--t3);font-size:16px;z-index:2}
+.bl-funnel-num{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:var(--g);line-height:1;margin-bottom:4px}
+.bl-funnel-title{font-size:10.5px;font-weight:700;color:var(--t1);line-height:1.25}
+.bl-funnel-sub{font-size:9.5px;color:var(--t3);margin-top:2px;line-height:1.25}
+.bl-list{display:grid;gap:7px}
+.bl-seller-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;background:var(--k3);border:1px solid var(--bdr);border-radius:7px;padding:10px 12px;border-left:3px solid transparent}
+.bl-seller-row.pri{border-left-color:var(--warn)}
+.bl-seller-row.block{border-left-color:var(--danger)}
+.bl-seller-name{font-size:12.5px;font-weight:700;color:var(--t1);line-height:1.25}
+.bl-seller-meta{font-size:10.5px;color:var(--t3);line-height:1.35;margin-top:2px}
+.bl-seller-tags{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+.bl-mini-progress{height:5px;background:rgba(255,255,255,.07);border-radius:999px;overflow:hidden;margin-top:6px}
+.bl-mini-progress span{display:block;height:100%;background:var(--g);border-radius:999px}
+.bl-empty{padding:16px;text-align:center;color:var(--t3);font-size:12px;background:var(--k3);border:1px solid var(--bdr);border-radius:8px}
+.bl-two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
+.bl-error{background:rgba(217,64,64,.10);border:1px solid rgba(217,64,64,.25);color:#f29a9a;border-radius:7px;padding:12px 14px;font-size:12.5px;line-height:1.5;margin-bottom:14px}
+@media(max-width:860px){
+  .bl-kpi-grid{grid-template-columns:repeat(2,1fr)}
+  .bl-funnel{grid-template-columns:1fr}
+  .bl-funnel-step:not(:last-child)::after{display:none}
+  .bl-two-col{grid-template-columns:1fr}
+}
 
 /* ── RESPONSIVE */
 @media(max-width:860px){
-  .sc-live-grid,.sc-status-strip{grid-template-columns:repeat(2,1fr)}
-  .sc-insight-grid{grid-template-columns:1fr}
-  .sc-module-row{grid-template-columns:1fr 60px}
-  .sc-module-row .sc-mini-track{grid-column:1 / -1}
   .shell{grid-template-columns:1fr}
   .sidebar{display:none}
   .card-grid.c2,.card-grid.c3,.card-grid.c4{grid-template-columns:1fr}
@@ -363,7 +359,7 @@ select.rel-input option{background:var(--k3)}
     <span class="sb-label">Herramientas externas</span>
     <a class="sb-tool-link" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-backlog/" target="_blank"><span class="sb-icon">📊</span>Backlog Live<span class="sb-ext">↗</span></a>
     <a class="sb-tool-link" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-gantt-operativo/" target="_blank"><span class="sb-icon">📅</span>Gantt Operativo<span class="sb-ext">↗</span></a>
-    <a class="sb-tool-link" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-gantt-seller-center/" target="_blank"><span class="sb-icon">📅</span>Gantt Seller Center<span class="sb-ext">↗</span></a>
+    <a class="sb-tool-link" href="#" target="_blank"><span class="sb-icon">📅</span>Gantt Seller Center<span class="sb-ext">↗</span></a>
     <a class="sb-tool-link" href="#" target="_blank"><span class="sb-icon">📝</span>Formulario Relevamiento<span class="sb-ext">↗</span></a>
     <a class="sb-tool-link" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-simulador-economico/" target="_blank"><span class="sb-icon">🧮</span>Simulador Económico<span class="sb-ext">↗</span></a>
     <a class="sb-tool-link" href="https://antonioluquin-ecomm.github.io/sporting-marketplace/" target="_blank"><span class="sb-icon">🏪</span>Propuesta para Sellers<span class="sb-ext">↗</span></a>
@@ -396,7 +392,7 @@ select.rel-input option{background:var(--k3)}
     <button class="home-card ext" onclick="nav('relevamiento')"><div class="hc-icon">📝</div><h3>Relevamiento de Seller</h3><p>Formulario externo · respuestas automáticas a Google Sheets y email al equipo.</p><span class="hc-badge">↗ Herramienta externa</span></button>
     <button class="home-card" onclick="nav('modulos')"><div class="hc-icon">⚙️</div><h3>Módulos Operativos</h3><p>Articulado, stock, precio, pedidos, logística y más.</p></button>
     <button class="home-card" onclick="nav('economico')"><div class="hc-icon">💰</div><h3>Modelo Económico</h3><p>Comisiones, servicios, liquidación y lógica de envíos.</p></button>
-    <button class="home-card ext" onclick="nav('seller_center')"><div class="hc-icon">🛠️</div><h3>Seller Center — Gantt</h3><p>Resumen ejecutivo del avance · Gantt completo conectado a Google Sheets.</p><span class="hc-badge">↗ Gantt externo</span></button>
+    <button class="home-card ext" onclick="nav('seller_center')"><div class="hc-icon">🛠️</div><h3>Seller Center — Gantt</h3><p>Resumen de estado por dominio · Gantt detallado conectado a Google Sheets.</p><span class="hc-badge">↗ Gantt externo</span></button>
     <button class="home-card" onclick="nav('checklist')"><div class="hc-icon">✅</div><h3>Checklist por Seller</h3><p>Plantilla interactiva de integración por módulo.</p></button>
     <button class="home-card" onclick="nav('estrategia')"><div class="hc-icon">📈</div><h3>Estrategia de Evolución</h3><p>Las tres etapas: Activación, Construcción y Escala.</p></button>
   </div>
@@ -740,51 +736,93 @@ select.rel-input option{background:var(--k3)}
 <!-- ══════════════════════════════════════════
      BACKLOG SELLERS
 ══════════════════════════════════════════ -->
+
 <section id="page-backlog" class="page">
   <div class="page-title">Sellers Potenciales — Backlog</div>
-  <p class="page-sub">Registro inicial y oficial de oportunidades de incorporación al Marketplace. Centralizá los sellers identificados y mantené trazabilidad desde la etapa preliminar.</p>
+  <p class="page-sub">Resumen ejecutivo del pipeline de sellers potenciales. La información se consume desde Google Sheets y el detalle operativo completo se gestiona en el Backlog Live.</p>
 
-  <div class="alert alert-info">📊 El backlog operativo live está conectado a Google Sheets. Usá el link de abajo para ver el estado actualizado en tiempo real.</div>
+  <div class="bl-live-head">
+    <div>
+      <h2 style="margin-bottom:6px">Resumen del pipeline</h2>
+      <p style="margin-bottom:0">Vista consolidada para monitorear cantidad de sellers, avance por etapa, caminos de integración, prioridades y casos que requieren atención.</p>
+    </div>
+    <div class="bl-status"><span class="bl-dot" id="bl-live-dot"></span><span id="bl-live-status">Cargando datos…</span></div>
+  </div>
 
-  <a class="ext-tool-card" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-backlog/" target="_blank" style="margin-bottom:20px">
-    <div class="ext-tool-left"><div class="ext-tool-icon">📊</div><div><div class="ext-tool-name">Backlog de Sellers — Live</div><div class="ext-tool-desc">Conectado a Google Sheets · Kanban + Tabla · Filtros por camino, prioridad y estado</div></div></div>
+  <div id="bl-error-box"></div>
+
+  <div class="bl-kpi-grid">
+    <div class="bl-kpi"><div class="bl-kpi-num" id="bl-kpi-total">—</div><div class="bl-kpi-label">Total sellers</div></div>
+    <div class="bl-kpi warn"><div class="bl-kpi-num" id="bl-kpi-priority">—</div><div class="bl-kpi-label">Prioridad alta</div></div>
+    <div class="bl-kpi danger"><div class="bl-kpi-num" id="bl-kpi-blocked">—</div><div class="bl-kpi-label">Bloqueados</div></div>
+    <div class="bl-kpi info"><div class="bl-kpi-num" id="bl-kpi-onboarding">—</div><div class="bl-kpi-label">En onboarding</div></div>
+    <div class="bl-kpi teal"><div class="bl-kpi-num" id="bl-kpi-avg">—</div><div class="bl-kpi-label">Avance promedio</div></div>
+  </div>
+
+  <div class="section-block">
+    <h2>Funnel de incorporación</h2>
+    <div class="bl-funnel">
+      <div class="bl-funnel-step"><div class="bl-funnel-num" id="bl-f-contactado">0</div><div class="bl-funnel-title">Contactados</div><div class="bl-funnel-sub">Primer contacto / interés inicial</div></div>
+      <div class="bl-funnel-step"><div class="bl-funnel-num" id="bl-f-relevamiento">0</div><div class="bl-funnel-title">Relevamiento</div><div class="bl-funnel-sub">Datos técnicos y operativos</div></div>
+      <div class="bl-funnel-step"><div class="bl-funnel-num" id="bl-f-propuesta">0</div><div class="bl-funnel-title">Propuesta</div><div class="bl-funnel-sub">Evaluación y condiciones</div></div>
+      <div class="bl-funnel-step"><div class="bl-funnel-num" id="bl-f-acuerdo">0</div><div class="bl-funnel-title">Acuerdo</div><div class="bl-funnel-sub">Validación comercial / legal</div></div>
+      <div class="bl-funnel-step"><div class="bl-funnel-num" id="bl-f-onboarding">0</div><div class="bl-funnel-title">Onboarding</div><div class="bl-funnel-sub">Implementación y go-live</div></div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <h2>Distribución por camino de integración</h2>
+    <div class="card-grid c3" style="margin-bottom:0">
+      <div class="card" style="margin-bottom:0;border-left:3px solid var(--info)">
+        <span class="tag tb">Rápida activación</span>
+        <div class="stat-num" id="bl-path-fast" style="font-size:24px;margin-top:8px;color:var(--info)">0</div>
+        <p style="margin-bottom:0">Sellers que pueden operar con capacidades actuales o menor esfuerzo técnico.</p>
+      </div>
+      <div class="card" style="margin-bottom:0;border-left:3px solid var(--teal)">
+        <span class="tag tt">Integración VTEX</span>
+        <div class="stat-num" id="bl-path-vtex" style="font-size:24px;margin-top:8px;color:var(--teal)">0</div>
+        <p style="margin-bottom:0">Sellers con VTEX propio o integración directa entre plataformas.</p>
+      </div>
+      <div class="card" style="margin-bottom:0;border-left:3px solid var(--warn)">
+        <span class="tag ty">Seller Center</span>
+        <div class="stat-num" id="bl-path-sc" style="font-size:24px;margin-top:8px;color:var(--warn)">0</div>
+        <p style="margin-bottom:0">Sellers que requieren mayor madurez de plataforma y capacidades API.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bl-two-col">
+    <div class="section-block" style="margin-bottom:0">
+      <h2>Top sellers prioritarios</h2>
+      <div class="bl-list" id="bl-top-sellers">
+        <div class="bl-empty">Cargando sellers prioritarios…</div>
+      </div>
+    </div>
+
+    <div class="section-block" style="margin-bottom:0">
+      <h2>Alertas y bloqueos</h2>
+      <div class="bl-list" id="bl-alerts">
+        <div class="bl-empty">Cargando alertas…</div>
+      </div>
+    </div>
+  </div>
+
+  <a class="ext-tool-card" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-backlog/" target="_blank" style="margin-bottom:18px">
+    <div class="ext-tool-left"><div class="ext-tool-icon">📊</div><div><div class="ext-tool-name">Backlog de Sellers — Live</div><div class="ext-tool-desc">Abrir vista operativa completa · Kanban + tabla + filtros conectados a Google Sheets</div></div></div>
     <div class="ext-tool-arrow">↗</div>
   </a>
 
   <div class="section-block">
     <h2>Reglas de uso</h2>
     <div class="card-grid c2" style="margin-bottom:0">
-      <div class="card" style="margin-bottom:0"><p>Todo seller potencial <strong>debe registrarse</strong> en el backlog antes de avanzar.</p></div>
-      <div class="card" style="margin-bottom:0"><p>No se eliminan registros — cada caso se conserva mediante su <strong>estado</strong>.</p></div>
-      <div class="card" style="margin-bottom:0"><p>Las observaciones deben ser <strong>breves, claras y útiles</strong> para el seguimiento.</p></div>
-      <div class="card" style="margin-bottom:0"><p>Un seller descartado solo se reabre ante un <strong>cambio relevante y justificado</strong>.</p></div>
+      <div class="card" style="margin-bottom:0"><p>Todo seller potencial debe registrarse en el backlog antes de avanzar.</p></div>
+      <div class="card" style="margin-bottom:0"><p>No se eliminan registros; cada caso conserva trazabilidad mediante su estado.</p></div>
+      <div class="card" style="margin-bottom:0"><p>Las observaciones deben ser breves, claras y orientadas al próximo paso.</p></div>
+      <div class="card" style="margin-bottom:0"><p>Los casos bloqueados o de riesgo alto deben actualizarse con causa y acción requerida.</p></div>
     </div>
   </div>
-
-  <div class="section-block">
-    <h2>Responsables</h2>
-    <table><thead><tr><th>Rol</th><th>Responsable</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Gestión y actualización</strong></td><td>Comercial eCommerce</td></tr>
-      <tr><td><strong>Supervisión</strong></td><td>Gerencia eCommerce</td></tr>
-      <tr><td><strong>Soporte puntual</strong></td><td>Plataformas y Procesos</td></tr>
-    </tbody></table>
-  </div>
-
-  <div class="section-block">
-    <h2>Campos del backlog</h2>
-    <table><thead><tr><th>Campo</th><th>Descripción</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Seller / Marca</strong></td><td>Nombre del seller o marca</td></tr>
-      <tr><td><strong>Sistema / Plataforma</strong></td><td>VTEX / propio / sin sistema</td></tr>
-      <tr><td><strong>Modelo de integración tentativo</strong></td><td>VTEX→VTEX / Interfaz / API / Manual</td></tr>
-      <tr><td><strong>Camino (priorización)</strong></td><td>Rápida activación / Integración VTEX / Seller Center</td></tr>
-      <tr><td><strong>Estado</strong></td><td>Contactado / Relevamiento / Propuesta / Acuerdo / Onboarding</td></tr>
-      <tr><td><strong>Prioridad</strong></td><td>Alta / Media / Baja</td></tr>
-      <tr><td><strong>Observaciones</strong></td><td>Notas de situación, pausa o descarte</td></tr>
-    </tbody></table>
-  </div>
 </section>
+
 
 <!-- ══════════════════════════════════════════
      MODELO ECONÓMICO
@@ -927,115 +965,117 @@ select.rel-input option{background:var(--k3)}
 </section>
 
 <!-- ══════════════════════════════════════════
-     SELLER CENTER — ROADMAP
+     SELLER CENTER — GANTT
 ══════════════════════════════════════════ -->
 <section id="page-seller_center" class="page">
-  <div class="page-title">Seller Center — Avance Ejecutivo</div>
-  <p class="page-sub">Panel resumen vivo del desarrollo del Seller Center. Esta vista consume la misma hoja de Google Sheets que alimenta el Gantt operativo, pero presenta solo los indicadores clave para seguimiento ejecutivo.</p>
+  <div class="page-title">Seller Center — Plataforma</div>
+  <p class="page-sub">Resumen del roadmap de desarrollo del Seller Center por dominio. El Gantt detallado vive en Google Sheets y se actualiza en tiempo real. Este panel muestra el estado actual de cada dominio y el avance por trimestre.</p>
 
-  <div class="sc-live-updated" id="scLiveUpdated">Conectando con Google Sheets…</div>
-
-  <div class="sc-live-grid">
-    <div class="sc-live-stat">
-      <div class="sc-live-num" id="scTotalTasks">—</div>
-      <div class="sc-live-label">Tareas totales</div>
-      <div class="sc-live-sub">Roadmap Seller Center</div>
-    </div>
-    <div class="sc-live-stat">
-      <div class="sc-live-num" id="scOverallProgress">—</div>
-      <div class="sc-live-label">Avance general</div>
-      <div class="sc-live-sub">Promedio por avance / estado</div>
-    </div>
-    <div class="sc-live-stat">
-      <div class="sc-live-num" id="scActiveTasks">—</div>
-      <div class="sc-live-label">En curso</div>
-      <div class="sc-live-sub">Tareas activas actualmente</div>
-    </div>
-    <div class="sc-live-stat">
-      <div class="sc-live-num" id="scCriticalTasks">—</div>
-      <div class="sc-live-label">Bloqueadas</div>
-      <div class="sc-live-sub">Requieren gestión</div>
-    </div>
+  <div class="stat-grid">
+    <div class="stat-box"><div class="stat-num" style="font-size:18px;color:var(--g)">Q2</div><div class="stat-label">Etapa actual</div></div>
+    <div class="stat-box"><div class="stat-num" style="font-size:18px;color:var(--info)">Q3</div><div class="stat-label">Construcción API interna</div></div>
+    <div class="stat-box"><div class="stat-num" style="font-size:18px;color:var(--warn)">Q4</div><div class="stat-label">Go-live por dominio</div></div>
+    <div class="stat-box"><div class="stat-num">7</div><div class="stat-label">Dominios en roadmap</div></div>
   </div>
 
-  <div class="sc-progress-card">
-    <div class="sc-progress-top">
-      <div>
-        <div class="sc-progress-title">Avance consolidado del Seller Center</div>
-        <p style="margin:4px 0 0">Lectura resumida del roadmap completo: tareas manuales, masivas y API, agrupadas por módulo funcional.</p>
-      </div>
-      <div class="sc-progress-pct" id="scProgressPct">—</div>
-    </div>
-    <div class="sc-progress-track"><div class="sc-progress-fill" id="scProgressFill"></div></div>
-    <div class="sc-progress-note" id="scProgressNote">Calculando avance desde Google Sheets…</div>
-  </div>
-
-  <div class="sc-status-strip">
-    <div class="sc-status-item"><div class="sc-status-count st-noiniciado" id="scStNoIni">0</div><div class="sc-status-label">No iniciado</div></div>
-    <div class="sc-status-item"><div class="sc-status-count" style="color:var(--info)" id="scStPlan">0</div><div class="sc-status-label">Planificado</div></div>
-    <div class="sc-status-item"><div class="sc-status-count" style="color:var(--warn)" id="scStCurso">0</div><div class="sc-status-label">En curso</div></div>
-    <div class="sc-status-item"><div class="sc-status-count" style="color:var(--danger)" id="scStBloq">0</div><div class="sc-status-label">Bloqueado</div></div>
-    <div class="sc-status-item"><div class="sc-status-count" style="color:var(--g)" id="scStComp">0</div><div class="sc-status-label">Completado</div></div>
-  </div>
-
-  <a class="ext-tool-card" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-gantt-seller-center/" target="_blank" style="margin-bottom:20px;border-left-color:var(--violet)">
+  <a class="ext-tool-card" href="#" target="_blank" style="margin-bottom:20px;border-left-color:var(--violet)">
     <div class="ext-tool-left">
       <div class="ext-tool-icon">📅</div>
       <div>
-        <div class="ext-tool-name">Abrir Gantt Seller Center completo</div>
-        <div class="ext-tool-desc">Vista operativa detallada · tareas, fechas, responsables, Jira, GitLab y observaciones</div>
+        <div class="ext-tool-name">Gantt Seller Center — Live</div>
+        <div class="ext-tool-desc">Conectado a Google Sheets · Detalle por dominio, tarea y responsable · Actualización en tiempo real</div>
       </div>
     </div>
     <div class="ext-tool-arrow" style="color:var(--violet)">↗</div>
   </a>
 
-  <div class="section-block">
-    <h2>Avance por módulo funcional</h2>
-    <p>Resumen del avance por frente de trabajo. El detalle de cada tarea se consulta en el Gantt completo.</p>
-    <div class="sc-module-list" id="scModuleSummary">
-      <div class="sc-empty">Cargando módulos…</div>
+  <h2 style="margin-bottom:12px">Estado actual por dominio</h2>
+
+  <table style="margin-bottom:20px">
+    <thead>
+      <tr>
+        <th>Dominio</th>
+        <th>Estado Q2</th>
+        <th>Próximo hito</th>
+        <th>Go-live API</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Articulado</strong><br><small style="color:var(--t3)">Creación de SKUs</small></td>
+        <td><span class="tag tg">Base disponible</span></td>
+        <td>Planilla operativa (Q3)</td>
+        <td><span class="tag tv">Oct 2026</span></td>
+      </tr>
+      <tr>
+        <td><strong>Catalogación</strong><br><small style="color:var(--t3)">Publicación en VTEX</small></td>
+        <td><span class="tag ty">En piloto</span></td>
+        <td>Planilla operativa (Q3)</td>
+        <td><span class="tag tv">Oct 2026</span></td>
+      </tr>
+      <tr>
+        <td><strong>Stock y Precio</strong><br><small style="color:var(--t3)">Actualización en tiempo real</small></td>
+        <td><span class="tag tg">Base disponible</span></td>
+        <td>Desarrollo API (Q3)</td>
+        <td><span class="tag tv">Oct 2026</span></td>
+      </tr>
+      <tr>
+        <td><strong>Pedidos</strong><br><small style="color:var(--t3)">Gestión del flujo de ventas</small></td>
+        <td><span class="tag ty">Piloto operación</span></td>
+        <td>Planilla operativa (Q3)</td>
+        <td><span class="tag tv">Oct 2026</span></td>
+      </tr>
+      <tr>
+        <td><strong>Devoluciones</strong><br><small style="color:var(--t3)">Flujo inverso</small></td>
+        <td><span class="tag ty">Flujo piloto</span></td>
+        <td>Flujo estándar (Q3)</td>
+        <td><span class="tag tv">Oct 2026</span></td>
+      </tr>
+      <tr>
+        <td><strong>Comprobantes</strong><br><small style="color:var(--t3)">Facturación a nombre del seller</small></td>
+        <td><span class="tag tb">Definición por seller</span></td>
+        <td>Solución base (Jun)</td>
+        <td><span class="tag tv">Oct 2026</span></td>
+      </tr>
+      <tr>
+        <td><strong style="color:var(--violet)">Capa API</strong><br><small style="color:var(--t3)">Arquitectura rectora · define la secuencia de todos los dominios</small></td>
+        <td><span class="tag tv">Arquitectura en curso</span></td>
+        <td>Desarrollo API (Q3)</td>
+        <td><span class="tag tv" style="background:rgba(206,147,216,.25);border-color:rgba(206,147,216,.5)">Sep 2026 — Cierre técnico</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="card-grid c3" style="margin-bottom:18px">
+    <div class="card" style="margin-bottom:0;border-left:3px solid var(--g)">
+      <h3>Q2 · Activación + Definición</h3>
+      <ul>
+        <li>Base de articulado, stock y precio disponible</li>
+        <li>Pedidos y devoluciones operando via interfaz en piloto</li>
+        <li>Catalogación en uso con los primeros sellers</li>
+        <li>Diseño de arquitectura API iniciado</li>
+      </ul>
+    </div>
+    <div class="card" style="margin-bottom:0;border-left:3px solid var(--info)">
+      <h3>Q3 · Construcción API Interna</h3>
+      <ul>
+        <li>Desarrollo de la capa API transversal</li>
+        <li>Planillas operativas por dominio</li>
+        <li>Testing interno de todos los módulos</li>
+        <li>Preparación técnica para primer seller API</li>
+      </ul>
+    </div>
+    <div class="card" style="margin-bottom:0;border-left:3px solid var(--warn)">
+      <h3>Q4 · Go-Live por Dominio</h3>
+      <ul>
+        <li>Go-live API: articulado, catalogación, stock/precio, pedidos, devoluciones, comprobantes</li>
+        <li>Primer seller con sistemas propios operando vía API</li>
+        <li>Operación autónoma y base replicable</li>
+      </ul>
     </div>
   </div>
 
-  <div class="sc-insight-grid">
-    <div class="sc-insight-card" style="border-left:3px solid var(--warn)">
-      <h3>Próximos hitos</h3>
-      <p>Hitos marcados en la hoja, ordenados por fecha de finalización.</p>
-      <div class="sc-task-list" id="scUpcomingMilestones">
-        <div class="sc-empty">Cargando hitos…</div>
-      </div>
-    </div>
-    <div class="sc-insight-card" style="border-left:3px solid var(--danger)">
-      <h3>Alertas / bloqueos</h3>
-      <p>Tareas bloqueadas o con prioridad alta que requieren seguimiento.</p>
-      <div class="sc-task-list" id="scRisks">
-        <div class="sc-empty">Cargando alertas…</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section-block" style="border-left:3px solid var(--info)">
-    <h2>Lectura ejecutiva</h2>
-    <div class="card-grid c3" style="margin-bottom:0;margin-top:12px">
-      <div class="card" style="margin-bottom:0;border-left:3px solid var(--g)">
-        <span class="tag tg">Q2 · Activación</span>
-        <h3 style="margin-top:6px">Base operativa</h3>
-        <p>Se priorizan los flujos necesarios para operar sellers con las capacidades actuales.</p>
-      </div>
-      <div class="card" style="margin-bottom:0;border-left:3px solid var(--info)">
-        <span class="tag tb">Q3 · Construcción</span>
-        <h3 style="margin-top:6px">Estandarización</h3>
-        <p>Se consolidan procesos masivos, responsables, trazabilidad y desarrollos por módulo.</p>
-      </div>
-      <div class="card" style="margin-bottom:0;border-left:3px solid var(--violet)">
-        <span class="tag tv">Q4 · Escala</span>
-        <h3 style="margin-top:6px">Integración API</h3>
-        <p>Se habilita la evolución hacia integración automática según madurez de cada módulo.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="alert alert-info">📌 <strong>Criterio:</strong> el HUB muestra el estado ejecutivo y consume datos vivos. El Gantt completo queda como herramienta operativa para revisar tareas, dependencias, observaciones y links de Jira/GitLab.</div>
+  <div class="alert alert-warn">⚠️ <strong>La capa API es la fila rectora:</strong> define la secuencia de habilitación de todos los dominios. Ningún dominio puede estar en go-live API antes de que la capa API esté homologada y cerrada técnicamente (Septiembre 2026).</div>
 </section>
 
 <!-- ══════════════════════════════════════════
@@ -1271,170 +1311,172 @@ function updateCL(){
 }
 
 function resetCL(){ checked={}; renderCL(); updateCL(); }
-setInt('manual');
 
 // ══════════════════════════════════
-// SELLER CENTER LIVE SUMMARY FROM GOOGLE SHEETS
+// BACKLOG SELLERS LIVE SUMMARY
 // ══════════════════════════════════
-const SC_SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTwd-qIMhoH1poJpaTZqN-7O5IGAfPDTxslBAX8LCPogTkwheW2vWsq59JkvvYakM8ndCKgUQualQyi/pub?gid=1440698993&single=true&output=csv';
-const SC_MODULE_ORDER = ['Articulado','Catalogacion','Stock','Precio','Pedidos','Devoluciones','Comprobantes','Logistica Directa','Logistica Inversa','Conciliacion'];
+const BL_SELLERS_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTwd-qIMhoH1poJpaTZqN-7O5IGAfPDTxslBAX8LCPogTkwheW2vWsq59JkvvYakM8ndCKgUQualQyi/pub?gid=899415596&single=true&output=csv";
 
-function scNormalize(str){
-  return String(str || '').trim().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ');
+function blNorm(s){
+  return String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_+|_+$/g,'');
 }
-function scSlug(str){ return scNormalize(str).toLowerCase().replace(/[^a-z0-9%]+/g,''); }
-function scParseDate(value){
-  if(!value) return null;
-  const s = String(value).trim();
-  if(/^\d{4}-\d{2}-\d{2}$/.test(s)){ const [y,m,d]=s.split('-').map(Number); return new Date(y,m-1,d); }
-  if(/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(s)){ const [d,m,y]=s.split('/').map(Number); return new Date(y,m-1,d); }
-  const d = new Date(s); return isNaN(d) ? null : d;
+function blEsc(s){
+  return String(s || '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
 }
-function scFmtDate(d){ return d ? d.toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'numeric'}) : '-'; }
-function scCsvParse(text){
+function blParseCSV(text){
   const rows=[]; let row=[], cell='', q=false;
   for(let i=0;i<text.length;i++){
     const c=text[i], n=text[i+1];
-    if(c==='"' && q && n==='"'){ cell+='"'; i++; continue; }
-    if(c==='"'){ q=!q; continue; }
-    if(c===',' && !q){ row.push(cell); cell=''; continue; }
-    if((c==='\n'||c==='\r') && !q){
-      if(c==='\r' && n==='\n') i++;
-      row.push(cell); cell='';
-      if(row.some(v=>String(v).trim()!=='')) rows.push(row);
-      row=[]; continue;
-    }
-    cell+=c;
+    if(c === '"'){ if(q && n === '"'){cell+='"';i++;} else q=!q; }
+    else if(c === ',' && !q){ row.push(cell); cell=''; }
+    else if((c === '\n' || c === '\r') && !q){ if(c==='\r' && n==='\n') i++; row.push(cell); if(row.some(v=>String(v).trim())) rows.push(row); row=[]; cell=''; }
+    else cell += c;
   }
-  row.push(cell); if(row.some(v=>String(v).trim()!=='')) rows.push(row);
+  row.push(cell); if(row.some(v=>String(v).trim())) rows.push(row);
   return rows;
 }
-function scMapRows(rows){
-  if(!rows.length) return [];
-  const headers = rows[0].map(h => scSlug(h));
-  const idx = name => headers.indexOf(scSlug(name));
-  const get = (row,name) => { const i=idx(name); return i>=0 ? String(row[i]||'').trim() : ''; };
-  return rows.slice(1).map(row => {
-    const avanceRaw = get(row,'% Avance') || get(row,'Avance') || '';
-    let avance = parseFloat(String(avanceRaw).replace('%','').replace(',','.'));
-    if(isNaN(avance)) avance = null;
-    const estado = get(row,'Estado') || 'No iniciado';
-    return {
-      id:get(row,'ID'), modulo:get(row,'Modulo'), tarea:get(row,'Tarea'), descripcion:get(row,'Descripcion'),
-      modalidad:get(row,'Modalidad'), responsable:get(row,'Responsable'), estado, prioridad:get(row,'Prioridad'),
-      inicio:scParseDate(get(row,'Fecha Inicio')), fin:scParseDate(get(row,'Fecha Fin')), dependencia:get(row,'Dependencia'),
-      observaciones:get(row,'Observaciones'), tipo:get(row,'Tipo'), avance, hito:get(row,'Hito'),
-      jira:get(row,'Link Jira'), gitlab:get(row,'Link GitLab'), actualizacion:scParseDate(get(row,'Fecha Ultima Actualizacion'))
-    };
-  }).filter(x => x.id && x.modulo && x.tarea);
+function blHeader(h){
+  const n = blNorm(h);
+  const aliases = {
+    seller_id:['seller_id','id_unico_del_seller','id_unico'],
+    nombre:['nombre','seller_nombre','nombre_marca','nombre___marca'],
+    categoria:['categoria','categoria_principal'],
+    camino:['camino','camino_de_integracion','camino_de_integracion'],
+    modelo_integracion:['modelo_integracion','integracion','tipo_de_integracion','modelo_de_integracion'],
+    owner:['owner','responsable'],
+    estado_macro:['estado_macro','estado','estado_del_contacto'],
+    etapa_actual:['etapa_actual','etapa'],
+    prioridad:['prioridad'],
+    proximo_paso:['proximo_paso'],
+    progreso_pct:['progreso_pct','progreso'],
+    bloqueo_flag:['bloqueo_flag','bloqueo'],
+    bloqueo_resumen:['bloqueo_resumen'],
+    riesgo_nivel:['riesgo_nivel','riesgo'],
+    go_live_objetivo:['go_live_objetivo','fecha_estimada','go_live','fecha_estimada_go_live'],
+    activo:['activo'],
+    notas:['notas','notas_observaciones','observaciones_resumen']
+  };
+  for(const [key, list] of Object.entries(aliases)) if(list.includes(n)) return key;
+  return n;
 }
-function scProgressFromStatus(estado){
-  const s=scSlug(estado);
-  if(s==='completado') return 100;
-  if(s==='encurso') return 50;
-  if(s==='planificado') return 10;
-  if(s==='bloqueado') return 25;
-  return 0;
+function blCap(v){ const s=String(v||'').trim(); return s ? s[0].toUpperCase()+s.slice(1) : ''; }
+function blCamino(v){
+  const n=blNorm(v);
+  if(n.includes('rapida')) return 'rapida_activacion';
+  if(n.includes('vtex')) return 'integracion_vtex';
+  if(n.includes('seller_center') || n.includes('center')) return 'seller_center';
+  return v || '—';
 }
-function scProgressValue(item){
-  if(typeof item.avance === 'number' && item.avance >= 0) return Math.max(0, Math.min(100, item.avance));
-  return scProgressFromStatus(item.estado);
+function blCaminoLabel(v){
+  if(v==='rapida_activacion') return 'Rápida activación';
+  if(v==='integracion_vtex') return 'Integración VTEX';
+  if(v==='seller_center') return 'Seller Center';
+  return v || '—';
 }
-function scSetText(id,value){ const el=document.getElementById(id); if(el) el.textContent=value; }
-function scEscape(str){ return String(str ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m])); }
-function scTagClass(value,type){
-  const s=scSlug(value);
-  if(type==='estado'){
-    if(s==='completado') return 'tg';
-    if(s==='encurso') return 'ty';
-    if(s==='bloqueado') return 'tr';
-    if(s==='planificado') return 'tb';
-    return '';
-  }
-  if(type==='prioridad'){
-    if(s==='alta') return 'tr';
-    if(s==='media') return 'ty';
-    return '';
-  }
-  return 'tb';
+function blInteg(v){
+  const n=blNorm(v);
+  if(n.includes('sistemas') || n.includes('actuales')) return 'Sistemas actuales';
+  if(n.includes('seller_center') || n.includes('center')) return 'Seller Center';
+  if(n.includes('vtex')) return 'VTEX → VTEX';
+  return v || '—';
 }
-function scTaskCard(item){
-  const links=[];
-  if(item.jira) links.push(`<a class="sc-small-link" href="${scEscape(item.jira)}" target="_blank">Jira ↗</a>`);
-  if(item.gitlab) links.push(`<a class="sc-small-link" href="${scEscape(item.gitlab)}" target="_blank">GitLab ↗</a>`);
-  return `<div class="sc-task-item">
-    <div class="sc-task-title">${scEscape(item.tarea)}</div>
-    <div class="sc-task-meta"><strong>${scEscape(item.modulo)}</strong> · ${scEscape(item.responsable || 'Sin responsable')} · ${scFmtDate(item.fin)}</div>
-    <div style="margin-top:6px"><span class="tag ${scTagClass(item.estado,'estado')}">${scEscape(item.estado)}</span><span class="tag ${scTagClass(item.prioridad,'prioridad')}">${scEscape(item.prioridad || 'Sin prioridad')}</span></div>
-    ${item.observaciones ? `<div class="sc-task-meta" style="margin-top:5px">Obs: ${scEscape(item.observaciones)}</div>` : ''}
-    ${links.length ? `<div class="sc-task-links">${links.join('')}</div>` : ''}
+function blTransform(rows){
+  const valid = rows.filter(r => r.some(v => String(v || '').trim()));
+  const hi = valid.findIndex(r => r.some(v => blNorm(v).includes('seller_id') || blNorm(v).includes('id_unico')));
+  if(hi < 0) throw new Error('No se encontró la fila de encabezados del backlog.');
+  const headers = valid[hi].map(blHeader);
+  return valid.slice(hi+1).map(r => {
+    const o={}; headers.forEach((h,i)=>o[h]=String(r[i]||'').trim());
+    if(!o.seller_id || !/^SPT-/i.test(o.seller_id)) return null;
+    const s = {...o};
+    s.nombre = s.nombre || '—';
+    s.categoria = s.categoria || '—';
+    s.camino = blCamino(s.camino);
+    s.modelo_integracion = blInteg(s.modelo_integracion);
+    s.estado_macro = s.estado_macro || s.etapa_actual || 'Contactado';
+    s.prioridad = blCap(s.prioridad || 'Media');
+    s.progreso_pct = Math.min(100, Math.max(0, parseFloat(s.progreso_pct) || 0));
+    s.bloqueo_flag = blNorm(s.bloqueo_flag) === 'si' || blNorm(s.bloqueo_flag) === 's';
+    s.riesgo_nivel = blCap(s.riesgo_nivel || 'Bajo');
+    s.activo = s.activo === '' || blNorm(s.activo) !== 'no';
+    return s;
+  }).filter(Boolean).filter(s => s.activo);
+}
+function blCount(data, fn){ return data.filter(fn).length; }
+function blSet(id, value){ const el=document.getElementById(id); if(el) el.textContent=value; }
+function blEstadoCount(data, key){
+  return data.filter(s => blNorm((s.estado_macro || '') + ' ' + (s.etapa_actual || '')).includes(key)).length;
+}
+function blRow(s, opts={}){
+  const pct = Math.round(s.progreso_pct || 0);
+  const cls = opts.block ? 'block' : 'pri';
+  return `<div class="bl-seller-row ${cls}">
+    <div>
+      <div class="bl-seller-name">${blEsc(s.nombre)}</div>
+      <div class="bl-seller-meta">${blEsc(s.seller_id)} · ${blEsc(s.categoria)} · ${blEsc(blCaminoLabel(s.camino))} · ${blEsc(s.owner || 'Sin responsable')}</div>
+      <div class="bl-mini-progress"><span style="width:${pct}%"></span></div>
+    </div>
+    <div class="bl-seller-tags">
+      ${s.bloqueo_flag ? '<span class="tag tr">Bloqueado</span>' : ''}
+      <span class="tag ${blNorm(s.prioridad)==='alta'?'ty':'tg'}">${blEsc(s.prioridad)}</span>
+      <span class="tag tb">${pct}%</span>
+    </div>
   </div>`;
 }
-function scRenderSummary(data){
-  const total=data.length;
-  const avg = total ? Math.round(data.reduce((a,x)=>a+scProgressValue(x),0)/total) : 0;
-  const count = label => data.filter(x=>scSlug(x.estado)===scSlug(label)).length;
-  const noini=count('No iniciado'), plan=count('Planificado'), curso=count('En curso'), bloq=count('Bloqueado'), comp=count('Completado');
-  scSetText('scTotalTasks', total);
-  scSetText('scOverallProgress', avg + '%');
-  scSetText('scActiveTasks', curso);
-  scSetText('scCriticalTasks', bloq);
-  scSetText('scProgressPct', avg + '%');
-  const fill=document.getElementById('scProgressFill'); if(fill) fill.style.width=avg+'%';
-  scSetText('scProgressNote', `${comp} tareas completadas · ${curso} en curso · ${bloq} bloqueadas · ${plan} planificadas.`);
-  scSetText('scStNoIni', noini); scSetText('scStPlan', plan); scSetText('scStCurso', curso); scSetText('scStBloq', bloq); scSetText('scStComp', comp);
-
-  const groups = new Map();
-  data.forEach(item=>{ if(!groups.has(item.modulo)) groups.set(item.modulo, []); groups.get(item.modulo).push(item); });
-  const moduleRows = Array.from(groups.entries()).sort((a,b)=>{
-    const ai=SC_MODULE_ORDER.indexOf(a[0]); const bi=SC_MODULE_ORDER.indexOf(b[0]);
-    return (ai<0?999:ai)-(bi<0?999:bi);
-  }).map(([mod,items])=>{
-    const pct = items.length ? Math.round(items.reduce((a,x)=>a+scProgressValue(x),0)/items.length) : 0;
-    const done = items.filter(x=>scSlug(x.estado)==='completado').length;
-    const active = items.filter(x=>scSlug(x.estado)==='encurso').length;
-    return `<div class="sc-module-row">
-      <div><div class="sc-module-name">${scEscape(mod)}</div><div class="sc-module-meta">${items.length} tareas · ${done} completas · ${active} en curso</div></div>
-      <div class="sc-module-pct">${pct}%</div>
-      <div class="sc-mini-track"><div class="sc-mini-fill" style="width:${pct}%"></div></div>
-      <div style="text-align:right"><span class="tag ${pct>=75?'tg':pct>=35?'ty':'tb'}">${pct>=75?'Avanzado':pct>=35?'En curso':'Inicial'}</span></div>
-    </div>`;
-  }).join('');
-  document.getElementById('scModuleSummary').innerHTML = moduleRows || '<div class="sc-empty">Sin datos por módulo.</div>';
-
-  const now = new Date();
-  const milestones = data.filter(x=>scSlug(x.hito)==='si' || scSlug(x.hito)==='sí' || scSlug(x.hito)==='s').sort((a,b)=>(a.fin||now)-(b.fin||now)).slice(0,4);
-  document.getElementById('scUpcomingMilestones').innerHTML = milestones.length ? milestones.map(scTaskCard).join('') : '<div class="sc-empty">No hay hitos marcados en la hoja.</div>';
-
-  const risks = data.filter(x=>scSlug(x.estado)==='bloqueado' || (scSlug(x.prioridad)==='alta' && scSlug(x.estado)!=='completado')).sort((a,b)=>{
-    if(scSlug(a.estado)==='bloqueado' && scSlug(b.estado)!=='bloqueado') return -1;
-    if(scSlug(b.estado)==='bloqueado' && scSlug(a.estado)!=='bloqueado') return 1;
-    return (a.fin||now)-(b.fin||now);
-  }).slice(0,4);
-  document.getElementById('scRisks').innerHTML = risks.length ? risks.map(scTaskCard).join('') : '<div class="sc-empty">Sin bloqueos ni alertas de prioridad alta.</div>';
-
-  const latest = data.map(x=>x.actualizacion).filter(Boolean).sort((a,b)=>b-a)[0];
-  const updated = latest ? `Datos actualizados según hoja: ${scFmtDate(latest)}` : `Datos cargados desde Google Sheets · ${new Date().toLocaleString('es-AR')}`;
-  scSetText('scLiveUpdated', updated);
-}
-async function scLoadSellerCenterSummary(){
-  if(!document.getElementById('scTotalTasks')) return;
+async function blLoadBacklogSummary(){
+  const dot = document.getElementById('bl-live-dot');
+  const status = document.getElementById('bl-live-status');
+  const errBox = document.getElementById('bl-error-box');
+  if(!dot || !status) return;
   try{
-    const res = await fetch(SC_SHEET_CSV_URL + '&t=' + Date.now(), {cache:'no-store'});
-    if(!res.ok) throw new Error('No se pudo leer el CSV publicado.');
-    const rows = scCsvParse(await res.text());
-    const data = scMapRows(rows);
-    if(!data.length) throw new Error('La hoja no contiene filas válidas.');
-    scRenderSummary(data);
-  }catch(err){
-    scSetText('scLiveUpdated', 'No se pudo actualizar el resumen desde Google Sheets.');
-    document.getElementById('scModuleSummary').innerHTML = `<div class="sc-empty">${scEscape(err.message)}</div>`;
-    document.getElementById('scUpcomingMilestones').innerHTML = '<div class="sc-empty">Sin datos disponibles.</div>';
-    document.getElementById('scRisks').innerHTML = '<div class="sc-empty">Sin datos disponibles.</div>';
+    dot.className = 'bl-dot';
+    status.textContent = 'Cargando datos…';
+    errBox.innerHTML = '';
+    const res = await fetch(BL_SELLERS_URL + '&_ts=' + Date.now(), {cache:'no-store'});
+    if(!res.ok) throw new Error('HTTP ' + res.status);
+    const data = blTransform(blParseCSV(await res.text()));
+    const total = data.length;
+    const avg = total ? Math.round(data.reduce((a,s)=>a+(s.progreso_pct||0),0)/total) : 0;
+    blSet('bl-kpi-total', total);
+    blSet('bl-kpi-priority', blCount(data, s => blNorm(s.prioridad)==='alta'));
+    blSet('bl-kpi-blocked', blCount(data, s => s.bloqueo_flag));
+    blSet('bl-kpi-onboarding', blEstadoCount(data, 'onboarding'));
+    blSet('bl-kpi-avg', avg + '%');
+
+    blSet('bl-f-contactado', blEstadoCount(data, 'contactado'));
+    blSet('bl-f-relevamiento', blEstadoCount(data, 'relevamiento'));
+    blSet('bl-f-propuesta', blEstadoCount(data, 'propuesta'));
+    blSet('bl-f-acuerdo', blEstadoCount(data, 'acuerdo'));
+    blSet('bl-f-onboarding', blEstadoCount(data, 'onboarding'));
+
+    blSet('bl-path-fast', blCount(data, s => s.camino === 'rapida_activacion'));
+    blSet('bl-path-vtex', blCount(data, s => s.camino === 'integracion_vtex'));
+    blSet('bl-path-sc', blCount(data, s => s.camino === 'seller_center'));
+
+    const top = data
+      .filter(s => blNorm(s.prioridad)==='alta')
+      .sort((a,b)=>(b.progreso_pct||0)-(a.progreso_pct||0))
+      .slice(0,5);
+    const alerts = data
+      .filter(s => s.bloqueo_flag || blNorm(s.riesgo_nivel)==='alto')
+      .sort((a,b)=>(b.bloqueo_flag?1:0)-(a.bloqueo_flag?1:0) || (b.progreso_pct||0)-(a.progreso_pct||0))
+      .slice(0,5);
+
+    document.getElementById('bl-top-sellers').innerHTML = top.length ? top.map(s => blRow(s)).join('') : '<div class="bl-empty">Sin sellers de prioridad alta.</div>';
+    document.getElementById('bl-alerts').innerHTML = alerts.length ? alerts.map(s => blRow(s, {block:s.bloqueo_flag})).join('') : '<div class="bl-empty">Sin bloqueos o riesgos altos activos.</div>';
+
+    dot.className = 'bl-dot ok';
+    status.textContent = 'Google Sheets · actualizado';
+  }catch(e){
+    console.error(e);
+    dot.className = 'bl-dot err';
+    status.textContent = 'Error al cargar';
+    errBox.innerHTML = `<div class="bl-error"><strong>No se pudo cargar el resumen del backlog.</strong><br>${blEsc(e.message)}<br>Verificar URL publicada como CSV y nombres de columnas.</div>`;
   }
 }
-scLoadSellerCenterSummary();
+blLoadBacklogSummary();
 
+setInt('manual');
 </script>
 </body>
 </html>
