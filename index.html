@@ -10,25 +10,26 @@
 :root {
   --g:#5ea832;--g2:#4a8a26;--g3:#3a6e1c;
   --g-dim:rgba(94,168,50,.10);--g-brd:rgba(94,168,50,.22);
-  --k:#0d0f0d;--k2:#131713;--k3:#181d17;--k4:#1d231c;--k5:#222820;
+  --k:#0a0c0a;--k2:#111411;--k3:#161b15;--k4:#1b2019;--k5:#202620;
   --w:#ffffff;
   --bdr:rgba(255,255,255,.07);--bdr-l:rgba(255,255,255,.04);
   --t1:#e8ede4;--t2:#a1b199;--t3:#6b7b65;
   --danger:#d94040;--warn:#ffb74d;--info:#64b5f6;--teal:#4db6ac;--violet:#ce93d8;
-  --shadow:0 6px 20px rgba(0,0,0,.28);
-  --sb:220px;--tb:52px;
+  --shadow:0 6px 24px rgba(0,0,0,.32);
+  --sb:228px;--tb:52px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{font-size:15px;scroll-behavior:smooth}
 body{font-family:'Barlow',sans-serif;background:var(--k);color:var(--t1);min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
 /* ── TOPBAR */
-.topbar{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--tb);display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:rgba(13,15,13,.97);border-bottom:1px solid var(--g-brd);backdrop-filter:blur(16px)}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--tb);display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:rgba(10,12,10,.97);border-bottom:1px solid var(--g-brd);backdrop-filter:blur(20px)}
 .tb-left{display:flex;align-items:center;gap:14px}
-.tb-logo{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:var(--w);white-space:nowrap}
+.tb-logo{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:var(--w);white-space:nowrap;cursor:pointer;transition:opacity .15s}.tb-logo:hover{opacity:.85}
 .tb-logo span{color:var(--g)}
 .tb-sep{width:1px;height:18px;background:var(--bdr)}
 .tb-module{font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--t3)}
+.tb-bc-page{font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--t2);display:none}.tb-bc-page.visible{display:block}.tb-bc-sep{font-size:10px;color:var(--t3);opacity:.4}
 .tb-right{display:flex;align-items:center;gap:10px}
 .badge{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:4px;border:1px solid var(--g-brd);color:var(--g);background:var(--g-dim)}
 .dot-live{width:7px;height:7px;border-radius:50%;background:var(--g);box-shadow:0 0 0 3px rgba(94,168,50,.18);animation:pulse 2s infinite;display:inline-block;margin-right:5px}
@@ -41,24 +42,25 @@ body{font-family:'Barlow',sans-serif;background:var(--k);color:var(--t1);min-hei
 /* ── SIDEBAR */
 .sidebar{position:sticky;top:var(--tb);height:calc(100vh - var(--tb));overflow-y:auto;background:var(--k2);border-right:1px solid var(--bdr);padding:12px 0}
 .sb-section{margin-bottom:16px}
-.sb-label{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--t3);padding:0 14px;margin-bottom:5px;display:block}
-.sb-item{display:flex;align-items:center;gap:8px;padding:7px 14px;cursor:pointer;color:var(--t2);font-size:12px;font-weight:500;transition:all .15s;border:none;background:none;width:100%;text-align:left;border-left:2px solid transparent;line-height:1.3}
+.sb-label{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--t3);padding:0 14px;margin-bottom:4px;display:flex;align-items:center;gap:6px}.sb-label::after{content:'';flex:1;height:1px;background:var(--bdr)}
+.sb-item{display:flex;align-items:center;gap:8px;padding:7px 14px;cursor:pointer;color:var(--t2);font-size:11.5px;font-weight:500;transition:all .13s;border:none;background:none;width:100%;text-align:left;border-left:2px solid transparent;line-height:1.3}
 .sb-item:hover{color:var(--t1);background:rgba(255,255,255,.03)}
-.sb-item.active{color:var(--g);background:var(--g-dim);border-left-color:var(--g)}
+.sb-item.active{color:var(--g);background:var(--g-dim);border-left-color:var(--g);font-weight:600}
 .sb-icon{font-size:13px;flex-shrink:0;width:16px;text-align:center}
-.sb-ext{font-size:9px;color:var(--g);margin-left:auto;opacity:.8}
+.sb-ext{font-size:9px;color:var(--teal);margin-left:auto;opacity:.75}
 .sb-divider{height:1px;background:var(--bdr);margin:6px 14px}
 .sb-tool-link{display:flex;align-items:center;gap:8px;padding:7px 14px;color:var(--t3);font-size:11.5px;font-weight:500;transition:all .15s;border:none;background:none;width:100%;text-align:left;border-left:2px solid transparent;text-decoration:none;cursor:pointer}
 .sb-tool-link:hover{color:var(--teal);background:rgba(77,182,172,.06);border-left-color:var(--teal)}
 
 /* ── MAIN */
-.main{padding:28px 32px 60px;max-width:980px}
+.main{padding:28px 32px 80px;max-width:1000px}
 .page{display:none}
 .page.active{display:block;animation:fadeIn .22s ease}
-@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
 
 /* ── TYPOGRAPHY */
-.page-title{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;letter-spacing:.02em;text-transform:uppercase;color:var(--w);margin-bottom:5px}
+.page-title{font-family:'Barlow Condensed',sans-serif;font-size:27px;font-weight:900;letter-spacing:.02em;text-transform:uppercase;color:var(--w);margin-bottom:4px;line-height:1}
+.page-eyebrow{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--g);margin-bottom:6px;display:block}
 .page-sub{font-size:13.5px;color:var(--t2);line-height:1.6;margin-bottom:24px;max-width:680px}
 h2{font-size:15px;font-weight:700;color:var(--t1);margin-bottom:10px;letter-spacing:.01em}
 h3{font-size:13.5px;font-weight:600;color:var(--t1);margin-bottom:7px}
@@ -231,13 +233,37 @@ select.rel-input option{background:var(--k3)}
 .logistica-table td.negative{color:var(--danger)}
 .logistica-table td.neutral{color:var(--warn)}
 
+
+/* ── MODULE BADGES I/M/A */
+.mod-badges{display:flex;gap:4px;margin-left:auto;flex-shrink:0}
+.mod-badge{font-size:9px;font-weight:800;letter-spacing:.08em;padding:2px 7px;border-radius:20px;border:1px solid transparent}
+.mb-i{background:rgba(100,181,246,.1);color:var(--info);border-color:rgba(100,181,246,.25)}
+.mb-m{background:rgba(255,183,77,.1);color:var(--warn);border-color:rgba(255,183,77,.25)}
+.mb-a{background:rgba(206,147,216,.1);color:var(--violet);border-color:rgba(206,147,216,.25)}
+
+/* ── DECISION LOG */
+.decision-item{background:var(--k3);border:1px solid var(--bdr);border-radius:7px;padding:12px 15px;margin-bottom:8px;display:grid;grid-template-columns:90px 1fr;gap:12px;align-items:start}
+.decision-item.dec-open{border-left:3px solid var(--g)}
+.decision-item.dec-pending{border-left:3px solid var(--warn)}
+.decision-item.dec-closed{border-left:3px solid var(--t3);opacity:.7}
+.dec-date{font-size:10px;color:var(--t3);font-family:'Barlow Condensed',sans-serif;font-weight:600;margin-top:2px}
+.dec-title{font-size:12.5px;font-weight:600;color:var(--t1);margin-bottom:3px}
+.dec-body{font-size:12px;color:var(--t2);line-height:1.5}
+.dec-owners{display:flex;gap:5px;margin-top:7px;flex-wrap:wrap}
+.dec-owner{font-size:9.5px;font-weight:600;padding:2px 8px;border-radius:20px;background:rgba(255,255,255,.04);color:var(--t3);border:1px solid var(--bdr)}
+
+/* ── COPY BUTTON */
+.copy-btn{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:6px 14px;border-radius:5px;cursor:pointer;border:1px solid var(--g-brd);background:var(--g-dim);color:var(--g);transition:all .15s;font-family:'Barlow',sans-serif}
+.copy-btn:hover{background:rgba(94,168,50,.18);border-color:rgba(94,168,50,.4)}
+.copy-btn.copied{background:rgba(94,168,50,.25)}
+
 /* ── SCROLL */
 .sidebar::-webkit-scrollbar{width:3px}
 .sidebar::-webkit-scrollbar-thumb{background:var(--bdr);border-radius:2px}
 
 /* ── PROGRESS BAR MINI */
 .progress-wrap{background:var(--k3);border-radius:6px;height:6px;overflow:hidden;border:1px solid var(--bdr)}
-.progress-fill{height:100%;background:var(--g);border-radius:6px;transition:width .3s}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--g),#7ec850);border-radius:6px;transition:width .35s}
 
 /* ── ALERT BOX */
 .alert{border-radius:6px;padding:10px 14px;margin-bottom:14px;font-size:12.5px;line-height:1.5}
@@ -300,9 +326,9 @@ select.rel-input option{background:var(--k3)}
 <!-- TOPBAR -->
 <div class="topbar">
   <div class="tb-left">
-    <div class="tb-logo">Sporting <span>Marketplace</span></div>
+    <div class="tb-logo" onclick="nav('home')">Sporting <span>Marketplace</span></div>
     <div class="tb-sep"></div>
-    <div class="tb-module">Hub Central · 2026</div>
+    <div style="display:flex;align-items:center;gap:5px"><span class="tb-module">Hub Central · 2026</span><span class="tb-bc-sep" id="tb-bc-sep" style="display:none">›</span><span class="tb-bc-page" id="tb-bc-page"></span></div>
   </div>
   <div class="tb-right">
     <div class="tb-status"><span class="dot-live"></span>En curso — Etapa Activación</div>
@@ -349,7 +375,8 @@ select.rel-input option{background:var(--k3)}
   <div class="sb-divider"></div>
 
   <div class="sb-section">
-    <span class="sb-label">Herramientas</span>
+    <span class="sb-label">Seguimiento</span>
+    <button class="sb-item" onclick="nav('decisiones')"><span class="sb-icon">📌</span>Decisiones y Acuerdos</button>
     <button class="sb-item" onclick="nav('checklist')"><span class="sb-icon">✅</span>Checklist por Seller</button>
   </div>
 
@@ -359,7 +386,7 @@ select.rel-input option{background:var(--k3)}
     <span class="sb-label">Herramientas externas</span>
     <a class="sb-tool-link" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-backlog/" target="_blank"><span class="sb-icon">📊</span>Backlog Live<span class="sb-ext">↗</span></a>
     <a class="sb-tool-link" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-gantt-operativo/" target="_blank"><span class="sb-icon">📅</span>Gantt Operativo<span class="sb-ext">↗</span></a>
-    <a class="sb-tool-link" href="#" target="_blank"><span class="sb-icon">📅</span>Gantt Seller Center<span class="sb-ext">↗</span></a>
+    <a class="sb-tool-link" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-gantt-seller-center/" target="_blank"><span class="sb-icon">📅</span>Gantt Seller Center<span class="sb-ext">↗</span></a>
     <a class="sb-tool-link" href="#" target="_blank"><span class="sb-icon">📝</span>Formulario Relevamiento<span class="sb-ext">↗</span></a>
     <a class="sb-tool-link" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-simulador-economico/" target="_blank"><span class="sb-icon">🧮</span>Simulador Económico<span class="sb-ext">↗</span></a>
     <a class="sb-tool-link" href="https://antonioluquin-ecomm.github.io/sporting-marketplace/" target="_blank"><span class="sb-icon">🏪</span>Propuesta para Sellers<span class="sb-ext">↗</span></a>
@@ -395,6 +422,7 @@ select.rel-input option{background:var(--k3)}
     <button class="home-card ext" onclick="nav('seller_center')"><div class="hc-icon">🛠️</div><h3>Seller Center — Gantt</h3><p>Resumen de estado por dominio · Gantt detallado conectado a Google Sheets.</p><span class="hc-badge">↗ Gantt externo</span></button>
     <button class="home-card" onclick="nav('checklist')"><div class="hc-icon">✅</div><h3>Checklist por Seller</h3><p>Plantilla interactiva de integración por módulo.</p></button>
     <button class="home-card" onclick="nav('estrategia')"><div class="hc-icon">📈</div><h3>Estrategia de Evolución</h3><p>Las tres etapas: Activación, Construcción y Escala.</p></button>
+    <button class="home-card" onclick="nav('decisiones')"><div class="hc-icon">📌</div><h3>Decisiones y Acuerdos</h3><p>Registro de decisiones tomadas, responsables y estado.</p></button>
   </div>
 
   <h2 style="margin-bottom:10px">Herramientas externas conectadas</h2>
@@ -1100,7 +1128,10 @@ select.rel-input option{background:var(--k3)}
   <div style="margin-bottom:18px">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
       <h2 style="margin:0">Progreso</h2>
-      <button onclick="resetCL()" style="font-size:11px;color:var(--t3);background:none;border:1px solid var(--bdr);border-radius:4px;padding:4px 10px;cursor:pointer;font-family:'Barlow',sans-serif">Resetear</button>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button class="copy-btn" id="cl-copy-btn" onclick="copyChecklist()">📋 Copiar para Sheet</button>
+        <button onclick="resetCL()" style="font-size:11px;color:var(--t3);background:none;border:1px solid var(--bdr);border-radius:4px;padding:4px 10px;cursor:pointer;font-family:'Barlow',sans-serif">Resetear</button>
+      </div>
     </div>
     <div class="progress-wrap"><div class="progress-fill" id="cl-bar" style="width:0%"></div></div>
     <div style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--t3);margin-top:4px">
@@ -1111,6 +1142,39 @@ select.rel-input option{background:var(--k3)}
 
   <div id="cl-content"></div>
 </section>
+<!-- ══════════════════════════════════════════
+     DECISIONES Y ACUERDOS
+══════════════════════════════════════════ -->
+<section id="page-decisiones" class="page">
+  <span class="page-eyebrow">Seguimiento interno</span>
+  <div class="page-title">Decisiones y Acuerdos</div>
+  <p class="page-sub">Registro de decisiones tomadas durante el proyecto — quién, cuándo y estado actual. Evita reconstruir contexto en cada reunión.</p>
+
+  <div class="alert alert-info" style="margin-bottom:20px">📌 <strong>Abiertas:</strong> vigentes · <strong>Pendientes:</strong> requieren resolución · <strong>Cerradas:</strong> superadas o reemplazadas.</div>
+
+  <div class="section-block">
+    <h2>Modelo y economía</h2>
+    <div class="decision-item dec-open"><div class="dec-date">Abr 2026</div><div><div class="dec-title">Comisión base: 7% sobre GMV</div><div class="dec-body">Comisión estándar del marketplace. Ajustes por seller según modelo, servicios y volumen acordados en overrides individuales.</div><div class="dec-owners"><span class="dec-owner">Comercial eCommerce</span><span class="dec-owner">Gerencia</span></div></div></div>
+    <div class="decision-item dec-open"><div class="dec-date">Abr 2026</div><div><div class="dec-title">Liquidación sobre pedidos cobrados, no entregados</div><div class="dec-body">La base mensual son los pedidos cobrados del período. Cancelaciones, devoluciones y no entregados se aplican como ajustes negativos.</div><div class="dec-owners"><span class="dec-owner">Finanzas</span><span class="dec-owner">Legal</span></div></div></div>
+    <div class="decision-item dec-open"><div class="dec-date">Abr 2026</div><div><div class="dec-title">Modelo de dos capas: transaccional + operativa</div><div class="dec-body">Una capa por venta (comisión + costo financiero) y una por servicio (logística, catalogación, fulfillment). Pueden coexistir en la misma operación.</div><div class="dec-owners"><span class="dec-owner">Comercial eCommerce</span><span class="dec-owner">Plataformas</span></div></div></div>
+  </div>
+
+  <div class="section-block">
+    <h2>Integración y plataforma</h2>
+    <div class="decision-item dec-open"><div class="dec-date">Abr 2026</div><div><div class="dec-title">Prioridad: sellers con VTEX propio primero</div><div class="dec-body">En la etapa de Activación se prioriza VTEX→VTEX. Menor esfuerzo técnico y salida más rápida al mercado.</div><div class="dec-owners"><span class="dec-owner">Plataformas</span><span class="dec-owner">Comercial eCommerce</span></div></div></div>
+    <div class="decision-item dec-open"><div class="dec-date">Abr 2026</div><div><div class="dec-title">Modelo objetivo: API → Seller Center → VTEX</div><div class="dec-body">Estado objetivo institucional. Cada seller se conecta vía API al Seller Center, que centraliza la operación. Requiere plataforma madura (Q4 2026).</div><div class="dec-owners"><span class="dec-owner">Plataformas</span><span class="dec-owner">Gerencia</span></div></div></div>
+    <div class="decision-item dec-closed"><div class="dec-date">Abr 2026</div><div><div class="dec-title">Descartado: Sporting provee VTEX al seller</div><div class="dec-body">Complejidad contractual y operativa no justificada en la etapa actual.</div><div class="dec-owners"><span class="dec-owner">Plataformas</span><span class="dec-owner">Gerencia</span></div></div></div>
+    <div class="decision-item dec-open"><div class="dec-date">Abr 2026</div><div><div class="dec-title">Capa API es fila rectora del Seller Center</div><div class="dec-body">Ningún dominio puede entrar en go-live API antes de que la capa API esté homologada. Fecha objetivo: Septiembre 2026.</div><div class="dec-owners"><span class="dec-owner">Plataformas</span></div></div></div>
+  </div>
+
+  <div class="section-block">
+    <h2>Proceso y gobernanza</h2>
+    <div class="decision-item dec-open"><div class="dec-date">Abr 2026</div><div><div class="dec-title">Proceso de incorporación: 6 etapas secuenciales</div><div class="dec-body">No se avanza sin completar outputs de la etapa anterior. Etapa 5 requiere validación de Comité / Gerencia.</div><div class="dec-owners"><span class="dec-owner">Comercial eCommerce</span><span class="dec-owner">Plataformas</span></div></div></div>
+    <div class="decision-item dec-open"><div class="dec-date">Abr 2026</div><div><div class="dec-title">Relevamiento: formulario externo con email automático</div><div class="dec-body">Formulario externo (Google Forms / App). Respuestas a Google Sheets + email automático al equipo.</div><div class="dec-owners"><span class="dec-owner">Plataformas</span><span class="dec-owner">Comercial eCommerce</span></div></div></div>
+    <div class="decision-item dec-pending"><div class="dec-date">Pendiente</div><div><div class="dec-title">Definición final del esquema de facturación</div><div class="dec-body">Pendiente de resolución jurídica: emisión de comprobantes a nombre del seller, acceso del seller a sus registros y habilitación AFIP.</div><div class="dec-owners"><span class="dec-owner">Legal</span><span class="dec-owner">Plataformas</span><span class="dec-owner">Finanzas</span></div></div></div>
+    <div class="decision-item dec-pending"><div class="dec-date">Pendiente</div><div><div class="dec-title">Modelo de conciliación mensual (Fase 4)</div><div class="dec-body">Previsto para 2027. Requiere definir formato de archivos, periodicidad, criterios de ajuste y responsables.</div><div class="dec-owners"><span class="dec-owner">Finanzas</span><span class="dec-owner">Comercial eCommerce</span></div></div></div>
+  </div>
+</section>
 
 </main>
 </div><!-- /shell -->
@@ -1119,71 +1183,87 @@ select.rel-input option{background:var(--k3)}
 // ══════════════════════════════════
 // NAVIGATION
 // ══════════════════════════════════
+const PAGE_LABELS = {
+  home:'Página principal', proyecto:'Proyecto Marketplace', modelos:'Modelos de Integración',
+  proceso:'Proceso de Incorporación', relevamiento:'Relevamiento de Seller',
+  modulos:'Módulos Operativos', backlog:'Sellers Potenciales', economico:'Modelo Económico',
+  estrategia:'Estrategia de Evolución', seller_center:'Seller Center',
+  checklist:'Checklist por Seller', decisiones:'Decisiones y Acuerdos'
+};
 function nav(page) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.sb-item').forEach(b => b.classList.remove('active'));
-  document.getElementById('page-' + page).classList.add('active');
+  const target = document.getElementById('page-' + page);
+  if(target) target.classList.add('active');
   document.querySelectorAll('.sb-item').forEach(b => {
     if(b.getAttribute('onclick') && b.getAttribute('onclick').includes("'"+page+"'")) b.classList.add('active');
   });
+  // Breadcrumb
+  const label = PAGE_LABELS[page] || '';
+  const bcPage = document.getElementById('tb-bc-page');
+  const bcSep  = document.getElementById('tb-bc-sep');
+  if(page === 'home'){ bcPage.textContent=''; bcPage.classList.remove('visible'); if(bcSep) bcSep.style.display='none'; }
+  else { bcPage.textContent=label; bcPage.classList.add('visible'); if(bcSep) bcSep.style.display=''; }
   document.querySelector('.main').scrollTop = 0;
   window.scrollTo(0,0);
+  if(page === 'seller_center') scLoadSellerCenterSummary();
+  if(page === 'backlog') blLoadBacklogSummary();
 }
 
 // ══════════════════════════════════
 // MODULES
 // ══════════════════════════════════
 const MODULES = [
-  {num:1, title:'Articulado — Creación de SKUs', tags:['tg','ty','tb'],
+  {num:1, title:'Articulado — Creación de SKUs', tags:['tg','ty','tb'], badges:['I','M','A'],
    note:'Identificador del producto: Código producto – Código color – Talle',
    sections:[
     {label:'Camino 1 · Manual', cls:'ty', items:['Creación en PIM (backoffice) — No interviene BAS','Se crean productos y variantes (color, talle)','Se solicita al seller: código producto, código color, talle','EAN (opcional)']},
     {label:'Evolución · Caminos 2–4', cls:'tb', items:['Creación masiva vía planilla Excel','Creación individual desde PIM Frontend','Creación vía API desde sistemas del seller']},
   ]},
-  {num:2, title:'Catalogación', tags:['tg','ty','tb'],
+  {num:2, title:'Catalogación', tags:['tg','ty','tb'], badges:['I','M','A'],
    note:'Proceso posterior a la creación del SKU. La publicación en VTEX debe quedar asociada a la política y condición comercial del seller.',
    sections:[
     {label:'Camino 1 · Manual', cls:'ty', items:['Catalogación desde PIM Frontend por el equipo interno','Producto a producto','Información provista por el seller o relevada desde su sitio']},
     {label:'Evolución', cls:'tb', items:['Catalogación masiva por planilla','Integración vía API']},
   ]},
-  {num:3, title:'OMS — Configuración logística base', tags:['tg'],
+  {num:3, title:'OMS — Configuración logística base', tags:['tg'], badges:['I'],
    sections:[
     {label:'En VTEX', cls:'tg', items:['Creación de almacén del seller','Configuración de muelle','Estrategia de envío']},
     {label:'En PIM', cls:'tg', items:['Creación de tienda del seller','Creación de depósito','Asociación con almacén de VTEX']},
   ]},
-  {num:4, title:'Stock', tags:['tg','ty','tb'],
+  {num:4, title:'Stock', tags:['tg','ty','tb'], badges:['I','M','A'],
    sections:[
     {label:'Camino 1 · Manual', cls:'ty', items:['Carga masiva vía Excel con frecuencia diaria','Definición de stock de seguridad']},
     {label:'Evolución', cls:'tb', items:['Integración vía API en tiempo real','Gestión desde PIM Frontend (manual o masiva)']},
   ]},
-  {num:5, title:'Precio', tags:['tg','ty','tb'],
+  {num:5, title:'Precio', tags:['tg','ty','tb'], badges:['I','M','A'],
    sections:[
     {label:'Camino 1 · Manual', cls:'ty', items:['Carga masiva vía Excel, definición por SKU']},
     {label:'Evolución', cls:'tb', items:['Gestión desde Seller Center','Carga masiva por planilla','Integración vía API']},
   ]},
-  {num:6, title:'Pedidos', tags:['tg'],
+  {num:6, title:'Pedidos', tags:['tg'], badges:['I','M','A'],
    note:'Los pedidos se generan en VTEX y se gestionan en PIM.',
    sections:[
     {label:'Seller usando sistemas actuales', cls:'ty', items:['Opera en PIM Depósitos','Evitar validación de stock en PIM','El pedido se asigna directamente al depósito del seller']},
     {label:'Seller con integración API', cls:'tb', items:['Se consulta stock en tiempo real','Si no hay stock → flujo de conflicto actual']},
   ]},
-  {num:7, title:'Facturación', tags:['tr'],
+  {num:7, title:'Facturación', tags:['tr'], badges:['I','A'],
    note:'Estado: pendiente de definición final.',
    sections:[
     {label:'Alternativa inicial', cls:'ty', items:['Facturación desde Sporting con credenciales del seller','Envío de comprobante al cliente vía PIM']},
     {label:'Pendiente', cls:'tr', items:['Acceso del seller a sus propios comprobantes']},
   ]},
-  {num:8, title:'Logística directa', tags:['tg','ty'],
+  {num:8, title:'Logística directa', tags:['tg','ty'], badges:['I','A'],
    sections:[
     {label:'Escenarios', cls:'tg', items:['Seller con logística propia (Andreani) → configurar contrato','Seller con logística propia (otro carrier) → integrar carrier','Seller con logística Sporting → sin configuración adicional','VTEX–VTEX → llega tracking, no estado completo','API → integración completa de tracking y estados']},
   ]},
-  {num:9, title:'Logística inversa y Devoluciones', tags:['tg','tb'],
+  {num:9, title:'Logística inversa y Devoluciones', tags:['tg','tb'], badges:['I','A'],
    note:'Misma lógica que logística directa. En caso de logística Sporting: solo definir dirección de retorno.',
    sections:[
     {label:'Seller con sistemas actuales', cls:'ty', items:['Impactar stock en su base al aceptar la devolución']},
     {label:'Seller con API', cls:'tb', items:['Integración para aceptación / rechazo de devoluciones','Actualización automática de stock']},
   ]},
-  {num:10, title:'Conciliación', tags:['ty'],
+  {num:10, title:'Conciliación', tags:['ty'], badges:['M','A'],
    note:'Módulo de conciliación económica entre Sporting y el seller. Incluye validación de pedidos, comisiones y liquidaciones periódicas.',
    sections:[
     {label:'Pendiente de definición detallada', cls:'ty', items:['Definir período de liquidación','Establecer proceso de conciliación de comisiones y servicios','Diseño de archivos de conciliación (Archivo 1 y Archivo 2)']},
@@ -1192,6 +1272,7 @@ const MODULES = [
 
 function renderModules(){
   const list = document.getElementById('modules-list');
+  const badgeMap = {I:'mb-i',M:'mb-m',A:'mb-a'};
   list.innerHTML = MODULES.map(m => `
     <div class="module-accordion">
       <div class="module-header" onclick="toggleMod(this)">
@@ -1199,10 +1280,11 @@ function renderModules(){
           <div class="module-num">${m.num}</div>
           <div class="module-title">${m.title}</div>
         </div>
-        <span class="module-chevron">▼</span>
+        <div class="mod-badges">${(m.badges||[]).map(b=>`<span class="mod-badge ${badgeMap[b]}">${b}</span>`).join('')}</div>
+        <span class="module-chevron" style="margin-left:10px">▼</span>
       </div>
       <div class="module-body">
-        ${m.note ? `<p style="margin-bottom:10px;padding:7px 10px;background:var(--k3);border-radius:5px;border-left:2px solid var(--g)">${m.note}</p>` : ''}
+        ${m.note ? `<p style="margin-bottom:10px;padding:7px 10px;background:var(--k3);border-radius:5px;border-left:2px solid var(--g);font-size:12px">${m.note}</p>` : ''}
         ${m.sections.map(s => `
           <div class="camino-label"><span class="tag ${s.cls}">${s.label}</span></div>
           <ul>${s.items.map(i => `<li>${i}</li>`).join('')}</ul>
