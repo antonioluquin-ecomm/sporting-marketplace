@@ -377,6 +377,9 @@
       .card-grid.c4 {
         grid-template-columns: 1fr 1fr 1fr 1fr;
       }
+      .c5 {
+        grid-template-columns: repeat(5,1fr);
+      }
       .card h3 {
         margin-bottom: 5px;
       }
@@ -1765,7 +1768,7 @@
             class="sb-tool-link"
             href="https://antonioluquin-ecomm.github.io/sporting-marketplace-presentacion/"
             target="_blank"
-            ><span class="sb-icon">🏪</span>Propuesta para Sellers<span
+            ><span class="sb-icon">🏪</span>Presentación Comercial<span
               class="sb-ext"
               >↗</span
             ></a
@@ -1935,7 +1938,7 @@
                 <div class="ext-tool-icon">🏪</div>
                 <div>
                   <div class="ext-tool-name">
-                    Propuesta Comercial para Sellers
+                    Presentación Comercial para Sellers
                   </div>
                   <div class="ext-tool-desc">
                     Landing pública para presentar el modelo
@@ -2160,7 +2163,7 @@
                   <td><span class="tag tg">Prioritario</span></td>
                 </tr>
                 <tr>
-                  <td><strong>Interfaz Sporting</strong></td>
+                  <td><strong>Manual / Interfaz</strong></td>
                   <td>Sin infraestructura</td>
                   <td><span class="tag ty">Parcial</span></td>
                   <td><span class="tag ty">Transitorio</span></td>
@@ -2341,7 +2344,7 @@
                 <tr>
                   <th>Dominio</th>
                   <th>VTEX → VTEX</th>
-                  <th>Interfaz Sporting</th>
+                  <th>Manual / Interfaz</th>
                   <th>API → Seller Center</th>
                 </tr>
               </thead>
@@ -2547,22 +2550,30 @@
             </table>
           </div>
 
-          <div class="card-grid c4">
-            <div class="card" style="text-align: center; margin-bottom: 0">
-              <div style="font-size: 20px; margin-bottom: 5px">🔧</div>
-              <h3 style="font-size: 11px">Viabilidad técnica</h3>
-            </div>
-            <div class="card" style="text-align: center; margin-bottom: 0">
-              <div style="font-size: 20px; margin-bottom: 5px">⚙️</div>
-              <h3 style="font-size: 11px">Sustentabilidad operativa</h3>
-            </div>
-            <div class="card" style="text-align: center; margin-bottom: 0">
-              <div style="font-size: 20px; margin-bottom: 5px">💰</div>
-              <h3 style="font-size: 11px">Validación económica</h3>
-            </div>
-            <div class="card" style="text-align: center; margin-bottom: 0">
-              <div style="font-size: 20px; margin-bottom: 5px">🏛️</div>
-              <h3 style="font-size: 11px">Alineación institucional</h3>
+          <div class="section-block" style="margin-top:4px">
+            <h2>Criterios del Go / No Go — Etapa 5</h2>
+            <p style="margin-bottom:14px">Antes de avanzar a onboarding, el caso debe satisfacer los cuatro criterios. La Etapa 5 requiere aprobación explícita de Comité o Gerencia.</p>
+            <div class="card-grid c4">
+              <div class="card" style="text-align:center;margin-bottom:0;border-left:3px solid var(--teal)">
+                <div style="font-size:20px;margin-bottom:5px">🔧</div>
+                <h3 style="font-size:11px">Viabilidad técnica</h3>
+                <p style="font-size:11px;margin-bottom:0;color:var(--t3)">La integración es ejecutable con los recursos disponibles</p>
+              </div>
+              <div class="card" style="text-align:center;margin-bottom:0;border-left:3px solid var(--info)">
+                <div style="font-size:20px;margin-bottom:5px">⚙️</div>
+                <h3 style="font-size:11px">Sustentabilidad operativa</h3>
+                <p style="font-size:11px;margin-bottom:0;color:var(--t3)">El seller puede operar sin carga excesiva en el equipo interno</p>
+              </div>
+              <div class="card" style="text-align:center;margin-bottom:0;border-left:3px solid var(--g)">
+                <div style="font-size:20px;margin-bottom:5px">💰</div>
+                <h3 style="font-size:11px">Validación económica</h3>
+                <p style="font-size:11px;margin-bottom:0;color:var(--t3)">La propuesta es viable para ambas partes y cierra el caso de negocio</p>
+              </div>
+              <div class="card" style="text-align:center;margin-bottom:0;border-left:3px solid var(--violet)">
+                <div style="font-size:20px;margin-bottom:5px">🏛️</div>
+                <h3 style="font-size:11px">Alineación institucional</h3>
+                <p style="font-size:11px;margin-bottom:0;color:var(--t3)">El seller es compatible con los objetivos estratégicos de Sporting</p>
+              </div>
             </div>
           </div>
         </section>
@@ -2745,7 +2756,7 @@
                 <tr>
                   <td>Completar el formulario</td>
                   <td>
-                    Seller (con asistencia de Plataformas si es necesario)
+                    Seller (con asistencia de Plataformas y Procesos si es necesario)
                   </td>
                 </tr>
                 <tr>
@@ -2772,50 +2783,21 @@
             producto queda <strong>publicado en el sitio</strong>.
           </div>
 
-          <div class="card-grid c4" style="margin-bottom: 18px">
-            <div
-              class="card"
-              style="
-                border-left: 3px solid var(--g);
-                margin-bottom: 0;
-                text-align: center;
-              "
-            >
-              <div style="font-size: 16px; margin-bottom: 4px">🏷️</div>
-              <h3 style="font-size: 11px">Articulado</h3>
+          <div class="card-grid c5" style="margin-bottom:18px">
+            <div class="card" style="border-left:3px solid var(--g);margin-bottom:0;text-align:center">
+              <div style="font-size:16px;margin-bottom:4px">🏷️</div><h3 style="font-size:11px">Articulado</h3>
             </div>
-            <div
-              class="card"
-              style="
-                border-left: 3px solid var(--g);
-                margin-bottom: 0;
-                text-align: center;
-              "
-            >
-              <div style="font-size: 16px; margin-bottom: 4px">📂</div>
-              <h3 style="font-size: 11px">Catalogación</h3>
+            <div class="card" style="border-left:3px solid var(--g);margin-bottom:0;text-align:center">
+              <div style="font-size:16px;margin-bottom:4px">📂</div><h3 style="font-size:11px">Catalogación</h3>
             </div>
-            <div
-              class="card"
-              style="
-                border-left: 3px solid var(--g);
-                margin-bottom: 0;
-                text-align: center;
-              "
-            >
-              <div style="font-size: 16px; margin-bottom: 4px">💲</div>
-              <h3 style="font-size: 11px">Precio</h3>
+            <div class="card" style="border-left:3px solid var(--g);margin-bottom:0;text-align:center">
+              <div style="font-size:16px;margin-bottom:4px">⚙️</div><h3 style="font-size:11px">OMS</h3>
             </div>
-            <div
-              class="card"
-              style="
-                border-left: 3px solid var(--g);
-                margin-bottom: 0;
-                text-align: center;
-              "
-            >
-              <div style="font-size: 16px; margin-bottom: 4px">📦</div>
-              <h3 style="font-size: 11px">Stock</h3>
+            <div class="card" style="border-left:3px solid var(--g);margin-bottom:0;text-align:center">
+              <div style="font-size:16px;margin-bottom:4px">📦</div><h3 style="font-size:11px">Stock</h3>
+            </div>
+            <div class="card" style="border-left:3px solid var(--g);margin-bottom:0;text-align:center">
+              <div style="font-size:16px;margin-bottom:4px">💲</div><h3 style="font-size:11px">Precio</h3>
             </div>
           </div>
           <div
@@ -2904,30 +2886,33 @@
             <div class="bl-funnel">
               <div class="bl-funnel-step">
                 <div class="bl-funnel-num" id="bl-f-contactado">0</div>
-                <div class="bl-funnel-title">Identificados / Contactados</div>
-                <div class="bl-funnel-sub">
-                  Pipeline inicial e interés preliminar
-                </div>
+                <div class="bl-funnel-title">Evaluación preliminar</div>
+                <div class="bl-funnel-sub">Etapa 1 · Análisis y clasificación en backlog</div>
               </div>
               <div class="bl-funnel-step">
                 <div class="bl-funnel-num" id="bl-f-relevamiento">0</div>
-                <div class="bl-funnel-title">Relevamiento</div>
-                <div class="bl-funnel-sub">Datos técnicos y operativos</div>
+                <div class="bl-funnel-title">Contacto y presentación</div>
+                <div class="bl-funnel-sub">Etapa 2 · Interés confirmado</div>
               </div>
               <div class="bl-funnel-step">
                 <div class="bl-funnel-num" id="bl-f-propuesta">0</div>
-                <div class="bl-funnel-title">Propuesta</div>
-                <div class="bl-funnel-sub">Evaluación y condiciones</div>
+                <div class="bl-funnel-title">Relevamiento</div>
+                <div class="bl-funnel-sub">Etapa 3 · Datos técnicos, operativos y comerciales</div>
               </div>
               <div class="bl-funnel-step">
                 <div class="bl-funnel-num" id="bl-f-acuerdo">0</div>
-                <div class="bl-funnel-title">Acuerdo</div>
-                <div class="bl-funnel-sub">Validación comercial / legal</div>
+                <div class="bl-funnel-title">Evaluación y definición</div>
+                <div class="bl-funnel-sub">Etapa 4 · Modelo de integración + propuesta económica</div>
               </div>
               <div class="bl-funnel-step">
                 <div class="bl-funnel-num" id="bl-f-onboarding">0</div>
-                <div class="bl-funnel-title">Onboarding</div>
-                <div class="bl-funnel-sub">Implementación y go-live</div>
+                <div class="bl-funnel-title">Validación y acuerdo</div>
+                <div class="bl-funnel-sub">Etapa 5 · Go/No Go + precontrato</div>
+              </div>
+              <div class="bl-funnel-step">
+                <div class="bl-funnel-num" id="bl-f-golive">0</div>
+                <div class="bl-funnel-title">Onboarding y Go-Live</div>
+                <div class="bl-funnel-sub">Etapa 6 · Seller activo en producción</div>
               </div>
             </div>
           </div>
@@ -2939,17 +2924,16 @@
                 class="card"
                 style="margin-bottom: 0; border-left: 3px solid var(--info)"
               >
-                <span class="tag tb">Rápida activación</span>
+                <span class="tag ty">Manual / Interfaz</span>
                 <div
                   class="stat-num"
                   id="bl-path-fast"
-                  style="font-size: 24px; margin-top: 8px; color: var(--info)"
+                  style="font-size: 24px; margin-top: 8px; color: var(--warn)"
                 >
                   0
                 </div>
                 <p style="margin-bottom: 0">
-                  Sellers que pueden operar con capacidades actuales o menor
-                  esfuerzo técnico.
+                  Sellers sin VTEX propio. Operan desde los sistemas de Sporting. Modelo transitorio mientras evoluciona la plataforma.
                 </p>
               </div>
               <div
@@ -3124,8 +3108,7 @@
                     antifraude, atención al cliente y monitoreo.
                   </td>
                   <td>
-                    Modelo de integración · nivel de autonomía · volumen ·
-                    categoría · complejidad · riesgo
+                    Según acuerdo por seller. Base orientativa: 7% sobre GMV neto. Ajustable por modelo de integración, volumen y servicios.
                   </td>
                 </tr>
                 <tr>
@@ -3349,7 +3332,7 @@
             <div class="card" style="border-left: 3px solid var(--warn)">
               <span class="tag ty">Etapa temprana</span>
               <h3 style="margin-top: 6px">
-                Sellers sin VTEX — Interfaz Sporting
+                Sellers sin VTEX — Manual / Interfaz
               </h3>
               <p>Esquema transitorio mientras evoluciona la plataforma.</p>
             </div>
@@ -3377,7 +3360,7 @@
             <p>
               El Marketplace entra en operación real con los sellers que pueden
               integrarse con las capacidades disponibles hoy: VTEX propio e
-              Interfaz Sporting.
+              Manual / Interfaz.
               <strong>Objetivo: validar el modelo, no escalarlo.</strong>
             </p>
           </div>
@@ -3474,7 +3457,7 @@
               <div class="stat-label">Go-live por dominio</div>
             </div>
             <div class="stat-box">
-              <div class="stat-num">7</div>
+              <div class="stat-num">8</div>
               <div class="stat-label">Dominios en roadmap</div>
             </div>
           </div>
@@ -3533,12 +3516,13 @@
                 <td><span class="tag tv">Oct 2026</span></td>
               </tr>
               <tr>
-                <td>
-                  <strong>Stock y Precio</strong><br /><small
-                    style="color: var(--t3)"
-                    >Actualización en tiempo real</small
-                  >
-                </td>
+                <td><strong>Stock</strong><br /><small style="color:var(--t3)">Actualización de stock en tiempo real</small></td>
+                <td><span class="tag tg">Base disponible</span></td>
+                <td>Desarrollo API (Q3)</td>
+                <td><span class="tag tv">Oct 2026</span></td>
+              </tr>
+              <tr>
+                <td><strong>Precio</strong><br /><small style="color:var(--t3)">Actualización de precios</small></td>
                 <td><span class="tag tg">Base disponible</span></td>
                 <td>Desarrollo API (Q3)</td>
                 <td><span class="tag tv">Oct 2026</span></td>
@@ -3607,7 +3591,7 @@
               <h3>Q2 · Activación + Definición</h3>
               <ul>
                 <li>Base de articulado, stock y precio disponible</li>
-                <li>Pedidos y devoluciones operando via interfaz en piloto</li>
+                <li>Pedidos y devoluciones operando vía interfaz en piloto</li>
                 <li>Catalogación en uso con los primeros sellers</li>
                 <li>Diseño de arquitectura API iniciado</li>
               </ul>
@@ -3669,9 +3653,9 @@
                 id="btn-manual"
                 onclick="setInt('manual')"
                 style="
-                  background: rgba(255, 183, 77, 0.12);
-                  color: var(--warn);
-                  border: 1px solid rgba(255, 183, 77, 0.3);
+                  background: var(--k3);
+                  color: var(--t2);
+                  border: 1px solid var(--bdr);
                   border-radius: 5px;
                   padding: 7px 14px;
                   font-family: &quot;Barlow&quot;, sans-serif;
@@ -3889,7 +3873,7 @@
             <div class="decision-item dec-open">
               <div>
                 <span class="dec-status open">Vigente</span>
-                <div class="dec-date">Abr 2026</div>
+                <div class="dec-date">Mar 2026</div>
               </div>
               <div>
                 <div class="dec-title">
@@ -3909,7 +3893,7 @@
             <div class="decision-item dec-open">
               <div>
                 <span class="dec-status open">Vigente</span>
-                <div class="dec-date">Abr 2026</div>
+                <div class="dec-date">Mar 2026</div>
               </div>
               <div>
                 <div class="dec-title">
@@ -3929,7 +3913,7 @@
             <div class="decision-item dec-open">
               <div>
                 <span class="dec-status open">Vigente</span>
-                <div class="dec-date">Abr 2026</div>
+                <div class="dec-date">Mar 2026</div>
               </div>
               <div>
                 <div class="dec-title">
@@ -3954,7 +3938,7 @@
             <div class="decision-item dec-open">
               <div>
                 <span class="dec-status open">Vigente</span>
-                <div class="dec-date">Abr 2026</div>
+                <div class="dec-date">Feb 2026</div>
               </div>
               <div>
                 <div class="dec-title">
@@ -3974,7 +3958,7 @@
             <div class="decision-item dec-open">
               <div>
                 <span class="dec-status open">Vigente</span>
-                <div class="dec-date">Abr 2026</div>
+                <div class="dec-date">Feb 2026</div>
               </div>
               <div>
                 <div class="dec-title">
@@ -4014,7 +3998,7 @@
             <div class="decision-item dec-closed">
               <div>
                 <span class="dec-status closed">Descartado</span>
-                <div class="dec-date">Abr 2026</div>
+                <div class="dec-date">Mar 2026</div>
               </div>
               <div>
                 <div class="dec-title">
@@ -4078,7 +4062,7 @@
             <div class="decision-item dec-pending">
               <div>
                 <span class="dec-status pending">Pendiente</span>
-                <div class="dec-date">Abr 2026</div>
+                <div class="dec-date">May 2026</div>
               </div>
               <div>
                 <div class="dec-title">
@@ -4342,6 +4326,7 @@
           title: "Facturación",
           tags: ["tr"],
           badges: ["I", "A"],
+          alert: true,
           note: "Estado: pendiente de definición final.",
           sections: [
             {
@@ -4431,7 +4416,7 @@
           <div class="module-num">${m.num}</div>
           <div class="module-title">${m.title}</div>
         </div>
-        <div class="mod-badges">${(m.badges || []).map((b) => `<span class="mod-badge ${bmap[b]}">${b}</span>`).join("")}</div>
+        <div class="mod-badges">${(m.badges || []).map((b) => `<span class="mod-badge ${bmap[b]}">${b}</span>`).join("")}${m.alert ? '<span class="mod-badge" style="background:rgba(255,183,77,.15);color:var(--warn);border-color:rgba(255,183,77,.35)">⚠ Pendiente</span>' : ''}</div>
         <span class="module-chevron" style="margin-left:10px">▼</span>
       </div>
       <div class="module-body">
@@ -4903,12 +4888,18 @@
       function setInt(t) {
         currentInt = t;
         checked = {};
+        const styles = {
+          manual:{bg:"rgba(255,255,255,.06)",color:"var(--t1)",brd:"rgba(255,255,255,.15)"},
+          vtex:  {bg:"rgba(94,168,50,.14)", color:"var(--g)",  brd:"rgba(94,168,50,.35)"},
+          api:   {bg:"rgba(100,181,246,.1)",color:"var(--info)",brd:"rgba(100,181,246,.28)"}
+        };
         ["manual", "vtex", "api"].forEach((k) => {
           const btn = document.getElementById("btn-" + k);
+          if(!btn) return;
           if (k === t) {
-            btn.style.background = "rgba(94,168,50,.15)";
-            btn.style.color = "var(--g)";
-            btn.style.borderColor = "var(--g-brd)";
+            btn.style.background = styles[k].bg;
+            btn.style.color = styles[k].color;
+            btn.style.borderColor = styles[k].brd;
           } else {
             btn.style.background = "var(--k3)";
             btn.style.color = "var(--t2)";
@@ -5152,7 +5143,7 @@
         return v || "—";
       }
       function blCaminoLabel(v) {
-        if (v === "rapida_activacion") return "Rápida activación";
+        if (v === "rapida_activacion") return "Manual / Interfaz";
         if (v === "integracion_vtex") return "Integración VTEX";
         if (v === "seller_center") return "Seller Center";
         return v || "—";
