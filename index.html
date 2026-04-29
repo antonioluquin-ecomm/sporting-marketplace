@@ -3426,210 +3426,350 @@
         </section>
 
         <!-- ══════════════════════════════════════════
-     SELLER CENTER — GANTT
+     SELLER CENTER — ROADMAP
 ══════════════════════════════════════════ -->
         <section id="page-seller_center" class="page">
-          <div class="page-title">Seller Center — Plataforma</div>
+          <span class="page-eyebrow">Plataforma · 2026</span>
+          <div class="page-title">Seller Center — Roadmap</div>
           <p class="page-sub">
-            Resumen del roadmap de desarrollo del Seller Center por dominio. El
-            Gantt detallado vive en Google Sheets y se actualiza en tiempo real.
-            Este panel muestra el estado actual de cada dominio y el avance por
-            trimestre.
+            Estado de desarrollo por dominio, progreso global y hoja de ruta trimestral. El Gantt detallado con tareas y responsables vive en Google Sheets.
           </p>
 
-          <div class="stat-grid">
-            <div class="stat-box">
-              <div class="stat-num" style="font-size: 18px; color: var(--g)">
-                Q2
+          <!-- ── PROGRESO GLOBAL ── -->
+          <div class="sc-global-progress">
+            <div class="sc-gp-header">
+              <div>
+                <div class="sc-gp-label">Progreso global del Seller Center</div>
+                <div class="sc-gp-sub">8 dominios · 3 etapas · Go-live API objetivo Oct 2026</div>
               </div>
-              <div class="stat-label">Etapa actual</div>
+              <div class="sc-gp-pct" id="sc-global-pct">21%</div>
             </div>
-            <div class="stat-box">
-              <div class="stat-num" style="font-size: 18px; color: var(--info)">
-                Q3
-              </div>
-              <div class="stat-label">Construcción API interna</div>
+            <div class="sc-gp-track">
+              <div class="sc-gp-fill" id="sc-global-fill" style="width: 21%"></div>
+              <div class="sc-gp-marker" style="left: 25%" title="Q2 · Activación"><span>Q2</span></div>
+              <div class="sc-gp-marker" style="left: 50%" title="Q3 · Construcción API"><span>Q3</span></div>
+              <div class="sc-gp-marker" style="left: 75%" title="Q4 · Go-Live"><span>Q4</span></div>
             </div>
-            <div class="stat-box">
-              <div class="stat-num" style="font-size: 18px; color: var(--warn)">
-                Q4
-              </div>
-              <div class="stat-label">Go-live por dominio</div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-num">8</div>
-              <div class="stat-label">Dominios en roadmap</div>
+            <div class="sc-gp-legend">
+              <span><span class="sc-gp-dot" style="background:var(--g)"></span>Completado</span>
+              <span><span class="sc-gp-dot" style="background:var(--warn)"></span>En curso / Piloto</span>
+              <span><span class="sc-gp-dot" style="background:var(--info)"></span>Planificado Q3</span>
+              <span><span class="sc-gp-dot" style="background:var(--violet)"></span>Go-live Q4</span>
             </div>
           </div>
 
+          <!-- ── KPIs ── -->
+          <div class="sc-kpi-row">
+            <div class="sc-kpi">
+              <div class="sc-kpi-num" style="color:var(--g)">Q2</div>
+              <div class="sc-kpi-lbl">Etapa actual</div>
+            </div>
+            <div class="sc-kpi">
+              <div class="sc-kpi-num" style="color:var(--g)">2</div>
+              <div class="sc-kpi-lbl">Dominios completados</div>
+            </div>
+            <div class="sc-kpi">
+              <div class="sc-kpi-num" style="color:var(--warn)">4</div>
+              <div class="sc-kpi-lbl">En curso / Piloto</div>
+            </div>
+            <div class="sc-kpi">
+              <div class="sc-kpi-num" style="color:var(--info)">1</div>
+              <div class="sc-kpi-lbl">En definición</div>
+            </div>
+            <div class="sc-kpi">
+              <div class="sc-kpi-num" style="color:var(--violet)">Oct 26</div>
+              <div class="sc-kpi-lbl">Go-live API objetivo</div>
+            </div>
+          </div>
+
+          <!-- ── ALERTA API RECTORA ── -->
+          <div class="alert alert-warn" style="margin-bottom: 20px">
+            ⚠️ <strong>Capa API — fila rectora:</strong> ningún dominio puede tener go-live API antes de que la capa API esté homologada y cerrada técnicamente. Fecha objetivo: <strong>Septiembre 2026</strong>.
+          </div>
+
+          <!-- ── CARDS POR DOMINIO ── -->
+          <div class="sec-header-band" style="margin-bottom:14px"><h2>Estado por dominio</h2></div>
+
+          <div class="sc-domain-grid">
+
+            <!-- ARTÍCULOS SELLER — destacado como completado -->
+            <div class="sc-domain-card sc-done sc-featured">
+              <div class="sc-dc-top">
+                <div class="sc-dc-icon">🏷️</div>
+                <div class="sc-dc-info">
+                  <div class="sc-dc-name">Artículos Seller</div>
+                  <div class="sc-dc-desc">Creación de productos y SKUs de origen Seller</div>
+                </div>
+                <span class="sc-dc-badge sc-badge-done">✓ Completado</span>
+              </div>
+              <div class="sc-dc-bar-wrap">
+                <div class="sc-dc-bar" style="width:100%; background:var(--g)"></div>
+              </div>
+              <div class="sc-dc-meta">
+                <span class="sc-dc-pct">100%</span>
+                <span class="sc-dc-stories">SC-ART-01 · SC-ART-02 · SC-ART-03 · SC-ART-04 · SC-ART-05 · SC-ART-06 · SC-ART-09</span>
+              </div>
+              <div class="sc-dc-modalities">
+                <span class="sc-mod-pill sc-mod-i">Manual</span>
+                <span class="sc-mod-pill sc-mod-m">Masivo</span>
+                <span class="sc-mod-pill sc-mod-a">API</span>
+              </div>
+              <div class="sc-dc-milestone">
+                <span style="color:var(--g);font-size:11px;font-weight:700">✓ Módulo entregado · Q2 2026</span>
+              </div>
+            </div>
+
+            <!-- CATALOGACIÓN Y PUBLICACIÓN -->
+            <div class="sc-domain-card sc-pilot">
+              <div class="sc-dc-top">
+                <div class="sc-dc-icon">📂</div>
+                <div class="sc-dc-info">
+                  <div class="sc-dc-name">Catalogación y Publicación</div>
+                  <div class="sc-dc-desc">Publicación de productos en VTEX</div>
+                </div>
+                <span class="sc-dc-badge sc-badge-pilot">En piloto</span>
+              </div>
+              <div class="sc-dc-bar-wrap">
+                <div class="sc-dc-bar" style="width:35%; background:var(--warn)"></div>
+              </div>
+              <div class="sc-dc-meta">
+                <span class="sc-dc-pct">35%</span>
+                <span class="sc-dc-next">▸ Planilla operativa · Q3</span>
+              </div>
+              <div class="sc-dc-modalities">
+                <span class="sc-mod-pill sc-mod-i">Manual</span>
+                <span class="sc-mod-pill sc-mod-m">Masivo</span>
+                <span class="sc-mod-pill sc-mod-a">API</span>
+              </div>
+              <div class="sc-dc-milestone">
+                <span class="sc-dc-golive">Go-live API · Oct 2026</span>
+              </div>
+            </div>
+
+            <!-- STOCK -->
+            <div class="sc-domain-card sc-base">
+              <div class="sc-dc-top">
+                <div class="sc-dc-icon">📦</div>
+                <div class="sc-dc-info">
+                  <div class="sc-dc-name">Stock</div>
+                  <div class="sc-dc-desc">Actualización de stock en tiempo real</div>
+                </div>
+                <span class="sc-dc-badge sc-badge-base">Base disponible</span>
+              </div>
+              <div class="sc-dc-bar-wrap">
+                <div class="sc-dc-bar" style="width:25%; background:var(--warn)"></div>
+              </div>
+              <div class="sc-dc-meta">
+                <span class="sc-dc-pct">25%</span>
+                <span class="sc-dc-next">▸ Desarrollo API · Q3</span>
+              </div>
+              <div class="sc-dc-modalities">
+                <span class="sc-mod-pill sc-mod-i">Manual</span>
+                <span class="sc-mod-pill sc-mod-m">Masivo</span>
+                <span class="sc-mod-pill sc-mod-a">API</span>
+              </div>
+              <div class="sc-dc-milestone">
+                <span class="sc-dc-golive">Go-live API · Oct 2026</span>
+              </div>
+            </div>
+
+            <!-- PRECIO -->
+            <div class="sc-domain-card sc-base">
+              <div class="sc-dc-top">
+                <div class="sc-dc-icon">💲</div>
+                <div class="sc-dc-info">
+                  <div class="sc-dc-name">Precio</div>
+                  <div class="sc-dc-desc">Actualización de precios por SKU</div>
+                </div>
+                <span class="sc-dc-badge sc-badge-base">Base disponible</span>
+              </div>
+              <div class="sc-dc-bar-wrap">
+                <div class="sc-dc-bar" style="width:25%; background:var(--warn)"></div>
+              </div>
+              <div class="sc-dc-meta">
+                <span class="sc-dc-pct">25%</span>
+                <span class="sc-dc-next">▸ Desarrollo API · Q3</span>
+              </div>
+              <div class="sc-dc-modalities">
+                <span class="sc-mod-pill sc-mod-i">Manual</span>
+                <span class="sc-mod-pill sc-mod-m">Masivo</span>
+                <span class="sc-mod-pill sc-mod-a">API</span>
+              </div>
+              <div class="sc-dc-milestone">
+                <span class="sc-dc-golive">Go-live API · Oct 2026</span>
+              </div>
+            </div>
+
+            <!-- PEDIDOS -->
+            <div class="sc-domain-card sc-pilot">
+              <div class="sc-dc-top">
+                <div class="sc-dc-icon">⚙️</div>
+                <div class="sc-dc-info">
+                  <div class="sc-dc-name">Pedidos</div>
+                  <div class="sc-dc-desc">Gestión del flujo de ventas</div>
+                </div>
+                <span class="sc-dc-badge sc-badge-pilot">Piloto operación</span>
+              </div>
+              <div class="sc-dc-bar-wrap">
+                <div class="sc-dc-bar" style="width:30%; background:var(--warn)"></div>
+              </div>
+              <div class="sc-dc-meta">
+                <span class="sc-dc-pct">30%</span>
+                <span class="sc-dc-next">▸ Planilla operativa · Q3</span>
+              </div>
+              <div class="sc-dc-modalities">
+                <span class="sc-mod-pill sc-mod-i">Manual</span>
+                <span class="sc-mod-pill sc-mod-m">Masivo</span>
+                <span class="sc-mod-pill sc-mod-a">API</span>
+              </div>
+              <div class="sc-dc-milestone">
+                <span class="sc-dc-golive">Go-live API · Oct 2026</span>
+              </div>
+            </div>
+
+            <!-- DEVOLUCIONES -->
+            <div class="sc-domain-card sc-pilot">
+              <div class="sc-dc-top">
+                <div class="sc-dc-icon">↩️</div>
+                <div class="sc-dc-info">
+                  <div class="sc-dc-name">Devoluciones</div>
+                  <div class="sc-dc-desc">Flujo inverso y gestión de retornos</div>
+                </div>
+                <span class="sc-dc-badge sc-badge-pilot">Flujo piloto</span>
+              </div>
+              <div class="sc-dc-bar-wrap">
+                <div class="sc-dc-bar" style="width:20%; background:var(--warn)"></div>
+              </div>
+              <div class="sc-dc-meta">
+                <span class="sc-dc-pct">20%</span>
+                <span class="sc-dc-next">▸ Flujo estándar · Q3</span>
+              </div>
+              <div class="sc-dc-modalities">
+                <span class="sc-mod-pill sc-mod-i">Manual</span>
+                <span class="sc-mod-pill sc-mod-a">API</span>
+              </div>
+              <div class="sc-dc-milestone">
+                <span class="sc-dc-golive">Go-live API · Oct 2026</span>
+              </div>
+            </div>
+
+            <!-- COMPROBANTES -->
+            <div class="sc-domain-card sc-definition">
+              <div class="sc-dc-top">
+                <div class="sc-dc-icon">🧾</div>
+                <div class="sc-dc-info">
+                  <div class="sc-dc-name">Comprobantes</div>
+                  <div class="sc-dc-desc">Facturación a nombre del seller</div>
+                </div>
+                <span class="sc-dc-badge sc-badge-def">En definición</span>
+              </div>
+              <div class="sc-dc-bar-wrap">
+                <div class="sc-dc-bar" style="width:10%; background:var(--info)"></div>
+              </div>
+              <div class="sc-dc-meta">
+                <span class="sc-dc-pct">10%</span>
+                <span class="sc-dc-next">▸ Solución base · Jun 2026</span>
+              </div>
+              <div class="sc-dc-modalities">
+                <span class="sc-mod-pill sc-mod-i">Manual</span>
+                <span class="sc-mod-pill sc-mod-a">API</span>
+              </div>
+              <div class="sc-dc-milestone">
+                <span class="sc-dc-golive">Go-live API · Oct 2026</span>
+              </div>
+            </div>
+
+            <!-- CAPA API — rectora -->
+            <div class="sc-domain-card sc-api-rectora">
+              <div class="sc-dc-top">
+                <div class="sc-dc-icon">🔗</div>
+                <div class="sc-dc-info">
+                  <div class="sc-dc-name" style="color:var(--violet)">Capa API</div>
+                  <div class="sc-dc-desc">Arquitectura rectora · habilita todos los dominios</div>
+                </div>
+                <span class="sc-dc-badge sc-badge-api">Arquitectura en curso</span>
+              </div>
+              <div class="sc-dc-bar-wrap">
+                <div class="sc-dc-bar" style="width:15%; background:var(--violet)"></div>
+              </div>
+              <div class="sc-dc-meta">
+                <span class="sc-dc-pct" style="color:var(--violet)">15%</span>
+                <span class="sc-dc-next" style="color:var(--violet)">▸ Desarrollo API · Q3</span>
+              </div>
+              <div class="sc-dc-modalities">
+                <span class="sc-mod-pill" style="background:rgba(206,147,216,.12);border:1px solid rgba(206,147,216,.3);color:var(--violet)">Transversal</span>
+              </div>
+              <div class="sc-dc-milestone">
+                <span style="color:var(--violet);font-size:11px;font-weight:700">★ Cierre técnico · Sep 2026</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ── LÍNEA DE TIEMPO ── -->
+          <div class="sec-header-band" style="margin-top:28px;margin-bottom:14px"><h2>Hoja de ruta trimestral</h2></div>
+
+          <div class="sc-timeline">
+            <div class="sc-tl-item sc-tl-current">
+              <div class="sc-tl-dot sc-tl-dot-g"></div>
+              <div class="sc-tl-body">
+                <div class="sc-tl-quarter" style="color:var(--g)">Q2 2026 · En curso</div>
+                <div class="sc-tl-title">Activación + Definición</div>
+                <ul class="sc-tl-list">
+                  <li><span class="sc-tl-check">✓</span> Artículos Seller: Manual, Masivo y API entregados</li>
+                  <li><span class="sc-tl-check">✓</span> Base de stock y precio disponible</li>
+                  <li><span class="sc-tl-check sc-tl-prog">◑</span> Pedidos y devoluciones operando vía interfaz en piloto</li>
+                  <li><span class="sc-tl-check sc-tl-prog">◑</span> Catalogación en uso con los primeros sellers</li>
+                  <li><span class="sc-tl-check sc-tl-prog">◑</span> Diseño de arquitectura API iniciado</li>
+                </ul>
+              </div>
+            </div>
+            <div class="sc-tl-item">
+              <div class="sc-tl-dot sc-tl-dot-b"></div>
+              <div class="sc-tl-body">
+                <div class="sc-tl-quarter" style="color:var(--info)">Q3 2026 · Planificado</div>
+                <div class="sc-tl-title">Construcción API Interna</div>
+                <ul class="sc-tl-list">
+                  <li><span class="sc-tl-check sc-tl-todo">○</span> Desarrollo de la capa API transversal</li>
+                  <li><span class="sc-tl-check sc-tl-todo">○</span> Planillas operativas por dominio</li>
+                  <li><span class="sc-tl-check sc-tl-todo">○</span> Testing interno de todos los módulos</li>
+                  <li><span class="sc-tl-check sc-tl-todo">○</span> Preparación técnica para primer seller API</li>
+                </ul>
+              </div>
+            </div>
+            <div class="sc-tl-item sc-tl-last">
+              <div class="sc-tl-dot sc-tl-dot-y"></div>
+              <div class="sc-tl-body">
+                <div class="sc-tl-quarter" style="color:var(--warn)">Q4 2026 · Objetivo</div>
+                <div class="sc-tl-title">Go-Live por Dominio</div>
+                <ul class="sc-tl-list">
+                  <li><span class="sc-tl-check sc-tl-todo">○</span> Go-live API: articulado, catalogación, stock/precio, pedidos, devoluciones, comprobantes</li>
+                  <li><span class="sc-tl-check sc-tl-todo">○</span> Primer seller con sistemas propios operando vía API</li>
+                  <li><span class="sc-tl-check sc-tl-todo">○</span> Operación autónoma y base replicable</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── LINK AL GANTT ── -->
           <a
             class="ext-tool-card"
             href="https://antonioluquin-ecomm.github.io/sporting-marketplace-gantt-seller-center/"
             target="_blank"
-            style="margin-bottom: 20px; border-left-color: var(--violet)"
+            style="margin-top: 22px; border-left-color: var(--violet)"
           >
             <div class="ext-tool-left">
               <div class="ext-tool-icon">📅</div>
               <div>
                 <div class="ext-tool-name">Gantt Seller Center — Live</div>
                 <div class="ext-tool-desc">
-                  Conectado a Google Sheets · Detalle por dominio, tarea y
-                  responsable · Actualización en tiempo real
+                  Conectado a Google Sheets · Detalle por tarea, responsable y avance real · Actualización en tiempo real
                 </div>
               </div>
             </div>
             <div class="ext-tool-arrow" style="color: var(--violet)">↗</div>
           </a>
 
-          <h2 style="margin-bottom: 12px">Estado actual por dominio</h2>
-
-          <table style="margin-bottom: 20px">
-            <thead>
-              <tr>
-                <th>Dominio</th>
-                <th>Estado Q2</th>
-                <th>Próximo hito</th>
-                <th>Go-live API</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <strong>Articulado</strong><br /><small
-                    style="color: var(--t3)"
-                    >Creación de SKUs</small
-                  >
-                </td>
-                <td><span class="tag tg">Base disponible</span></td>
-                <td>Planilla operativa (Q3)</td>
-                <td><span class="tag tv">Oct 2026</span></td>
-              </tr>
-              <tr>
-                <td>
-                  <strong>Catalogación</strong><br /><small
-                    style="color: var(--t3)"
-                    >Publicación en VTEX</small
-                  >
-                </td>
-                <td><span class="tag ty">En piloto</span></td>
-                <td>Planilla operativa (Q3)</td>
-                <td><span class="tag tv">Oct 2026</span></td>
-              </tr>
-              <tr>
-                <td><strong>Stock</strong><br /><small style="color:var(--t3)">Actualización de stock en tiempo real</small></td>
-                <td><span class="tag tg">Base disponible</span></td>
-                <td>Desarrollo API (Q3)</td>
-                <td><span class="tag tv">Oct 2026</span></td>
-              </tr>
-              <tr>
-                <td><strong>Precio</strong><br /><small style="color:var(--t3)">Actualización de precios</small></td>
-                <td><span class="tag tg">Base disponible</span></td>
-                <td>Desarrollo API (Q3)</td>
-                <td><span class="tag tv">Oct 2026</span></td>
-              </tr>
-              <tr>
-                <td>
-                  <strong>Pedidos</strong><br /><small style="color: var(--t3)"
-                    >Gestión del flujo de ventas</small
-                  >
-                </td>
-                <td><span class="tag ty">Piloto operación</span></td>
-                <td>Planilla operativa (Q3)</td>
-                <td><span class="tag tv">Oct 2026</span></td>
-              </tr>
-              <tr>
-                <td>
-                  <strong>Devoluciones</strong><br /><small
-                    style="color: var(--t3)"
-                    >Flujo inverso</small
-                  >
-                </td>
-                <td><span class="tag ty">Flujo piloto</span></td>
-                <td>Flujo estándar (Q3)</td>
-                <td><span class="tag tv">Oct 2026</span></td>
-              </tr>
-              <tr>
-                <td>
-                  <strong>Comprobantes</strong><br /><small
-                    style="color: var(--t3)"
-                    >Facturación a nombre del seller</small
-                  >
-                </td>
-                <td><span class="tag tb">Definición por seller</span></td>
-                <td>Solución base (Jun)</td>
-                <td><span class="tag tv">Oct 2026</span></td>
-              </tr>
-              <tr>
-                <td>
-                  <strong style="color: var(--violet)">Capa API</strong
-                  ><br /><small style="color: var(--t3)"
-                    >Arquitectura rectora · define la secuencia de todos los
-                    dominios</small
-                  >
-                </td>
-                <td><span class="tag tv">Arquitectura en curso</span></td>
-                <td>Desarrollo API (Q3)</td>
-                <td>
-                  <span
-                    class="tag tv"
-                    style="
-                      background: rgba(206, 147, 216, 0.25);
-                      border-color: rgba(206, 147, 216, 0.5);
-                    "
-                    >Sep 2026 — Cierre técnico</span
-                  >
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-          <div class="card-grid c3" style="margin-bottom: 18px">
-            <div
-              class="card"
-              style="margin-bottom: 0; border-left: 3px solid var(--g)"
-            >
-              <h3>Q2 · Activación + Definición</h3>
-              <ul>
-                <li>Base de articulado, stock y precio disponible</li>
-                <li>Pedidos y devoluciones operando vía interfaz en piloto</li>
-                <li>Catalogación en uso con los primeros sellers</li>
-                <li>Diseño de arquitectura API iniciado</li>
-              </ul>
-            </div>
-            <div
-              class="card"
-              style="margin-bottom: 0; border-left: 3px solid var(--info)"
-            >
-              <h3>Q3 · Construcción API Interna</h3>
-              <ul>
-                <li>Desarrollo de la capa API transversal</li>
-                <li>Planillas operativas por dominio</li>
-                <li>Testing interno de todos los módulos</li>
-                <li>Preparación técnica para primer seller API</li>
-              </ul>
-            </div>
-            <div
-              class="card"
-              style="margin-bottom: 0; border-left: 3px solid var(--warn)"
-            >
-              <h3>Q4 · Go-Live por Dominio</h3>
-              <ul>
-                <li>
-                  Go-live API: articulado, catalogación, stock/precio, pedidos,
-                  devoluciones, comprobantes
-                </li>
-                <li>Primer seller con sistemas propios operando vía API</li>
-                <li>Operación autónoma y base replicable</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="alert alert-warn">
-            ⚠️ <strong>La capa API es la fila rectora:</strong> define la
-            secuencia de habilitación de todos los dominios. Ningún dominio
-            puede estar en go-live API antes de que la capa API esté homologada
-            y cerrada técnicamente (Septiembre 2026).
-          </div>
         </section>
 
         <!-- ══════════════════════════════════════════
