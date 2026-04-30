@@ -1404,6 +1404,19 @@
         }
       }
 
+
+      /* ── SELLER CENTER MOCKUP EMBED */
+      .mockup-actions { display: flex; gap: 10px; flex-wrap: wrap; margin: 14px 0 18px; }
+      .mockup-btn { display: inline-flex; align-items: center; gap: 7px; padding: 9px 14px; border-radius: 6px; border: 1px solid var(--g-brd); background: var(--g-dim); color: var(--g); font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; text-decoration: none; transition: all .15s; font-family: "Barlow", sans-serif; cursor: pointer; }
+      .mockup-btn:hover { background: rgba(94, 168, 50, .18); border-color: rgba(94, 168, 50, .42); }
+      .mockup-btn.secondary { border-color: var(--bdr); background: rgba(255,255,255,.04); color: var(--t2); }
+      .mockup-btn.secondary:hover { color: var(--teal); border-color: rgba(77, 182, 172, .3); background: rgba(77, 182, 172, .07); }
+      .mockup-frame-wrap { background: var(--k3); border: 1px solid var(--bdr); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); margin-top: 14px; }
+      .mockup-frame-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 14px; border-bottom: 1px solid var(--bdr); background: var(--k4); }
+      .mockup-frame-title { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--t2); }
+      .mockup-frame-note { font-size: 11px; color: var(--t3); }
+      .mockup-frame { width: 100%; height: 680px; border: 0; display: block; background: #eef1f4; }
+
       /* ── RESPONSIVE */
       @media (max-width: 860px) {
         .shell {
@@ -2346,6 +2359,9 @@
           <button class="sb-item" onclick="nav('sc_modulos')">
             <span class="sb-icon">📐</span>Módulos SC — Flujos
           </button>
+          <button class="sb-item" onclick="nav('sc_maqueta')">
+            <span class="sb-icon">🖥️</span>Maqueta PIM · Seller Center
+          </button>
         </div>
 
         <div class="sb-divider"></div>
@@ -2381,6 +2397,7 @@
             ></a
           >
           <a class="sb-tool-link" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-gantt-seller-center/" target="_blank"><span class="sb-icon">📅</span>Gantt Seller Center<span class="sb-ext">↗</span></a>
+          <a class="sb-tool-link" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-maqueta-seller-center/" target="_blank"><span class="sb-icon">🖥️</span>Maqueta Seller Center<span class="sb-ext">↗</span></a>
           <a class="sb-tool-link" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-relevamiento-seller/" target="_blank"><span class="sb-icon">📝</span>Formulario Relevamiento<span class="sb-ext">↗</span></a>
           <a
             class="sb-tool-link"
@@ -2487,6 +2504,11 @@
                 Progreso global, estado por dominio y hoja de ruta trimestral.
               </p>
             </button>
+            <button class="home-card" onclick="nav('sc_maqueta')">
+              <div class="hc-icon">🖥️</div>
+              <h3>Maqueta PIM · Seller Center</h3>
+              <p>Vista funcional alineada al PIM real: pendientes, creación manual e importación.</p>
+            </button>
             <button class="home-card" onclick="nav('checklist')">
               <div class="hc-icon">✅</div>
               <h3>Checklist por Seller</h3>
@@ -2578,6 +2600,16 @@
                 <div>
                   <div class="ext-tool-name">Gantt Seller Center</div>
                   <div class="ext-tool-desc">Roadmap de plataforma · dominios × modalidad I/M/A</div>
+                </div>
+              </div>
+              <div class="ext-tool-arrow">↗</div>
+            </a>
+            <a class="ext-tool-card" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-maqueta-seller-center/" target="_blank">
+              <div class="ext-tool-left">
+                <div class="ext-tool-icon">🖥️</div>
+                <div>
+                  <div class="ext-tool-name">Maqueta PIM · Seller Center</div>
+                  <div class="ext-tool-desc">Referencia funcional · PIM real · creación manual y carga masiva</div>
                 </div>
               </div>
               <div class="ext-tool-arrow">↗</div>
@@ -4366,6 +4398,56 @@
         </section>
 
         <!-- ══════════════════════════════════════════
+     MAQUETA PIM · SELLER CENTER
+══════════════════════════════════════════ -->
+        <section id="page-sc_maqueta" class="page">
+          <span class="page-eyebrow">Plataforma · Referencia funcional</span>
+          <div class="page-title">Maqueta PIM · Seller Center</div>
+          <p class="page-sub">
+            Acceso centralizado a la maqueta funcional del Seller Center. La vista fue desarrollada como referencia visual y operativa para validar flujos antes del desarrollo definitivo, manteniendo una experiencia alineada al PIM real.
+          </p>
+
+          <div class="alert alert-info">
+            <strong>Uso recomendado:</strong> el link en nueva pestaña es el acceso principal. El iframe funciona como vista previa dentro del HUB, pero la experiencia completa de la maqueta se aprovecha mejor en pantalla completa.
+          </div>
+
+          <div class="card-grid c3">
+            <div class="card" style="border-left:3px solid var(--g)">
+              <h3>Objetivo</h3>
+              <p>Representar una experiencia tipo PIM Frontend para el futuro Seller Center, con navegación lateral, bandeja de pendientes y acciones operativas.</p>
+            </div>
+            <div class="card" style="border-left:3px solid var(--info)">
+              <h3>Alcance actual</h3>
+              <p>Incluye creación manual de productos Seller, carga masiva por archivo y estructura base para escalar nuevos módulos.</p>
+            </div>
+            <div class="card" style="border-left:3px solid var(--warn)">
+              <h3>Criterio de uso</h3>
+              <p>Funciona como HTML didáctico de referencia. No reemplaza requerimientos técnicos ni define binding de implementación.</p>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <h2>Relación con los módulos del Seller Center</h2>
+            <p>
+              La maqueta se vincula principalmente con el epic <strong>SC - Artículos Seller</strong>, ya que permite visualizar los flujos de alta manual y carga masiva de productos y SKUs Seller. A futuro puede evolucionar como shell base para incorporar catalogación, stock, precios, pedidos, devoluciones y conciliación.
+            </p>
+            <div class="mockup-actions">
+              <a class="mockup-btn" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-maqueta-seller-center/" target="_blank">Abrir maqueta ↗</a>
+              <a class="mockup-btn secondary" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-gantt-seller-center/" target="_blank">Ver Gantt Seller Center ↗</a>
+              <button class="mockup-btn secondary" onclick="nav('sc_modulos')">Ver flujos SC</button>
+            </div>
+          </div>
+
+          <div class="mockup-frame-wrap">
+            <div class="mockup-frame-head">
+              <div class="mockup-frame-title">Vista previa embebida</div>
+              <div class="mockup-frame-note">Para operar modales y navegación interna, se recomienda abrir en nueva pestaña.</div>
+            </div>
+            <iframe class="mockup-frame" src="https://antonioluquin-ecomm.github.io/sporting-marketplace-maqueta-seller-center/" title="Maqueta PIM · Seller Center"></iframe>
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════
      CHECKLIST
 ══════════════════════════════════════════ -->
         <section id="page-checklist" class="page">
@@ -4856,6 +4938,7 @@
         estrategia: "Estrategia de Evolución",
         seller_center: "Seller Center — Roadmap",
         sc_modulos: "Módulos SC — Flujos",
+        sc_maqueta: "Maqueta PIM · Seller Center",
         checklist: "Checklist por Seller",
         decisiones: "Decisiones y Acuerdos",
       };
