@@ -1613,6 +1613,46 @@
         color: var(--t1);
       }
 
+      /* Live status bar */
+      .sc-live-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 12px;
+        background: var(--k3);
+        border: 1px solid var(--bdr);
+        border-radius: 7px;
+        margin-bottom: 14px;
+        font-size: 11px;
+      }
+      .sc-live-dot {
+        width: 7px; height: 7px; border-radius: 50%;
+        background: var(--t4); flex-shrink: 0;
+        transition: background .3s;
+      }
+      .sc-live-dot.ok  { background: var(--g);      box-shadow: 0 0 0 3px rgba(94,168,50,.18); }
+      .sc-live-dot.err { background: var(--danger);  box-shadow: 0 0 0 3px rgba(217,64,64,.14); }
+      .sc-live-dot.loading { background: var(--warn); animation: pulse 1.4s infinite; }
+      .sc-live-status { color: var(--t3); }
+      .sc-refresh-btn {
+        font-size: 10.5px; font-weight: 700; letter-spacing: .06em;
+        padding: 4px 10px; border-radius: 5px;
+        border: 1px solid var(--bdr); background: rgba(255,255,255,.04);
+        color: var(--t3); cursor: pointer; transition: all .15s;
+        font-family: "Barlow", sans-serif;
+      }
+      .sc-refresh-btn:hover { color: var(--g); border-color: var(--g-brd); background: var(--g-dim); }
+
+      /* Skeleton loader */
+      .sc-skeleton {
+        height: 160px; border-radius: 8px;
+        background: linear-gradient(90deg, var(--k3) 25%, var(--k4) 50%, var(--k3) 75%);
+        background-size: 200% 100%;
+        animation: shimmer 1.4s infinite;
+        border: 1px solid var(--bdr);
+      }
+      @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
       /* ══════════════════════════════
          SELLER CENTER — ROADMAP
       ══════════════════════════════ */
@@ -1757,6 +1797,8 @@
       .sc-pilot       { border-top-color: var(--warn); }
       .sc-base        { border-top-color: rgba(94,168,50,.5); }
       .sc-definition  { border-top-color: var(--info); }
+      .sc-bloqueado   { border-top-color: var(--danger); }
+      .sc-pending     { border-top-color: var(--t4); }
       .sc-api-rectora {
         border-top-color: var(--violet);
         background: rgba(206,147,216,.04);
@@ -1796,11 +1838,13 @@
         white-space: nowrap;
         align-self: flex-start;
       }
-      .sc-badge-done { background: var(--g-dim); color: var(--g); border: 1px solid var(--g-brd); }
+      .sc-badge-done  { background: var(--g-dim); color: var(--g); border: 1px solid var(--g-brd); }
       .sc-badge-pilot { background: rgba(255,183,77,.12); color: var(--warn); border: 1px solid rgba(255,183,77,.28); }
       .sc-badge-base  { background: rgba(94,168,50,.08); color: #7cc24a; border: 1px solid rgba(94,168,50,.18); }
       .sc-badge-def   { background: rgba(100,181,246,.1); color: var(--info); border: 1px solid rgba(100,181,246,.25); }
       .sc-badge-api   { background: rgba(206,147,216,.12); color: var(--violet); border: 1px solid rgba(206,147,216,.28); }
+      .sc-badge-bloq  { background: rgba(217,64,64,.12); color: var(--danger); border: 1px solid rgba(217,64,64,.28); }
+      .sc-badge-pend  { background: rgba(255,255,255,.05); color: var(--t3); border: 1px solid var(--bdr); }
 
       .sc-dc-bar-wrap {
         height: 5px;
@@ -3748,346 +3792,81 @@
           <span class="page-eyebrow">Plataforma · 2026</span>
           <div class="page-title">Seller Center — Roadmap</div>
           <p class="page-sub">
-            Estado de desarrollo por dominio, progreso global y hoja de ruta trimestral. El Gantt detallado con tareas y responsables vive en Google Sheets.
+            Estado de desarrollo por dominio calculado en tiempo real desde Google Sheets.
+            Avance, estado y modalidades reflejan los datos actuales del Gantt.
           </p>
+
+          <!-- ── STATUS BAR ── -->
+          <div class="sc-live-bar">
+            <div style="display:flex;align-items:center;gap:7px">
+              <span class="sc-live-dot" id="sc-live-dot"></span>
+              <span class="sc-live-status" id="sc-live-status">Cargando desde Google Sheets…</span>
+            </div>
+            <button class="sc-refresh-btn" onclick="scLoadData()" title="Actualizar">↻ Actualizar</button>
+          </div>
+
+          <!-- ── ERROR BOX ── -->
+          <div id="sc-error-box"></div>
 
           <!-- ── PROGRESO GLOBAL ── -->
           <div class="sc-global-progress">
             <div class="sc-gp-header">
               <div>
                 <div class="sc-gp-label">Progreso global del Seller Center</div>
-                <div class="sc-gp-sub">8 dominios · 3 etapas · Go-live API objetivo Oct 2026</div>
+                <div class="sc-gp-sub" id="sc-gp-sub">Cargando…</div>
               </div>
-              <div class="sc-gp-pct" id="sc-global-pct">21%</div>
+              <div class="sc-gp-pct" id="sc-global-pct">—</div>
             </div>
             <div class="sc-gp-track">
-              <div class="sc-gp-fill" id="sc-global-fill" style="width: 21%"></div>
-              <div class="sc-gp-marker" style="left: 25%" title="Q2 · Activación"><span>Q2</span></div>
-              <div class="sc-gp-marker" style="left: 50%" title="Q3 · Construcción API"><span>Q3</span></div>
-              <div class="sc-gp-marker" style="left: 75%" title="Q4 · Go-Live"><span>Q4</span></div>
+              <div class="sc-gp-fill" id="sc-global-fill" style="width:0%"></div>
+              <div class="sc-gp-marker" style="left:25%"><span>Q2</span></div>
+              <div class="sc-gp-marker" style="left:50%"><span>Q3</span></div>
+              <div class="sc-gp-marker" style="left:75%"><span>Q4</span></div>
             </div>
             <div class="sc-gp-legend">
               <span><span class="sc-gp-dot" style="background:var(--g)"></span>Completado</span>
               <span><span class="sc-gp-dot" style="background:var(--warn)"></span>En curso / Piloto</span>
-              <span><span class="sc-gp-dot" style="background:var(--info)"></span>Planificado Q3</span>
-              <span><span class="sc-gp-dot" style="background:var(--violet)"></span>Go-live Q4</span>
+              <span><span class="sc-gp-dot" style="background:var(--info)"></span>Planificado</span>
+              <span><span class="sc-gp-dot" style="background:var(--t4)"></span>No iniciado</span>
             </div>
           </div>
 
           <!-- ── KPIs ── -->
-          <div class="sc-kpi-row">
-            <div class="sc-kpi">
-              <div class="sc-kpi-num" style="color:var(--g)">Q2</div>
-              <div class="sc-kpi-lbl">Etapa actual</div>
-            </div>
-            <div class="sc-kpi">
-              <div class="sc-kpi-num" style="color:var(--g)">2</div>
-              <div class="sc-kpi-lbl">Dominios completados</div>
-            </div>
-            <div class="sc-kpi">
-              <div class="sc-kpi-num" style="color:var(--warn)">4</div>
-              <div class="sc-kpi-lbl">En curso / Piloto</div>
-            </div>
-            <div class="sc-kpi">
-              <div class="sc-kpi-num" style="color:var(--info)">1</div>
-              <div class="sc-kpi-lbl">En definición</div>
-            </div>
-            <div class="sc-kpi">
-              <div class="sc-kpi-num" style="color:var(--violet)">Oct 26</div>
-              <div class="sc-kpi-lbl">Go-live API objetivo</div>
-            </div>
+          <div class="sc-kpi-row" id="sc-kpi-row">
+            <div class="sc-kpi"><div class="sc-kpi-num" id="sc-kpi-total" style="color:var(--g)">—</div><div class="sc-kpi-lbl">Tareas totales</div></div>
+            <div class="sc-kpi"><div class="sc-kpi-num" id="sc-kpi-done" style="color:var(--g)">—</div><div class="sc-kpi-lbl">Completadas</div></div>
+            <div class="sc-kpi"><div class="sc-kpi-num" id="sc-kpi-curso" style="color:var(--warn)">—</div><div class="sc-kpi-lbl">En curso</div></div>
+            <div class="sc-kpi"><div class="sc-kpi-num" id="sc-kpi-bloq" style="color:var(--danger)">—</div><div class="sc-kpi-lbl">Bloqueadas</div></div>
+            <div class="sc-kpi"><div class="sc-kpi-num" id="sc-kpi-mod" style="color:var(--violet)">—</div><div class="sc-kpi-lbl">Módulos</div></div>
           </div>
 
-          <!-- ── ALERTA API RECTORA ── -->
-          <div class="alert alert-warn" style="margin-bottom: 20px">
-            ⚠️ <strong>Capa API — fila rectora:</strong> ningún dominio puede tener go-live API antes de que la capa API esté homologada y cerrada técnicamente. Fecha objetivo: <strong>Septiembre 2026</strong>.
+          <!-- ── ALERTA ── -->
+          <div class="alert alert-warn" style="margin-bottom:20px">
+            ⚠️ <strong>Capa API — fila rectora:</strong> ningún dominio puede tener go-live API antes de que la capa API esté homologada. Fecha objetivo: <strong>Sep 2026</strong>.
           </div>
 
-          <!-- ── CARDS POR DOMINIO ── -->
+          <!-- ── CARDS DE DOMINIO ── -->
           <div class="sec-header-band" style="margin-bottom:14px"><h2>Estado por dominio</h2></div>
-
-          <div class="sc-domain-grid">
-
-            <!-- ARTÍCULOS SELLER — destacado como completado -->
-            <div class="sc-domain-card sc-done sc-featured">
-              <div class="sc-dc-top">
-                <div class="sc-dc-icon">🏷️</div>
-                <div class="sc-dc-info">
-                  <div class="sc-dc-name">Artículos Seller</div>
-                  <div class="sc-dc-desc">Creación de productos y SKUs de origen Seller</div>
-                </div>
-                <span class="sc-dc-badge sc-badge-done">✓ Completado</span>
-              </div>
-              <div class="sc-dc-bar-wrap">
-                <div class="sc-dc-bar" style="width:100%; background:var(--g)"></div>
-              </div>
-              <div class="sc-dc-meta">
-                <span class="sc-dc-pct">100%</span>
-                <span class="sc-dc-stories">SC-ART-01 · SC-ART-02 · SC-ART-03 · SC-ART-04 · SC-ART-05 · SC-ART-06 · SC-ART-09</span>
-              </div>
-              <div class="sc-dc-modalities">
-                <span class="sc-mod-pill sc-mod-i">Manual</span>
-                <span class="sc-mod-pill sc-mod-m">Masivo</span>
-                <span class="sc-mod-pill sc-mod-a">API</span>
-              </div>
-              <div class="sc-dc-milestone">
-                <span style="color:var(--g);font-size:11px;font-weight:700">✓ Módulo entregado · Q2 2026</span>
-              </div>
-            </div>
-
-            <!-- CATALOGACIÓN Y PUBLICACIÓN -->
-            <div class="sc-domain-card sc-pilot">
-              <div class="sc-dc-top">
-                <div class="sc-dc-icon">📂</div>
-                <div class="sc-dc-info">
-                  <div class="sc-dc-name">Catalogación y Publicación</div>
-                  <div class="sc-dc-desc">Publicación de productos en VTEX</div>
-                </div>
-                <span class="sc-dc-badge sc-badge-pilot">En piloto</span>
-              </div>
-              <div class="sc-dc-bar-wrap">
-                <div class="sc-dc-bar" style="width:35%; background:var(--warn)"></div>
-              </div>
-              <div class="sc-dc-meta">
-                <span class="sc-dc-pct">35%</span>
-                <span class="sc-dc-next">▸ Planilla operativa · Q3</span>
-              </div>
-              <div class="sc-dc-modalities">
-                <span class="sc-mod-pill sc-mod-i">Manual</span>
-                <span class="sc-mod-pill sc-mod-m">Masivo</span>
-                <span class="sc-mod-pill sc-mod-a">API</span>
-              </div>
-              <div class="sc-dc-milestone">
-                <span class="sc-dc-golive">Go-live API · Oct 2026</span>
-              </div>
-            </div>
-
-            <!-- STOCK -->
-            <div class="sc-domain-card sc-base">
-              <div class="sc-dc-top">
-                <div class="sc-dc-icon">📦</div>
-                <div class="sc-dc-info">
-                  <div class="sc-dc-name">Stock</div>
-                  <div class="sc-dc-desc">Actualización de stock en tiempo real</div>
-                </div>
-                <span class="sc-dc-badge sc-badge-base">Base disponible</span>
-              </div>
-              <div class="sc-dc-bar-wrap">
-                <div class="sc-dc-bar" style="width:25%; background:var(--warn)"></div>
-              </div>
-              <div class="sc-dc-meta">
-                <span class="sc-dc-pct">25%</span>
-                <span class="sc-dc-next">▸ Desarrollo API · Q3</span>
-              </div>
-              <div class="sc-dc-modalities">
-                <span class="sc-mod-pill sc-mod-i">Manual</span>
-                <span class="sc-mod-pill sc-mod-m">Masivo</span>
-                <span class="sc-mod-pill sc-mod-a">API</span>
-              </div>
-              <div class="sc-dc-milestone">
-                <span class="sc-dc-golive">Go-live API · Oct 2026</span>
-              </div>
-            </div>
-
-            <!-- PRECIO -->
-            <div class="sc-domain-card sc-base">
-              <div class="sc-dc-top">
-                <div class="sc-dc-icon">💲</div>
-                <div class="sc-dc-info">
-                  <div class="sc-dc-name">Precio</div>
-                  <div class="sc-dc-desc">Actualización de precios por SKU</div>
-                </div>
-                <span class="sc-dc-badge sc-badge-base">Base disponible</span>
-              </div>
-              <div class="sc-dc-bar-wrap">
-                <div class="sc-dc-bar" style="width:25%; background:var(--warn)"></div>
-              </div>
-              <div class="sc-dc-meta">
-                <span class="sc-dc-pct">25%</span>
-                <span class="sc-dc-next">▸ Desarrollo API · Q3</span>
-              </div>
-              <div class="sc-dc-modalities">
-                <span class="sc-mod-pill sc-mod-i">Manual</span>
-                <span class="sc-mod-pill sc-mod-m">Masivo</span>
-                <span class="sc-mod-pill sc-mod-a">API</span>
-              </div>
-              <div class="sc-dc-milestone">
-                <span class="sc-dc-golive">Go-live API · Oct 2026</span>
-              </div>
-            </div>
-
-            <!-- PEDIDOS -->
-            <div class="sc-domain-card sc-pilot">
-              <div class="sc-dc-top">
-                <div class="sc-dc-icon">⚙️</div>
-                <div class="sc-dc-info">
-                  <div class="sc-dc-name">Pedidos</div>
-                  <div class="sc-dc-desc">Gestión del flujo de ventas</div>
-                </div>
-                <span class="sc-dc-badge sc-badge-pilot">Piloto operación</span>
-              </div>
-              <div class="sc-dc-bar-wrap">
-                <div class="sc-dc-bar" style="width:30%; background:var(--warn)"></div>
-              </div>
-              <div class="sc-dc-meta">
-                <span class="sc-dc-pct">30%</span>
-                <span class="sc-dc-next">▸ Planilla operativa · Q3</span>
-              </div>
-              <div class="sc-dc-modalities">
-                <span class="sc-mod-pill sc-mod-i">Manual</span>
-                <span class="sc-mod-pill sc-mod-m">Masivo</span>
-                <span class="sc-mod-pill sc-mod-a">API</span>
-              </div>
-              <div class="sc-dc-milestone">
-                <span class="sc-dc-golive">Go-live API · Oct 2026</span>
-              </div>
-            </div>
-
-            <!-- DEVOLUCIONES -->
-            <div class="sc-domain-card sc-pilot">
-              <div class="sc-dc-top">
-                <div class="sc-dc-icon">↩️</div>
-                <div class="sc-dc-info">
-                  <div class="sc-dc-name">Devoluciones</div>
-                  <div class="sc-dc-desc">Flujo inverso y gestión de retornos</div>
-                </div>
-                <span class="sc-dc-badge sc-badge-pilot">Flujo piloto</span>
-              </div>
-              <div class="sc-dc-bar-wrap">
-                <div class="sc-dc-bar" style="width:20%; background:var(--warn)"></div>
-              </div>
-              <div class="sc-dc-meta">
-                <span class="sc-dc-pct">20%</span>
-                <span class="sc-dc-next">▸ Flujo estándar · Q3</span>
-              </div>
-              <div class="sc-dc-modalities">
-                <span class="sc-mod-pill sc-mod-i">Manual</span>
-                <span class="sc-mod-pill sc-mod-a">API</span>
-              </div>
-              <div class="sc-dc-milestone">
-                <span class="sc-dc-golive">Go-live API · Oct 2026</span>
-              </div>
-            </div>
-
-            <!-- COMPROBANTES -->
-            <div class="sc-domain-card sc-definition">
-              <div class="sc-dc-top">
-                <div class="sc-dc-icon">🧾</div>
-                <div class="sc-dc-info">
-                  <div class="sc-dc-name">Comprobantes</div>
-                  <div class="sc-dc-desc">Facturación a nombre del seller</div>
-                </div>
-                <span class="sc-dc-badge sc-badge-def">En definición</span>
-              </div>
-              <div class="sc-dc-bar-wrap">
-                <div class="sc-dc-bar" style="width:10%; background:var(--info)"></div>
-              </div>
-              <div class="sc-dc-meta">
-                <span class="sc-dc-pct">10%</span>
-                <span class="sc-dc-next">▸ Solución base · Jun 2026</span>
-              </div>
-              <div class="sc-dc-modalities">
-                <span class="sc-mod-pill sc-mod-i">Manual</span>
-                <span class="sc-mod-pill sc-mod-a">API</span>
-              </div>
-              <div class="sc-dc-milestone">
-                <span class="sc-dc-golive">Go-live API · Oct 2026</span>
-              </div>
-            </div>
-
-            <!-- CAPA API — rectora -->
-            <div class="sc-domain-card sc-api-rectora">
-              <div class="sc-dc-top">
-                <div class="sc-dc-icon">🔗</div>
-                <div class="sc-dc-info">
-                  <div class="sc-dc-name" style="color:var(--violet)">Capa API</div>
-                  <div class="sc-dc-desc">Arquitectura rectora · habilita todos los dominios</div>
-                </div>
-                <span class="sc-dc-badge sc-badge-api">Arquitectura en curso</span>
-              </div>
-              <div class="sc-dc-bar-wrap">
-                <div class="sc-dc-bar" style="width:15%; background:var(--violet)"></div>
-              </div>
-              <div class="sc-dc-meta">
-                <span class="sc-dc-pct" style="color:var(--violet)">15%</span>
-                <span class="sc-dc-next" style="color:var(--violet)">▸ Desarrollo API · Q3</span>
-              </div>
-              <div class="sc-dc-modalities">
-                <span class="sc-mod-pill" style="background:rgba(206,147,216,.12);border:1px solid rgba(206,147,216,.3);color:var(--violet)">Transversal</span>
-              </div>
-              <div class="sc-dc-milestone">
-                <span style="color:var(--violet);font-size:11px;font-weight:700">★ Cierre técnico · Sep 2026</span>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- ── LÍNEA DE TIEMPO ── -->
-          <div class="sec-header-band" style="margin-top:28px;margin-bottom:14px"><h2>Hoja de ruta trimestral</h2></div>
-
-          <div class="sc-timeline">
-            <div class="sc-tl-item sc-tl-current">
-              <div class="sc-tl-dot sc-tl-dot-g"></div>
-              <div class="sc-tl-body">
-                <div class="sc-tl-quarter" style="color:var(--g)">Q2 2026 · En curso</div>
-                <div class="sc-tl-title">Activación + Definición</div>
-                <ul class="sc-tl-list">
-                  <li><span class="sc-tl-check">✓</span> Artículos Seller: Manual, Masivo y API entregados</li>
-                  <li><span class="sc-tl-check">✓</span> Base de stock y precio disponible</li>
-                  <li><span class="sc-tl-check sc-tl-prog">◑</span> Pedidos y devoluciones operando vía interfaz en piloto</li>
-                  <li><span class="sc-tl-check sc-tl-prog">◑</span> Catalogación en uso con los primeros sellers</li>
-                  <li><span class="sc-tl-check sc-tl-prog">◑</span> Diseño de arquitectura API iniciado</li>
-                </ul>
-              </div>
-            </div>
-            <div class="sc-tl-item">
-              <div class="sc-tl-dot sc-tl-dot-b"></div>
-              <div class="sc-tl-body">
-                <div class="sc-tl-quarter" style="color:var(--info)">Q3 2026 · Planificado</div>
-                <div class="sc-tl-title">Construcción API Interna</div>
-                <ul class="sc-tl-list">
-                  <li><span class="sc-tl-check sc-tl-todo">○</span> Desarrollo de la capa API transversal</li>
-                  <li><span class="sc-tl-check sc-tl-todo">○</span> Planillas operativas por dominio</li>
-                  <li><span class="sc-tl-check sc-tl-todo">○</span> Testing interno de todos los módulos</li>
-                  <li><span class="sc-tl-check sc-tl-todo">○</span> Preparación técnica para primer seller API</li>
-                </ul>
-              </div>
-            </div>
-            <div class="sc-tl-item sc-tl-last">
-              <div class="sc-tl-dot sc-tl-dot-y"></div>
-              <div class="sc-tl-body">
-                <div class="sc-tl-quarter" style="color:var(--warn)">Q4 2026 · Objetivo</div>
-                <div class="sc-tl-title">Go-Live por Dominio</div>
-                <ul class="sc-tl-list">
-                  <li><span class="sc-tl-check sc-tl-todo">○</span> Go-live API: articulado, catalogación, stock/precio, pedidos, devoluciones, comprobantes</li>
-                  <li><span class="sc-tl-check sc-tl-todo">○</span> Primer seller con sistemas propios operando vía API</li>
-                  <li><span class="sc-tl-check sc-tl-todo">○</span> Operación autónoma y base replicable</li>
-                </ul>
-              </div>
-            </div>
+          <div class="sc-domain-grid" id="sc-domain-grid">
+            <div class="sc-skeleton"></div>
+            <div class="sc-skeleton"></div>
+            <div class="sc-skeleton"></div>
+            <div class="sc-skeleton"></div>
           </div>
 
           <!-- ── LINK AL GANTT ── -->
-          <a
-            class="ext-tool-card"
-            href="https://antonioluquin-ecomm.github.io/sporting-marketplace-gantt-seller-center/"
-            target="_blank"
-            style="margin-top: 22px; border-left-color: var(--violet)"
-          >
+          <a class="ext-tool-card" href="https://antonioluquin-ecomm.github.io/sporting-marketplace-gantt-seller-center/" target="_blank" style="margin-top:22px;border-left-color:var(--violet)">
             <div class="ext-tool-left">
               <div class="ext-tool-icon">📅</div>
               <div>
                 <div class="ext-tool-name">Gantt Seller Center — Live</div>
-                <div class="ext-tool-desc">
-                  Conectado a Google Sheets · Detalle por tarea, responsable y avance real · Actualización en tiempo real
-                </div>
+                <div class="ext-tool-desc">Detalle por tarea, responsable y avance real · Actualización en tiempo real</div>
               </div>
             </div>
-            <div class="ext-tool-arrow" style="color: var(--violet)">↗</div>
+            <div class="ext-tool-arrow" style="color:var(--violet)">↗</div>
           </a>
 
         </section>
-
         <!-- ══════════════════════════════════════════
      CHECKLIST
 ══════════════════════════════════════════ -->
@@ -5821,6 +5600,322 @@
       blLoadBacklogSummary();
 
       setInt("manual");
+
+      // ══════════════════════════════════════════
+      // SELLER CENTER — ROADMAP DINÁMICO
+      // Lee desde el mismo Google Sheet que el Gantt
+      // ══════════════════════════════════════════
+      const SC_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTwd-qIMhoH1poJpaTZqN-7O5IGAfPDTxslBAX8LCPogTkwheW2vWsq59JkvvYakM8ndCKgUQualQyi/pub?gid=1440698993&single=true&output=csv';
+
+      const SC_MODULE_META = {
+        'Artículos Seller':           { icon:'🏷️', apiRectora: false },
+        'Catalogación y Publicación': { icon:'📂', apiRectora: false },
+        'Stock':                      { icon:'📦', apiRectora: false },
+        'Precio':                     { icon:'💲', apiRectora: false },
+        'Pedidos':                    { icon:'⚙️', apiRectora: false },
+        'Devoluciones':               { icon:'↩️', apiRectora: false },
+        'Comprobantes':               { icon:'🧾', apiRectora: false },
+        'Logistica Directa':          { icon:'🚚', apiRectora: false },
+        'Logistica Inversa':          { icon:'🔄', apiRectora: false },
+        'Conciliacion':               { icon:'💰', apiRectora: true  },
+      };
+      // "Capa API" puede aparecer como módulo separado en el sheet
+      // Se lo detecta por nombre
+      const SC_MODULE_ORDER = Object.keys(SC_MODULE_META);
+
+      function scNorm(s) {
+        return String(s ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+      }
+      function scEsc(s) {
+        return String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+      }
+
+      function scParseCSV(text) {
+        const rows = []; let row = [], cell = '', q = false;
+        for (let i = 0; i < text.length; i++) {
+          const c = text[i], nx = text[i+1];
+          if (c==='"' && q && nx==='"') { cell+='"'; i++; continue; }
+          if (c==='"') { q=!q; continue; }
+          if (c===',' && !q) { row.push(cell); cell=''; continue; }
+          if ((c==='\n'||c==='\r') && !q) {
+            if (c==='\r'&&nx==='\n') i++;
+            row.push(cell); cell='';
+            if (row.some(v=>v.trim())) rows.push(row);
+            row=[]; continue;
+          }
+          cell+=c;
+        }
+        row.push(cell);
+        if (row.some(v=>v.trim())) rows.push(row);
+        return rows;
+      }
+
+      function scFindCol(hdrs, aliases) {
+        for (const a of aliases) {
+          const i = hdrs.findIndex(h => scNorm(h) === a);
+          if (i >= 0) return i;
+        }
+        return -1;
+      }
+
+      function scParseAvance(v) {
+        const s = String(v ?? '').trim();
+        if (!s || s === '—') return null;
+        const n = parseFloat(s.replace('%','').replace(',','.'));
+        if (isNaN(n)) return null;
+        return Math.max(0, Math.min(100, Math.round((!s.includes('%') && n > 0 && n <= 1) ? n*100 : n)));
+      }
+
+      function scMapRows(rows) {
+        const hi = rows.findIndex(r => r.some(v => scNorm(v)==='id' || scNorm(v)==='modulo' || scNorm(v)==='módulo'));
+        if (hi < 0) throw new Error('No se encontró fila de encabezados en sc_roadmap.');
+        const hdrs = rows[hi].map(v => v.trim());
+        const idx = {
+          modulo:     scFindCol(hdrs, ['modulo','módulo']),
+          tarea:      scFindCol(hdrs, ['tarea']),
+          modalidad:  scFindCol(hdrs, ['modalidad']),
+          estado:     scFindCol(hdrs, ['estado']),
+          avance:     scFindCol(hdrs, ['% avance','%_avance','avance']),
+          id:         scFindCol(hdrs, ['id']),
+        };
+        const get = (row, k) => idx[k] >= 0 ? String(row[idx[k]] ?? '').trim() : '';
+        const result = [];
+        for (let i = hi+1; i < rows.length; i++) {
+          const row = rows[i];
+          const id = get(row,'id');
+          if (!id || id.startsWith('ℹ') || id.startsWith('—') || id.startsWith('TIMELINE')) continue;
+          const estadoRaw = get(row,'estado') || 'No iniciado';
+          const avRaw = scParseAvance(get(row,'avance'));
+          const avFallback = scNorm(estadoRaw).includes('completado') ? 100
+                           : scNorm(estadoRaw).includes('curso')      ? 40
+                           : scNorm(estadoRaw).includes('bloqueado')  ? 20 : 0;
+          result.push({
+            id, modulo: get(row,'modulo'), tarea: get(row,'tarea'),
+            modalidad: get(row,'modalidad'), estado: estadoRaw,
+            avance: avRaw !== null ? avRaw : avFallback,
+          });
+        }
+        return result;
+      }
+
+      // Agrupa tareas por módulo y calcula métricas
+      function scGroupByModule(tasks) {
+        const map = {};
+        tasks.forEach(t => {
+          if (!t.modulo) return;
+          if (!map[t.modulo]) map[t.modulo] = [];
+          map[t.modulo].push(t);
+        });
+        return map;
+      }
+
+      function scModuleAvg(tasks) {
+        if (!tasks.length) return 0;
+        return Math.round(tasks.reduce((a,b) => a + (b.avance||0), 0) / tasks.length);
+      }
+
+      // Determina estado dominante del módulo
+      function scModuleStatus(tasks) {
+        const estados = tasks.map(t => scNorm(t.estado));
+        const total = tasks.length;
+        const completados = estados.filter(e => e.includes('completado')).length;
+        const encurso     = estados.filter(e => e.includes('curso')).length;
+        const bloqueados  = estados.filter(e => e.includes('bloqueado')).length;
+        const planificado = estados.filter(e => e.includes('planificado')).length;
+        if (completados === total) return 'completado';
+        if (bloqueados > 0)        return 'bloqueado';
+        if (encurso > 0)           return 'en_curso';
+        if (planificado > 0)       return 'planificado';
+        return 'no_iniciado';
+      }
+
+      // Devuelve modalidades únicas de un módulo
+      function scModalities(tasks) {
+        return [...new Set(tasks.map(t => t.modalidad).filter(Boolean))];
+      }
+
+      function scStatusLabel(s) {
+        const map = {
+          completado:  'Completado',
+          en_curso:    'En curso',
+          bloqueado:   'Bloqueado',
+          planificado: 'Planificado',
+          no_iniciado: 'No iniciado',
+        };
+        return map[s] || 'No iniciado';
+      }
+
+      function scStatusBadgeCls(s) {
+        const map = {
+          completado:  'sc-badge-done',
+          en_curso:    'sc-badge-pilot',
+          bloqueado:   'sc-badge-bloq',
+          planificado: 'sc-badge-def',
+          no_iniciado: 'sc-badge-pend',
+        };
+        return map[s] || 'sc-badge-pend';
+      }
+
+      function scCardCls(s) {
+        const map = {
+          completado:  'sc-done',
+          en_curso:    'sc-pilot',
+          bloqueado:   'sc-bloqueado',
+          planificado: 'sc-definition',
+          no_iniciado: 'sc-pending',
+        };
+        return map[s] || 'sc-pending';
+      }
+
+      function scBarColor(s) {
+        const map = {
+          completado:  'var(--g)',
+          en_curso:    'var(--warn)',
+          bloqueado:   'var(--danger)',
+          planificado: 'var(--info)',
+          no_iniciado: 'var(--t4)',
+        };
+        return map[s] || 'var(--t4)';
+      }
+
+      function scModPillCls(m) {
+        const s = scNorm(m);
+        if (s === 'api')    return 'sc-mod-a';
+        if (s === 'masivo') return 'sc-mod-m';
+        return 'sc-mod-i';
+      }
+
+      function scRenderCards(grouped) {
+        const order = [
+          ...SC_MODULE_ORDER,
+          ...Object.keys(grouped).filter(k => !SC_MODULE_ORDER.includes(k))
+        ];
+
+        const cards = order.filter(m => grouped[m]).map((mod, idx) => {
+          const tasks   = grouped[mod];
+          const avg     = scModuleAvg(tasks);
+          const status  = scModuleStatus(tasks);
+          const meta    = SC_MODULE_META[mod] || { icon:'⚙️', apiRectora: false };
+          const mods    = scModalities(tasks);
+          const isFirst = idx === 0;
+          const isApi   = scNorm(mod).includes('capa api') || scNorm(mod).includes('conciliacion') || meta.apiRectora;
+
+          // Featured: primer módulo span 2
+          const featuredCls = isFirst ? ' sc-featured' : '';
+          const apiCls      = isApi   ? ' sc-api-rectora' : '';
+          const cardCls     = isApi   ? 'sc-api-rectora' : scCardCls(status);
+          const badgeCls    = isApi   ? 'sc-badge-api'   : scStatusBadgeCls(status);
+          const barColor    = isApi   ? 'var(--violet)'  : scBarColor(status);
+          const pctColor    = isApi   ? 'var(--violet)'  : (status === 'completado' ? 'var(--g)' : 'var(--t2)');
+          const nameColor   = isApi   ? 'color:var(--violet)' : '';
+
+          const modPills = mods.map(m =>
+            `<span class="sc-mod-pill ${scModPillCls(m)}">${scEsc(m)}</span>`
+          ).join('');
+
+          const completedCheck = status === 'completado'
+            ? `<div class="sc-dc-milestone"><span style="color:var(--g);font-size:11px;font-weight:700">✓ ${scEsc(tasks.length)} tareas completadas</span></div>`
+            : `<div class="sc-dc-milestone"><span class="sc-dc-golive">${tasks.length} tareas · avance ${avg}%</span></div>`;
+
+          return `<div class="sc-domain-card ${cardCls}${featuredCls}${apiCls}">
+            <div class="sc-dc-top">
+              <div class="sc-dc-icon">${meta.icon}</div>
+              <div class="sc-dc-info">
+                <div class="sc-dc-name" style="${nameColor}">${scEsc(mod)}</div>
+                <div class="sc-dc-desc">${tasks.length} tareas</div>
+              </div>
+              <span class="sc-dc-badge ${badgeCls}">${scEsc(scStatusLabel(status))}</span>
+            </div>
+            <div class="sc-dc-bar-wrap">
+              <div class="sc-dc-bar" style="width:${avg}%;background:${barColor}"></div>
+            </div>
+            <div class="sc-dc-meta">
+              <span class="sc-dc-pct" style="color:${pctColor}">${avg}%</span>
+              <span class="sc-dc-next">${tasks.filter(t=>scNorm(t.estado).includes('curso')).length} en curso · ${tasks.filter(t=>scNorm(t.estado).includes('completado')).length} completadas</span>
+            </div>
+            <div class="sc-dc-modalities">${modPills || '<span style="font-size:10px;color:var(--t4)">—</span>'}</div>
+            ${completedCheck}
+          </div>`;
+        });
+
+        return cards.join('');
+      }
+
+      async function scLoadData() {
+        const dot    = document.getElementById('sc-live-dot');
+        const status = document.getElementById('sc-live-status');
+        const errBox = document.getElementById('sc-error-box');
+        const grid   = document.getElementById('sc-domain-grid');
+
+        if (!dot) return; // sección no visible todavía
+
+        // Loading state
+        dot.className    = 'sc-live-dot loading';
+        status.textContent = 'Cargando desde Google Sheets…';
+        errBox.innerHTML   = '';
+        grid.innerHTML     = '<div class="sc-skeleton"></div><div class="sc-skeleton"></div><div class="sc-skeleton"></div><div class="sc-skeleton"></div>';
+
+        try {
+          const res = await fetch(SC_CSV_URL + '&_t=' + Date.now(), { cache: 'no-store' });
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          const text  = await res.text();
+          const rows  = scParseCSV(text);
+          const tasks = scMapRows(rows);
+
+          if (!tasks.length) throw new Error('No se encontraron tareas en el sheet. Verificar estructura.');
+
+          const grouped   = scGroupByModule(tasks);
+          const modCount  = Object.keys(grouped).length;
+          const total     = tasks.length;
+          const done      = tasks.filter(t => scNorm(t.estado).includes('completado')).length;
+          const curso     = tasks.filter(t => scNorm(t.estado).includes('curso')).length;
+          const bloq      = tasks.filter(t => scNorm(t.estado).includes('bloqueado')).length;
+          const globalAvg = Math.round(tasks.reduce((a,b) => a + (b.avance||0), 0) / total);
+
+          // KPIs
+          const setText = (id, v) => { const el=document.getElementById(id); if(el) el.textContent=v; };
+          const setW    = (id, v) => { const el=document.getElementById(id); if(el) el.style.width=v+'%'; };
+
+          setText('sc-global-pct', globalAvg + '%');
+          setW   ('sc-global-fill', globalAvg);
+          setText('sc-gp-sub', `${modCount} módulos · ${total} tareas · Go-live API objetivo Oct 2026`);
+
+          setText('sc-kpi-total', total);
+          setText('sc-kpi-done',  done);
+          setText('sc-kpi-curso', curso);
+          setText('sc-kpi-bloq',  bloq);
+          setText('sc-kpi-mod',   modCount);
+
+          // Cards
+          grid.innerHTML = scRenderCards(grouped);
+
+          // Status OK
+          dot.className      = 'sc-live-dot ok';
+          status.textContent = `Google Sheets · ${total} tareas · ${modCount} módulos · actualizado ${new Date().toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'})}`;
+
+        } catch (err) {
+          console.error('[SC Roadmap]', err);
+          dot.className      = 'sc-live-dot err';
+          status.textContent = 'Error al cargar';
+          errBox.innerHTML   = `<div style="background:rgba(217,64,64,.1);border:1px solid rgba(217,64,64,.28);color:#f29a9a;border-radius:7px;padding:12px 14px;font-size:12.5px;margin-bottom:14px;line-height:1.5">
+            <strong>No se pudo cargar el roadmap desde Google Sheets.</strong><br>
+            ${scEsc(err.message)}<br>
+            <span style="font-size:11px;color:rgba(242,154,154,.7)">Verificar que la hoja sc_roadmap esté publicada como CSV (gid=1440698993).</span>
+          </div>`;
+          grid.innerHTML = '';
+        }
+      }
+
+      // Carga cuando se navega a la sección
+      const _navOrig = nav;
+      nav = function(page) {
+        _navOrig(page);
+        if (page === 'seller_center') scLoadData();
+      };
+      // Si ya está en seller_center al cargar la página
+      if (document.getElementById('page-seller_center')?.classList.contains('active')) {
+        scLoadData();
+      }
     </script>
     <div class="toast" id="toast"></div>
   </body>
