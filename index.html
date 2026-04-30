@@ -1975,6 +1975,271 @@
         .sc-kpi-row  { grid-template-columns: repeat(3, 1fr); }
       }
 
+      /* ══════════════════════════════
+         SC — FLUJO DE MÓDULO
+      ══════════════════════════════ */
+
+      /* Selector de módulo */
+      .scm-selector {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 24px;
+      }
+      .scm-tab {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 8px 14px;
+        border-radius: 6px;
+        border: 1px solid var(--bdr);
+        background: var(--k3);
+        color: var(--t3);
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all .15s;
+        font-family: "Barlow", sans-serif;
+      }
+      .scm-tab:hover { color: var(--t1); border-color: var(--bdr-m); background: var(--k4); }
+      .scm-tab.active {
+        color: var(--g);
+        background: var(--g-dim);
+        border-color: var(--g-brd);
+      }
+      .scm-tab .scm-tab-icon { font-size: 14px; }
+      .scm-tab .scm-tab-badge {
+        font-size: 8px; font-weight: 800; letter-spacing: .06em;
+        padding: 1px 5px; border-radius: 3px;
+        background: rgba(94,168,50,.2); color: var(--g);
+        text-transform: uppercase;
+      }
+      .scm-tab.soon { opacity: .45; cursor: default; pointer-events: none; }
+      .scm-tab.soon .scm-tab-badge {
+        background: rgba(255,255,255,.06); color: var(--t4);
+      }
+
+      /* Módulo content */
+      .scm-content { display: none; }
+      .scm-content.active { display: block; animation: fadeIn .2s ease; }
+
+      /* Epic header */
+      .scm-epic-header {
+        background: var(--k3);
+        border: 1px solid var(--bdr);
+        border-left: 4px solid var(--g);
+        border-radius: 8px;
+        padding: 16px 18px;
+        margin-bottom: 20px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        align-items: start;
+      }
+      .scm-epic-title {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 20px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: .02em;
+        color: var(--w);
+        margin-bottom: 4px;
+      }
+      .scm-epic-desc {
+        font-size: 12.5px;
+        color: var(--t2);
+        line-height: 1.55;
+        max-width: 680px;
+      }
+      .scm-epic-meta {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 5px;
+        flex-shrink: 0;
+      }
+
+      /* Flow diagram */
+      .scm-flow {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin-bottom: 24px;
+      }
+      .scm-flow-arrow {
+        text-align: center;
+        font-size: 18px;
+        color: var(--t4);
+        line-height: 1;
+        margin: 2px 0;
+        user-select: none;
+      }
+
+      /* Canales (fila horizontal) */
+      .scm-channels {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+      .scm-channel {
+        background: var(--k3);
+        border: 1px solid var(--bdr);
+        border-radius: 8px;
+        padding: 14px;
+        text-align: center;
+        border-top: 3px solid transparent;
+        transition: transform .15s, box-shadow .15s;
+      }
+      .scm-channel:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+      .scm-channel.ch-manual  { border-top-color: var(--info); }
+      .scm-channel.ch-masivo  { border-top-color: var(--teal); }
+      .scm-channel.ch-api     { border-top-color: var(--violet); }
+      .scm-channel-story {
+        font-size: 10px; font-weight: 800; letter-spacing: .08em;
+        color: var(--t3); margin-bottom: 6px; text-transform: uppercase;
+      }
+      .scm-channel-icon { font-size: 20px; margin-bottom: 6px; line-height: 1; }
+      .scm-channel-name {
+        font-size: 12.5px; font-weight: 700; color: var(--t1);
+        margin-bottom: 3px;
+      }
+      .scm-channel-sub { font-size: 10.5px; color: var(--t3); line-height: 1.3; }
+      .scm-channel-pill {
+        display: inline-block;
+        margin-top: 8px;
+        font-size: 8.5px; font-weight: 800;
+        padding: 2px 7px; border-radius: 20px;
+        border: 1px solid transparent;
+      }
+      .cp-i { background: rgba(100,181,246,.1); color: var(--info); border-color: rgba(100,181,246,.22); }
+      .cp-m { background: rgba(77,182,172,.1); color: var(--teal); border-color: rgba(77,182,172,.22); }
+      .cp-a { background: rgba(206,147,216,.1); color: var(--violet); border-color: rgba(206,147,216,.22); }
+
+      /* Bloques de proceso */
+      .scm-block {
+        background: var(--k3);
+        border: 1px solid var(--bdr);
+        border-radius: 8px;
+        padding: 16px 18px;
+      }
+      .scm-block.proc  { border-left: 4px solid var(--info); }
+      .scm-block.model { border-left: 4px solid var(--warn); }
+      .scm-block.logs  { border-left: 4px solid var(--teal); }
+      .scm-block.result{
+        border-left: 4px solid var(--g);
+        background: rgba(94,168,50,.07);
+        text-align: center;
+      }
+
+      .scm-block-header {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin-bottom: 10px;
+      }
+      .scm-block-icon { font-size: 16px; line-height: 1; }
+      .scm-block-title {
+        font-size: 13px; font-weight: 700; color: var(--t1);
+      }
+      .scm-block-story {
+        font-size: 9px; font-weight: 800; letter-spacing: .1em;
+        text-transform: uppercase; color: var(--t3);
+        margin-left: auto;
+        background: rgba(255,255,255,.05);
+        padding: 2px 7px; border-radius: 3px;
+        border: 1px solid var(--bdr);
+      }
+
+      .scm-items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .scm-item {
+        background: var(--k4);
+        border: 1px solid var(--bdr);
+        border-radius: 5px;
+        padding: 6px 10px;
+        font-size: 11.5px;
+        color: var(--t2);
+        line-height: 1.3;
+      }
+      .scm-item strong { color: var(--t1); }
+
+      /* Dos columnas */
+      .scm-2col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      /* Estado chips dentro de bloque */
+      .scm-states {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+      .scm-state-group {
+        background: var(--k4);
+        border: 1px solid var(--bdr);
+        border-radius: 6px;
+        padding: 10px 12px;
+      }
+      .scm-state-group-title {
+        font-size: 9px; font-weight: 800; letter-spacing: .1em;
+        text-transform: uppercase; color: var(--t3); margin-bottom: 7px;
+      }
+      .scm-state-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-size: 10.5px;
+        font-weight: 700;
+        margin: 2px 2px 2px 0;
+        border: 1px solid transparent;
+      }
+      .sc-valido    { background: var(--g-dim); color: var(--g); border-color: var(--g-brd); }
+      .sc-rechazado { background: rgba(217,64,64,.12); color: var(--danger); border-color: rgba(217,64,64,.25); }
+      .sc-creado    { background: rgba(255,183,77,.1); color: var(--warn); border-color: rgba(255,183,77,.25); }
+      .sc-listo     { background: rgba(100,181,246,.1); color: var(--info); border-color: rgba(100,181,246,.25); }
+
+      /* Result block */
+      .scm-result-icon { font-size: 28px; margin-bottom: 6px; }
+      .scm-result-title {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 17px; font-weight: 900;
+        text-transform: uppercase; letter-spacing: .02em;
+        color: var(--g); margin-bottom: 4px;
+      }
+      .scm-result-sub { font-size: 12px; color: var(--t2); }
+
+      /* Stories index */
+      .scm-stories-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        margin-top: 16px;
+      }
+      .scm-story-card {
+        background: var(--k4);
+        border: 1px solid var(--bdr);
+        border-radius: 6px;
+        padding: 10px 12px;
+      }
+      .scm-story-id {
+        font-size: 9.5px; font-weight: 800; letter-spacing: .06em;
+        color: var(--g); margin-bottom: 4px;
+      }
+      .scm-story-name {
+        font-size: 11.5px; font-weight: 600; color: var(--t1);
+        margin-bottom: 2px; line-height: 1.3;
+      }
+      .scm-story-type {
+        font-size: 9px; color: var(--t3);
+      }
+
       /* ── TOAST */
       .toast {
         position: fixed;
@@ -2076,10 +2341,10 @@
         <div class="sb-section">
           <span class="sb-label">Plataforma</span>
           <button class="sb-item" onclick="nav('seller_center')">
-            <span class="sb-icon">🛠️</span>Seller Center — Roadmap<span
-              class="sb-ext"
-              >↗</span
-            >
+            <span class="sb-icon">🛠️</span>Seller Center — Roadmap
+          </button>
+          <button class="sb-item" onclick="nav('sc_modulos')">
+            <span class="sb-icon">📐</span>Módulos SC — Flujos
           </button>
         </div>
 
@@ -3868,6 +4133,239 @@
 
         </section>
         <!-- ══════════════════════════════════════════
+     SC — MÓDULOS SELLER CENTER — FLUJOS
+══════════════════════════════════════════ -->
+        <section id="page-sc_modulos" class="page">
+          <span class="page-eyebrow">Seller Center · Documentación técnica</span>
+          <div class="page-title">Módulos SC — Flujos</div>
+          <p class="page-sub">
+            Resumen del circuito funcional de cada módulo del Seller Center. Muestra cómo fluyen los datos desde el ingreso hasta el resultado, con las stories involucradas y las reglas clave.
+          </p>
+
+          <!-- Selector de módulo -->
+          <div class="scm-selector">
+            <button class="scm-tab active" onclick="scmShow('art')">
+              <span class="scm-tab-icon">🏷️</span>
+              Artículos Seller
+              <span class="scm-tab-badge">Completo</span>
+            </button>
+            <button class="scm-tab soon">
+              <span class="scm-tab-icon">📂</span>
+              Catalogación
+              <span class="scm-tab-badge">Próximo</span>
+            </button>
+            <button class="scm-tab soon">
+              <span class="scm-tab-icon">📦</span>
+              Stock
+              <span class="scm-tab-badge">Próximo</span>
+            </button>
+            <button class="scm-tab soon">
+              <span class="scm-tab-icon">💲</span>
+              Precio
+              <span class="scm-tab-badge">Próximo</span>
+            </button>
+          </div>
+
+          <!-- ══ MÓDULO: ARTÍCULOS SELLER ══ -->
+          <div class="scm-content active" id="scm-art">
+
+            <!-- Epic header -->
+            <div class="scm-epic-header">
+              <div>
+                <div class="scm-epic-title">🏷️ Artículos Seller</div>
+                <div class="scm-epic-desc">
+                  Habilitar la creación de productos y SKUs de origen <strong>Seller</strong> en PIM, sin depender de BAS, por tres vías: manual, masiva y API. El resultado siempre es un artículo Seller persistido, validado y listo para Catalogación y Publicación.
+                </div>
+              </div>
+              <div class="scm-epic-meta">
+                <span class="tag tg">✓ Entregado · Q2 2026</span>
+                <span class="tag" style="background:rgba(255,255,255,.05);color:var(--t3);border:1px solid var(--bdr)">7 stories</span>
+              </div>
+            </div>
+
+            <!-- FLUJO -->
+            <div class="scm-flow">
+
+              <!-- 1. Canales -->
+              <div class="scm-channels">
+                <div class="scm-channel ch-manual">
+                  <div class="scm-channel-story">SC-ART-05</div>
+                  <div class="scm-channel-icon">🖱️</div>
+                  <div class="scm-channel-name">Manual</div>
+                  <div class="scm-channel-sub">Formulario en PIM Frontend · un producto a la vez</div>
+                  <span class="scm-channel-pill cp-i">Manual</span>
+                </div>
+                <div class="scm-channel ch-masivo">
+                  <div class="scm-channel-story">SC-ART-06</div>
+                  <div class="scm-channel-icon">📄</div>
+                  <div class="scm-channel-name">Masivo</div>
+                  <div class="scm-channel-sub">Archivo CSV / XLSX · hasta 10.000 filas · procesamiento por lote</div>
+                  <span class="scm-channel-pill cp-m">Masivo</span>
+                </div>
+                <div class="scm-channel ch-api">
+                  <div class="scm-channel-story">SC-ART-07</div>
+                  <div class="scm-channel-icon">⚡</div>
+                  <div class="scm-channel-name">API</div>
+                  <div class="scm-channel-sub">POST /api/seller-center/products · sistemas externos del seller</div>
+                  <span class="scm-channel-pill cp-a">API</span>
+                </div>
+              </div>
+
+              <div class="scm-flow-arrow">↓</div>
+
+              <!-- 2. Procesamiento central -->
+              <div class="scm-block proc">
+                <div class="scm-block-header">
+                  <span class="scm-block-icon">⚙️</span>
+                  <span class="scm-block-title">Procesamiento central</span>
+                  <span class="scm-block-story">SC-ART-01 · SC-ART-02 · SC-ART-09</span>
+                </div>
+                <div class="scm-items">
+                  <div class="scm-item">✓ Validación de estructura y campos obligatorios</div>
+                  <div class="scm-item">✓ Control de duplicados <small style="color:var(--t3)">(seller_id + cod_producto + cod_color)</small></div>
+                  <div class="scm-item">✓ Normalización <small style="color:var(--t3)">trim · uppercase · cod_color vacío → 000</small></div>
+                  <div class="scm-item">✓ Validación de talle contra catálogo <small style="color:var(--t3)">(SC-ART-09)</small></div>
+                  <div class="scm-item">✓ Generación automática de SKU <small style="color:var(--t3)">cod_producto-cod_color-talle</small></div>
+                  <div class="scm-item">✓ Asignación de <strong>seller_id</strong> desde contexto de autenticación</div>
+                </div>
+              </div>
+
+              <div class="scm-flow-arrow">↓</div>
+
+              <!-- 3. Modelo de datos -->
+              <div class="scm-block model">
+                <div class="scm-block-header">
+                  <span class="scm-block-icon">🗄️</span>
+                  <span class="scm-block-title">Modelo de datos en PIM</span>
+                  <span class="scm-block-story">SC-ART-01</span>
+                </div>
+                <div class="scm-2col">
+                  <div class="scm-item" style="flex-direction:column;gap:4px">
+                    <strong>Producto (padre)</strong>
+                    <span style="font-size:10.5px;color:var(--t3)">cod_producto + cod_color<br>seller_id · origen = Seller</span>
+                    <span style="font-size:10px;color:var(--t4)">Unicidad: seller_id + cod_producto + cod_color</span>
+                  </div>
+                  <div class="scm-item" style="flex-direction:column;gap:4px">
+                    <strong>SKU (variante)</strong>
+                    <span style="font-size:10.5px;color:var(--t3)">cod_producto-cod_color-talle<br>EAN opcional</span>
+                    <span style="font-size:10px;color:var(--t4)">Unicidad: seller_id + cod_producto + cod_color + talle</span>
+                  </div>
+                </div>
+                <div style="margin-top:8px;padding:7px 10px;background:var(--k4);border-radius:5px;border:1px solid var(--bdr);font-size:11px;color:var(--t3)">
+                  ℹ️ Reutiliza el modelo operativo actual de PIM. No se crea un modelo paralelo.
+                </div>
+              </div>
+
+              <div class="scm-flow-arrow">↓</div>
+
+              <!-- 4. Estados -->
+              <div class="scm-block" style="border-left:4px solid var(--violet)">
+                <div class="scm-block-header">
+                  <span class="scm-block-icon">🔖</span>
+                  <span class="scm-block-title">Asignación de estados</span>
+                  <span class="scm-block-story">SC-ART-03</span>
+                </div>
+                <div class="scm-states">
+                  <div class="scm-state-group">
+                    <div class="scm-state-group-title">SKU</div>
+                    <span class="scm-state-chip sc-valido">✓ VÁLIDO</span>
+                    <span class="scm-state-chip sc-rechazado">✗ RECHAZADO</span>
+                    <div style="font-size:10px;color:var(--t3);margin-top:6px;line-height:1.4">Cumple todas las validaciones → VÁLIDO<br>No cumple → RECHAZADO</div>
+                  </div>
+                  <div class="scm-state-group">
+                    <div class="scm-state-group-title">Producto</div>
+                    <span class="scm-state-chip sc-creado">◑ CREADO</span>
+                    <span class="scm-state-chip sc-listo">★ LISTO PARA CATALOGAR</span>
+                    <div style="font-size:10px;color:var(--t3);margin-top:6px;line-height:1.4">≥ 1 SKU VÁLIDO → LISTO PARA CATALOGAR<br>Sin SKUs válidos → CREADO</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="scm-flow-arrow">↓</div>
+
+              <!-- 5. Logs -->
+              <div class="scm-block logs">
+                <div class="scm-block-header">
+                  <span class="scm-block-icon">📋</span>
+                  <span class="scm-block-title">Logs y trazabilidad</span>
+                  <span class="scm-block-story">SC-ART-04</span>
+                </div>
+                <div class="scm-items">
+                  <div class="scm-item"><strong>entity_type</strong> PRODUCT / SKU</div>
+                  <div class="scm-item"><strong>event_source</strong> MANUAL · MASIVO · API · SISTEMA</div>
+                  <div class="scm-item"><strong>event_type</strong> CREATE · VALIDATION · STATUS_CHANGE</div>
+                  <div class="scm-item"><strong>result</strong> SUCCESS / ERROR</div>
+                  <div class="scm-item"><strong>error_type</strong> VALIDATION · DUPLICATE · SYSTEM</div>
+                  <div class="scm-item"><strong>batch_id</strong> en carga masiva</div>
+                  <div class="scm-item"><strong>message_code</strong> estandarizado — sin texto libre</div>
+                </div>
+              </div>
+
+              <div class="scm-flow-arrow">↓</div>
+
+              <!-- 6. Resultado -->
+              <div class="scm-block result">
+                <div class="scm-result-icon">✅</div>
+                <div class="scm-result-title">Artículo Seller listo</div>
+                <div class="scm-result-sub">Persistido en PIM · asociado a seller_id · origen = Seller · validado · trazado</div>
+                <div style="margin-top:10px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap">
+                  <span class="tag tg">→ Catalogación</span>
+                  <span class="tag tg">→ Publicación en VTEX</span>
+                </div>
+              </div>
+
+            </div><!-- /scm-flow -->
+
+            <!-- Index de stories -->
+            <div class="sec-header-band" style="margin-top:4px;margin-bottom:12px"><h2>Stories del módulo</h2></div>
+            <div class="scm-stories-grid">
+              <div class="scm-story-card">
+                <div class="scm-story-id">SC-ART-01</div>
+                <div class="scm-story-name">Estructura base de productos y SKUs</div>
+                <div class="scm-story-type">Backend · Modelo de datos</div>
+              </div>
+              <div class="scm-story-card">
+                <div class="scm-story-id">SC-ART-02</div>
+                <div class="scm-story-name">Validaciones y reglas de unicidad</div>
+                <div class="scm-story-type">Backend · Validaciones</div>
+              </div>
+              <div class="scm-story-card">
+                <div class="scm-story-id">SC-ART-03</div>
+                <div class="scm-story-name">Estados del artículo Seller</div>
+                <div class="scm-story-type">Backend · Lógica de estados</div>
+              </div>
+              <div class="scm-story-card">
+                <div class="scm-story-id">SC-ART-04</div>
+                <div class="scm-story-name">Logs y trazabilidad</div>
+                <div class="scm-story-type">Backend · Auditoría</div>
+              </div>
+              <div class="scm-story-card">
+                <div class="scm-story-id">SC-ART-05</div>
+                <div class="scm-story-name">Creación manual desde PIM Frontend</div>
+                <div class="scm-story-type">Frontend · Manual</div>
+              </div>
+              <div class="scm-story-card">
+                <div class="scm-story-id">SC-ART-06</div>
+                <div class="scm-story-name">Carga masiva mediante archivo</div>
+                <div class="scm-story-type">Frontend + Backend · Masivo</div>
+              </div>
+              <div class="scm-story-card">
+                <div class="scm-story-id">SC-ART-07</div>
+                <div class="scm-story-name">API de creación de productos</div>
+                <div class="scm-story-type">API · Integración externa</div>
+              </div>
+              <div class="scm-story-card">
+                <div class="scm-story-id">SC-ART-09</div>
+                <div class="scm-story-name">Catálogo de talles permitidos</div>
+                <div class="scm-story-type">Backend · Catálogo de referencia</div>
+              </div>
+            </div>
+
+          </div><!-- /scm-art -->
+
+        </section>
+
+        <!-- ══════════════════════════════════════════
      CHECKLIST
 ══════════════════════════════════════════ -->
         <section id="page-checklist" class="page">
@@ -4357,6 +4855,7 @@
         economico: "Modelo Económico",
         estrategia: "Estrategia de Evolución",
         seller_center: "Seller Center — Roadmap",
+        sc_modulos: "Módulos SC — Flujos",
         checklist: "Checklist por Seller",
         decisiones: "Decisiones y Acuerdos",
       };
@@ -5916,6 +6415,18 @@
       if (document.getElementById('page-seller_center')?.classList.contains('active')) {
         scLoadData();
       }
+      // ══════════════════════════════════════
+      // SC MÓDULOS — selector de tabs
+      // ══════════════════════════════════════
+      function scmShow(id) {
+        document.querySelectorAll('.scm-tab').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.scm-content').forEach(c => c.classList.remove('active'));
+        const tab = document.querySelector(`.scm-tab[onclick="scmShow('${id}')"]`);
+        const content = document.getElementById('scm-' + id);
+        if (tab)     tab.classList.add('active');
+        if (content) content.classList.add('active');
+      }
+
     </script>
     <div class="toast" id="toast"></div>
   </body>
